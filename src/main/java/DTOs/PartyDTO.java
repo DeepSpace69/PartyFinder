@@ -39,8 +39,8 @@ public class PartyDTO {
     public PartyDTO(PartyDAO party, ArrayList<SlotDAO> slots) {
         this.age = party.getAge();
         this.strongLanguage = party.isStrongLanguage();
-        this.groupServer = party.getGroupServer();
-        this.serverName = party.getSeverName();
+        this.groupServer = party.getGroupServers();
+        this.serverName = party.getServerName();
         this.voiceChat = party.isVoiceChat();
         this.chatListening = party.isChatListening();
         this.chatSpeaking = party.isChatSpeaking();

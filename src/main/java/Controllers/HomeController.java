@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/")
@@ -26,10 +27,11 @@ public class HomeController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
     public String home(ModelMap model) {
         List<PartyDAO> records = repository.findAll();
         model.addAttribute("records", records);
-        //model.addAttribute("insertRecord", new Record());
+        model.addAttribute("insertRecord", new Record());
         return "home";
     }
 
