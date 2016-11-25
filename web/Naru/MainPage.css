@@ -1,0 +1,19 @@
+.listOfParties
+{
+    background-color: silver;
+    height:400px;
+    width:415px;
+    color: black;
+    text-align: center;
+    font-size: small;
+}
+
+.oneParty
+{
+    background-color: lavender;
+    height:80px;
+    width:415px;
+    color: black;
+    text-align: center;
+    font-size: small;
+}

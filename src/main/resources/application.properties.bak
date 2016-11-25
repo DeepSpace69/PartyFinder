@@ -1,8 +1,0 @@
-# Database Config
-# Un-comment these lines to connect to a database. When commented out, you automatically get an in-memory-database.
-#spring.jpa.hibernate.ddl-auto=update
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-spring.datasource.username=postgres
-spring.datasource.password=32167
-spring.datasource.driver-class-name=org.postgresql.Driver

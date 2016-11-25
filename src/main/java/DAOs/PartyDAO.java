@@ -25,7 +25,7 @@ public class PartyDAO {
     private String name;
 
     @Column
-    private int age;
+    private Integer age;
 
     @Column(name = "strong_language")
     private Boolean strongLanguage;
