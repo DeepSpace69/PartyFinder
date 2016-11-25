@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,9 +30,9 @@ public class PartyController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String findParty() {
+
         List<PartyDAO> records = repository.findAll();
         this.gson = new Gson();
-        //model.addAttribute("insertRecord", new Record());
         return this.gson.toJson(records);
     }
 

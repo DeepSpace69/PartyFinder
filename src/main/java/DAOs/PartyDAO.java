@@ -1,10 +1,9 @@
 package main.java.DAOs;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import main.java.DTOs.PartyDTO;
+
+import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -19,7 +18,8 @@ import java.util.Date;
 @Table(name = "parties")
 public class PartyDAO {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String name;
@@ -51,36 +51,26 @@ public class PartyDAO {
     @Column
     private Boolean pve;
 
-//    @Column(name = "create_date")
-//    private Date createDate;
-//
-//    @Column(name = "update_date")
-//    private Date updateDate;
+    @Column(name = "create_date")
+    private Date createDate;
 
-    public PartyDAO()
-    {
+    @Column(name = "update_date")
+    private Date updateDate;
+
+    public PartyDAO() {
 
     }
 
-    public PartyDAO(ResultSet rs) throws SQLException, ParseException {
-
-        this.id = rs.getInt("id");
-        this.name = rs.getString("name");
-        this.age = Integer.parseInt(rs.getString("age"));
-        this.strongLanguage = Boolean.parseBoolean(rs.getString("strongLanguage"));
-        this.groupServers = rs.getString("groupServer");
-        this.serverName = rs.getString("serverName");
-        this.voiceChat = Boolean.parseBoolean(rs.getString("voiceChat"));
-        this.chatListening = Boolean.parseBoolean(rs.getString("chatListening"));
-        this.chatSpeaking = Boolean.parseBoolean(rs.getString("chatSpeaking"));
-        this.pvp = Boolean.parseBoolean(rs.getString("pvp"));
-        this.pve = Boolean.parseBoolean(rs.getString("pve"));
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy");
-//        this.createDate = format.parse(rs.getString("createDate"));
-//        this.updateDate = format.parse(rs.getString("updateDate"));
+    public PartyDAO(PartyDTO partyDTO) {
+        this.name = partyDTO.getName();
+        this.age = partyDTO.getAge();
+        this.pve = partyDTO.isPve();
+        this.createDate = new Date();
+        this.updateDate = new Date();
     }
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
@@ -123,12 +113,20 @@ public class PartyDAO {
     public boolean isPve() {
         return pve;
     }
-//
-//    public Date getCreateDate() {
-//        return createDate;
-//    }
-//
-//    public Date getUpdateDate() {
-//        return updateDate;
-//    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 }

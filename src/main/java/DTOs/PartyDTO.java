@@ -15,7 +15,7 @@ public class PartyDTO {
     private String name;
     private int age;
     private int timeZone; // not done
-    private ArrayList<String> languages;
+    private String  languages;
     private boolean strongLanguage;
     private String groupServer;
     private String serverName;
@@ -25,7 +25,7 @@ public class PartyDTO {
     private String chatType; // not done
     private boolean pvp;
     private boolean pve;
-    private ArrayList<Slot> slots;
+    private ArrayList<SlotDTO> slots;
     private ArrayList<PrimeTime> primeTimes;
     private Date createDate;
     private Date updateDate;
@@ -73,15 +73,7 @@ public class PartyDTO {
         this.timeZone = timeZone;
     }
 
-    public ArrayList<String> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(ArrayList<String> languages) {
-        this.languages = languages;
-    }
-
-    public String getServerName() {
+        public String getServerName() {
         return serverName;
     }
 
@@ -161,11 +153,11 @@ public class PartyDTO {
         this.pve = pve;
     }
 
-    public ArrayList<Slot> getSlots() {
+    public ArrayList<SlotDTO> getSlots() {
         return slots;
     }
 
-    public void setSlots(ArrayList<Slot> slots) {
+    public void setSlots(ArrayList<SlotDTO> slots) {
         this.slots = slots;
     }
 
