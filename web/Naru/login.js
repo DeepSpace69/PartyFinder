@@ -20,31 +20,17 @@ function reqListener(sender) {
     // console.log(this);
 }
 
-
 function signIn() {
-    var party = new Object();
+    var user = new Object();
 
-    party.name = "Dragons";
-    party.age = 21;
-	party.timeZone = 2;
-	party.language = "ru";
-	party.strongLanguage = true;
-	party.groupServer = "TheFirst";
-	party.serverName = "Dream";
-	party.voiceChat = true;
-	party.chatListening = true;
-	party.chatSpeaking = true;
-	party.pvp = true;
-	party.pve = true;
-	party.chatType = "Skype";
-
-    //alert(userPassword+userLogin);
+    user.login = document.querySelector('.loginInput').value;
+    user.password = document.querySelector('.passwordInput').value;
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', reqListener);
     //xhr.onload = reqListener;
-    xhr.open('POST', 'http://localhost:8080/createParty', true);
+    xhr.open('POST', 'http://groupfinder.herokuapp.com/auth', true);
 
-    var toSend = JSON.stringify(party);
+    var toSend = JSON.stringify(user);
 
     xhr.send(toSend);
 
@@ -54,6 +40,3 @@ function showError(errorText) {
     document.querySelector('.errorMessage').innerHTML = errorText;
     document.querySelector('.errorMessage').style.visibility = 'visible';
 }
-
-function testFunction() {
-    location.href = 'MainPage.html';}
