@@ -17,11 +17,11 @@ public class SlotDAO {
     @Column
     private String name;
     @Column
-    private Integer role;
+    private String role;
     @Column
-    private Integer classType;
+    private String classType;
     @Column
-    private Boolean sex;
+    private String sex;
     @Column
     private Long fkParty;
 
@@ -30,7 +30,37 @@ public class SlotDAO {
 
     }
 
-    public SlotDAO(SlotDTO slot) {
+    public SlotDAO(SlotDTO slot, Long id) {
+        this.name = slot.getName();
+        this.role = slot.getRole();
+        this.classType = slot.getClassType();
+        this.sex = slot.getSex();
+        this.fkParty = id;
 
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public Long getFkParty() {
+        return fkParty;
     }
 }

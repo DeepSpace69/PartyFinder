@@ -29,8 +29,9 @@ public class PartyCreationController {
     private Gson gson;
 
     @Autowired
-    public PartyCreationController(PartyRepository repository) {
+    public PartyCreationController(PartyRepository repository, SlotRepository slotRepository) {
         this.repository = repository;
+        this.slotRepository = slotRepository;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -45,11 +46,10 @@ public class PartyCreationController {
             return null;
         }
         PartyDAO partyDAO = new PartyDAO(partyDTO);
-        // ArrayList<SlotDTO> slots = new ArrayList<>();
-        this.repository.save(partyDAO);
+        PartyDAO savedParty = this.repository.save(partyDAO);
         List<SlotDAO> slotDAOs = new ArrayList<>();
         for (SlotDTO slot : partyDTO.getSlots()) {
-            slotDAOs.add(new SlotDAO(slot));
+            slotDAOs.add(new SlotDAO(slot, savedParty.getId()));
         }
         this.slotRepository.save(slotDAOs);
         return result;

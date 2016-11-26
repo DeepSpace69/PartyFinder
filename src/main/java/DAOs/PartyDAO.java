@@ -28,35 +28,44 @@ public class PartyDAO {
     @Column
     private Integer age;
 
-    @Column(name = "strong_language")
-    private Boolean strongLanguage;
+    @Column
+    private String strongLanguage;
 
-    @Column(name = "group_servers")
-    private String groupServers;
+    @Column
+    private String language;
 
-    @Column(name = "server_name")
+    @Column
+    private String serversGroup;
+
+    @Column
     private String serverName;
 
-    @Column(name = "voice_chat")
-    private Boolean voiceChat;
-
-    @Column(name = "chat_listening")
-    private Boolean chatListening;
-
-    @Column(name = "chat_speaking")
-    private Boolean chatSpeaking;
+    @Column
+    private String voiceChat;
 
     @Column
-    private Boolean pvp;
+    private String chatListening;
 
     @Column
-    private Boolean pve;
+    private String chatSpeaking;
 
-     @Column(name = "create_date", insertable = false, updatable = false)
+    @Column
+    private String chatType;
+
+    @Column
+    private String pvp;
+
+    @Column
+    private String pve;
+
+    @Column
+    private Integer timeZone;
+
+    @Column(name = "create_date", insertable = false, updatable = false)
     private Date createDate;
 
 
-    @Column(name = "update_date",insertable = false, updatable = false)
+    @Column(name = "update_date", insertable = false, updatable = false)
     private Date updateDate;
 
     public PartyDAO() {
@@ -66,11 +75,20 @@ public class PartyDAO {
     public PartyDAO(PartyDTO partyDTO) {
         this.name = partyDTO.getName();
         this.age = partyDTO.getAge();
-        this.pve = partyDTO.isPve();
+        this.pve = partyDTO.getPve();
+        this.pvp = partyDTO.getPvp();
+        this.chatType = partyDTO.getChatType();
+        this.voiceChat  = partyDTO.getVoiceChat();
+        this.chatListening = partyDTO.getChatListening();
+        this.chatSpeaking = partyDTO.getChatSpeaking();
+        this.strongLanguage = partyDTO.getStrongLanguage();
+        this.language = partyDTO.getLanguage();
+        this.serversGroup = partyDTO.getServersGroup();
+        this.serverName = partyDTO.getServerName();
+        this.timeZone = partyDTO.getTimeZone();
         this.createDate = new Date();
         this.updateDate = new Date();
     }
-
 
     public Long getId() {
         return id;
@@ -80,55 +98,59 @@ public class PartyDAO {
         return name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public boolean isStrongLanguage() {
+    public String getStrongLanguage() {
         return strongLanguage;
     }
 
-    public String getGroupServers() {
-        return groupServers;
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getServersGroup() {
+        return serversGroup;
     }
 
     public String getServerName() {
         return serverName;
     }
 
-    public boolean isVoiceChat() {
+    public String getVoiceChat() {
         return voiceChat;
     }
 
-    public boolean isChatListening() {
+    public String getChatListening() {
         return chatListening;
     }
 
-    public boolean isChatSpeaking() {
+    public String getChatSpeaking() {
         return chatSpeaking;
     }
 
-    public boolean isPvp() {
+    public String getChatType() {
+        return chatType;
+    }
+
+    public String getPvp() {
         return pvp;
     }
 
-    public boolean isPve() {
+    public String getPve() {
         return pve;
+    }
+
+    public Integer getTimeZone() {
+        return timeZone;
     }
 
     public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
     public Date getUpdateDate() {
         return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
     }
 }

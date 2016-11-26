@@ -13,175 +13,107 @@ import java.util.Date;
 public class PartyDTO {
 
     private String name;
-    private int age;
-    private int timeZone; // not done
-    private String  languages;
-    private boolean strongLanguage;
-    private String groupServer;
+    private Integer age;
+    private Integer timeZone;
+    private String language;
+    private String strongLanguage;
+    private String serversGroup;
     private String serverName;
-    private boolean voiceChat;
-    private boolean chatListening;
-    private boolean chatSpeaking;
-    private String chatType; // not done
-    private boolean pvp;
-    private boolean pve;
+    private String voiceChat;
+    private String chatListening;
+    private String chatSpeaking;
+    private String chatType; 
+    private String pvp;
+    private String pve;
     private ArrayList<SlotDTO> slots;
     private ArrayList<PrimeTime> primeTimes;
     private Date createDate;
     private Date updateDate;
 
-    public PartyDTO(String name, int age, boolean strongLanguage) {
-        this.name = name;
-        this.age = age;
-        this.strongLanguage = strongLanguage;
-    }
 
     public PartyDTO(PartyDAO party, ArrayList<SlotDAO> slots) {
+        this.name = party.getName();
         this.age = party.getAge();
-        this.strongLanguage = party.isStrongLanguage();
-        this.groupServer = party.getGroupServers();
+        this.pve = party.getPve();
+        this.pvp = party.getPvp();
+        this.chatType = party.getChatType();
+        this.voiceChat  = party.getVoiceChat();
+        this.chatListening = party.getChatListening();
+        this.chatSpeaking = party.getChatSpeaking();
+        this.strongLanguage = party.getStrongLanguage();
+        this.language = party.getLanguage();
+        this.serversGroup = party.getServersGroup();
         this.serverName = party.getServerName();
-        this.voiceChat = party.isVoiceChat();
-        this.chatListening = party.isChatListening();
-        this.chatSpeaking = party.isChatSpeaking();
-        this.pvp = party.isPvp();
-        this.pve = party.isPve();
-       // this.slots = slots;
+        this.timeZone = party.getTimeZone();
+        this.createDate = new Date();
+        this.updateDate = new Date();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getTimeZone() {
+    public Integer getTimeZone() {
         return timeZone;
     }
 
-    public void setTimeZone(int timeZone) {
-        this.timeZone = timeZone;
+    public String getLanguage() {
+        return language;
     }
 
-        public String getServerName() {
-        return serverName;
-    }
-
-    public void setServerName(String serverName) {
-        this.serverName = serverName;
-    }
-
-    public boolean isStrongLanguage() {
+    public String getStrongLanguage() {
         return strongLanguage;
     }
 
-    public void setStrongLanguage(boolean strongLanguage) {
-        this.strongLanguage = strongLanguage;
+    public String getServersGroup() {
+        return serversGroup;
     }
 
-    public String getGroupServer() {
-        return groupServer;
-    }
-
-    public void setGroupServer(String groupServer) {
-        this.groupServer = groupServer;
-    }
-
-    public String getSeverName() {
+    public String getServerName() {
         return serverName;
     }
 
-    public void setSeverName(String severName) {
-        this.serverName = severName;
-    }
-
-    public boolean isVoiceChat() {
+    public String getVoiceChat() {
         return voiceChat;
     }
 
-    public void setVoiceChat(boolean voiceChat) {
-        this.voiceChat = voiceChat;
-    }
-
-    public boolean isChatListening() {
+    public String getChatListening() {
         return chatListening;
     }
 
-    public void setChatListening(boolean chatListening) {
-        this.chatListening = chatListening;
-    }
-
-    public boolean isChatSpeaking() {
+    public String getChatSpeaking() {
         return chatSpeaking;
-    }
-
-    public void setChatSpeaking(boolean chatSpeaking) {
-        this.chatSpeaking = chatSpeaking;
     }
 
     public String getChatType() {
         return chatType;
     }
 
-    public void setChatType(String chatType) {
-        this.chatType = chatType;
-    }
-
-    public boolean isPvp() {
+    public String getPvp() {
         return pvp;
     }
 
-    public void setPvp(boolean pvp) {
-        this.pvp = pvp;
-    }
-
-    public boolean isPve() {
+    public String getPve() {
         return pve;
-    }
-
-    public void setPve(boolean pve) {
-        this.pve = pve;
     }
 
     public ArrayList<SlotDTO> getSlots() {
         return slots;
     }
 
-    public void setSlots(ArrayList<SlotDTO> slots) {
-        this.slots = slots;
-    }
-
     public ArrayList<PrimeTime> getPrimeTimes() {
         return primeTimes;
-    }
-
-    public void setPrimeTimes(ArrayList<PrimeTime> primeTimes) {
-        this.primeTimes = primeTimes;
     }
 
     public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
     public Date getUpdateDate() {
         return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
     }
 }
