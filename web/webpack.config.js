@@ -15,11 +15,16 @@ var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
  * Env
  * Get npm lifecycle event to identify the environment
  */
+ console.log('Hello!');
+
+ 
 var ENV = process.env.npm_lifecycle_event;
+console.log(ENV);
+ 
 var isTestWatch = ENV === 'test-watch';
 var isTest = ENV === 'test' || isTestWatch;
 var isProd = ENV === 'build';
-
+console.log(isProd);
 module.exports = function makeWebpackConfig() {
   /**
    * Config
@@ -60,8 +65,8 @@ module.exports = function makeWebpackConfig() {
   config.output = isTest ? {} : {
     path: root('dist'),
     publicPath: isProd ? '/' : 'http://localhost:8081/',
-    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-    chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
+    filename: isProd ? 'js/[name].js' : 'js/[name].js',
+    chunkFilename: isProd ? '[id].chunk.js' : '[id].chunk.js'
   };
 
   /**
@@ -97,7 +102,7 @@ module.exports = function makeWebpackConfig() {
       // copy those assets to output
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name].[hash].[ext]?'
+        loader: 'file-loader?name=fonts/[name].[ext]?'
       },
 
       // Support for *.json files.
@@ -231,7 +236,7 @@ module.exports = function makeWebpackConfig() {
       // Extract css files
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin({filename: 'css/[name].[hash].css', disable: !isProd})
+      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd})
     );
   }
 

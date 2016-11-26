@@ -1,13 +1,8 @@
-<header>
+﻿<header>
   <nav>
-    <a [routerLink]="['']">Home</a>
-    <a [routerLink]="['about']">About</a>
-    <a [routerLink]="['findParties']">Find parties</a>
+    <button>Home</button>
+    <button>Find parties</button>
+    <button>Create parties</button>
   </nav>
 </header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  (c) 2016
-</footer>
+<my-find-parties>Loading...</my-find-parties>
