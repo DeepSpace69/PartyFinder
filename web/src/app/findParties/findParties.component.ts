@@ -1,36 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { Party } from './party';
+import { PartyService } from './partyService';
 
 @Component({
-  selector: 'my-about',
-  templateUrl: './findParties.component.html',
-  styleUrls: ['./findParties.component.scss']
+    selector: 'my-find-parties',
+    templateUrl: './findParties.component.html',
+    styleUrls: ['./findParties.component.scss'],
+    providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {
-  parties = PARTIES;
-  constructor() {
-    // Do stuff
-  }
+    parties: Party[];
 
-  ngOnInit() {
-    console.log('Hello About');
-  }
+    constructor(private partyService: PartyService) { }
 
+    getParties(): void {
+        this.partyService.getParties().then(parties => this.parties = parties);
+    }
+    ngOnInit(): void {
+        this.getParties();
+    }
 }
-
-export class Party {
-  id: number;
-  name: string;
-}
-
-const PARTIES: Party[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];

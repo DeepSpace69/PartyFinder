@@ -8,4 +8,3 @@ pom.xml.next
 release.properties
 .idea
 web/node_modules
-src/main/resources/public
