@@ -3,6 +3,7 @@ package main.java.DAOs;
 
 import main.java.DTOs.PartyDTO;
 
+
 import javax.persistence.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,10 +52,11 @@ public class PartyDAO {
     @Column
     private Boolean pve;
 
-    @Column(name = "create_date")
+     @Column(name = "create_date", insertable = false, updatable = false)
     private Date createDate;
 
-    @Column(name = "update_date")
+
+    @Column(name = "update_date",insertable = false, updatable = false)
     private Date updateDate;
 
     public PartyDAO() {
