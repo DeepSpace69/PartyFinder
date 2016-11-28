@@ -1,0 +1,45 @@
+﻿<div style="height:70px; width:100%;"></div>
+<div class="container-fluid">
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="inputname4">Create party</label>
+      <input type="text" id="inputname4" class="form-control" aria-describedby="nameHelpInline" placeholder="Name">
+      <small id="nameHelpInline" class="text-muted">
+        Must be 8-20 characters long.
+      </small>
+    </div>
+  </form>
+
+  <form>
+    <ul>
+      <li *ngFor="let slot of slots">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+      </li>
+    </ul>
+  </form>
+ 
+  <!--<form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputname1">name</label>
+      <input type="name" class="form-control" id="exampleInputname1" placeholder="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" id="exampleInputFile">
+      <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Check me out
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>-->
+</div>

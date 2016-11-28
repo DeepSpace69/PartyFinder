@@ -1,11 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Party } from './party';
-import { PartyService } from './partyService';
+import { Party } from './../common/party';
+import { PartyService } from './../common/service/party.service';
 
 @Component({
     selector: 'my-find-parties',
-    templateUrl: './findParties.component.html',
-    styleUrls: ['./findParties.component.scss'],
+    templateUrl: './find.parties.component.html',
+    styleUrls: ['./find.parties.component.scss'],
     providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {

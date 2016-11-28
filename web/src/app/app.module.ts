@@ -2,11 +2,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { FindPartiesComponent } from './findParties/findParties.component';
+import { FindPartiesComponent } from './find-parties/find.parties.component';
+import { CreatePartyComponent } from './create-party/create.party.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
@@ -14,6 +13,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
     imports: [
+        NgbModule.forRoot(),
         BrowserModule,
         HttpModule,
         FormsModule,
@@ -21,9 +21,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
-        AboutComponent,
-        FindPartiesComponent
+        FindPartiesComponent,
+        CreatePartyComponent
     ],
     providers: [
         ApiService

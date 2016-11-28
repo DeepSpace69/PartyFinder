@@ -1,8 +1,11 @@
-﻿<header>
+﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+
+<header>
   <nav>
     <button>Home</button>
-    <button>Find parties</button>
-    <button>Create parties</button>
+    <button (click)="onfindParties()">Find parties</button>
+    <button (click)="onCreateParty()">Create party</button>
   </nav>
 </header>
-<my-find-parties>Loading...</my-find-parties>
+<my-find-parties *ngIf="findParties">Loading...</my-find-parties>
+<my-create-party *ngIf="createParty">Loading...</my-create-party>

@@ -15,16 +15,12 @@ var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
  * Env
  * Get npm lifecycle event to identify the environment
  */
- console.log('Hello!');
-
  
 var ENV = process.env.npm_lifecycle_event;
-console.log(ENV);
  
 var isTestWatch = ENV === 'test-watch';
 var isTest = ENV === 'test' || isTestWatch;
 var isProd = ENV === 'build';
-console.log(isProd);
 module.exports = function makeWebpackConfig() {
   /**
    * Config

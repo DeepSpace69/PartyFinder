@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { Party } from './party';
+import { Party } from './../party';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
