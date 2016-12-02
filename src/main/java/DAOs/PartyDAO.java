@@ -58,9 +58,6 @@ public class PartyDAO {
     @Column
     private String pve;
 
-    @Column
-    private Integer timeZone;
-
     @Column(name = "create_date", insertable = false, updatable = false)
     private Date createDate;
 
@@ -78,14 +75,14 @@ public class PartyDAO {
         this.pve = partyDTO.getPve();
         this.pvp = partyDTO.getPvp();
         this.chatType = partyDTO.getChatType();
-        this.voiceChat  = partyDTO.getVoiceChat();
+        this.voiceChat = partyDTO.getVoiceChat();
         this.chatListening = partyDTO.getChatListening();
         this.chatSpeaking = partyDTO.getChatSpeaking();
         this.strongLanguage = partyDTO.getStrongLanguage();
         this.language = partyDTO.getLanguage();
         this.serversGroup = partyDTO.getServersGroup();
         this.serverName = partyDTO.getServerName();
-        this.timeZone = partyDTO.getTimeZone();
+        //this.timeZone = partyDTO.getTimeZone();
         this.createDate = new Date();
         this.updateDate = new Date();
     }
@@ -142,15 +139,71 @@ public class PartyDAO {
         return pve;
     }
 
-    public Integer getTimeZone() {
-        return timeZone;
-    }
-
     public Date getCreateDate() {
         return createDate;
     }
 
     public Date getUpdateDate() {
         return updateDate;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setStrongLanguage(String strongLanguage) {
+        this.strongLanguage = strongLanguage;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setServersGroup(String serversGroup) {
+        this.serversGroup = serversGroup;
+    }
+
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
+    }
+
+    public void setVoiceChat(String voiceChat) {
+        this.voiceChat = voiceChat;
+    }
+
+    public void setChatListening(String chatListening) {
+        this.chatListening = chatListening;
+    }
+
+    public void setChatSpeaking(String chatSpeaking) {
+        this.chatSpeaking = chatSpeaking;
+    }
+
+    public void setChatType(String chatType) {
+        this.chatType = chatType;
+    }
+
+    public void setPvp(String pvp) {
+        this.pvp = pvp;
+    }
+
+    public void setPve(String pve) {
+        this.pve = pve;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 }

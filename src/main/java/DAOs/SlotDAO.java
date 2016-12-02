@@ -15,8 +15,6 @@ public class SlotDAO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String name;
-    @Column
     private String role;
     @Column
     private String classType;
@@ -24,14 +22,17 @@ public class SlotDAO {
     private String sex;
     @Column
     private Long fkParty;
+    @Column
+    private String linkCharacter;
+    @Column
+    private String existing;
 
 
-    public SlotDAO(ResultSet rs) {
+    public SlotDAO() {
 
     }
 
     public SlotDAO(SlotDTO slot, Long id) {
-        this.name = slot.getName();
         this.role = slot.getRole();
         this.classType = slot.getClassType();
         this.sex = slot.getSex();
@@ -40,12 +41,16 @@ public class SlotDAO {
 
     }
 
-    public Long getId() {
-        return id;
+    public String getLinkCharacter() {
+        return linkCharacter;
     }
 
-    public String getName() {
-        return name;
+    public String isExisting() {
+        return existing;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getRole() {
@@ -62,5 +67,33 @@ public class SlotDAO {
 
     public Long getFkParty() {
         return fkParty;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setFkParty(Long fkParty) {
+        this.fkParty = fkParty;
+    }
+
+    public void setLinkCharacter(String linkCharacter) {
+        this.linkCharacter = linkCharacter;
+    }
+
+    public void setExisting(String existing) {
+        this.existing = existing;
     }
 }
