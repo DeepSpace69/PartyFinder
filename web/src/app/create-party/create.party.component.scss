@@ -1,0 +1,11 @@
+﻿* {
+  color: black;
+}
+
+.detailedPrime.active::before{
+    content:"▼"
+}
+
+.detailedPrime::before{
+    content:"▶"
+}

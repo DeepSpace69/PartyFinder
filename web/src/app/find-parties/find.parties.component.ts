@@ -1,15 +1,15 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Party } from './party';
-import { PartyService } from './partyService';
+import { PartyDTO } from './../common/dto';
+import { PartyService } from './../common/service/party.service';
 
 @Component({
     selector: 'my-find-parties',
-    templateUrl: './findParties.component.html',
-    styleUrls: ['./findParties.component.scss'],
+    templateUrl: './find.parties.component.html',
+    styleUrls: ['./find.parties.component.scss'],
     providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {
-    parties: Party[];
+    parties: PartyDTO[];
 
     constructor(private partyService: PartyService) { }
 

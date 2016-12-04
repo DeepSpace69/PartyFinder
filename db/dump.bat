@@ -1,0 +1,1 @@
+pg_dump.exe --clean -E UTF8 -Fc -h 192.168.0.7 -d postgres -U postgres --no-owner > db.dmp

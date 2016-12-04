@@ -1,0 +1,8 @@
+﻿<h2 style="margin-top:60px;">Find parties</h2>
+<div style="overflow-y: scroll; height:400px;border: solid 1px black;">
+  <ul class="heroes">
+    <li *ngFor="let party of parties">
+      <span class="badge">{{party.id}}</span> {{party.name}}
+    </li>
+  </ul>
+</div>
