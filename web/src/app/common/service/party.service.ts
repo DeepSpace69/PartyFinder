@@ -1,11 +1,12 @@
 ﻿import { Injectable } from '@angular/core';
-import { Party } from './../party';
+import { PartyDTO } from './../dto';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PartyService {
     private findPartyUrl = 'http://groupfinder.herokuapp.com/findParties';  // URL to web api
+    private createPartyUrl = 'http://groupfinder.herokuapp.com/createParty';  // URL to web api
 
     constructor(private http: Http) { }
 
@@ -14,11 +15,18 @@ export class PartyService {
         return Promise.reject(error.message || error);
     }
 
-    getParties(): Promise<Party[]> {
-        console.log('Hello');
+    getParties(): Promise<PartyDTO[]> {
+
         return this.http.get(this.findPartyUrl)
             .toPromise()
-            .then(response => response.json() as Party[])
+            .then(response => response.json() as PartyDTO[])
+            .catch(this.handleError);
+    }
+
+    createParty(party: PartyDTO): void {
+        console.log('Hello');
+        this.http.post(this.createPartyUrl, JSON.stringify(party))
+            .toPromise()
             .catch(this.handleError);
     }
 }

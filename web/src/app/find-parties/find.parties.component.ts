@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Party } from './../common/party';
+import { PartyDTO } from './../common/dto';
 import { PartyService } from './../common/service/party.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PartyService } from './../common/service/party.service';
     providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {
-    parties: Party[];
+    parties: PartyDTO[];
 
     constructor(private partyService: PartyService) { }
 
