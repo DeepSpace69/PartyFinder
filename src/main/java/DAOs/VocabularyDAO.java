@@ -31,7 +31,8 @@ public class VocabularyDAO {
     public VocabularyDAO() {
     }
 
-    public VocabularyDAO(String type, String value) {
+    public VocabularyDAO(String id, String type, String value) {
+        this.id = id;
         this.type = type;
         this.value = value;
     }

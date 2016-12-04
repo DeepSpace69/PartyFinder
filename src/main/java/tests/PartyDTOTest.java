@@ -22,15 +22,15 @@ public class PartyDTOTest {
         PartyDAO partyDAO = new PartyDAO();
         partyDAO.setName("Penguins");
         partyDAO.setAge(18);
-        partyDAO.setChatListening("yes");
-        partyDAO.setChatSpeaking("yes");
+        partyDAO.setChatListening(true);
+        partyDAO.setChatSpeaking(true);
         partyDAO.setChatType("skype");
         partyDAO.setLanguage("eng");
-        partyDAO.setPve("no");
-        partyDAO.setPvp("yes");
+        partyDAO.setPve(false);
+        partyDAO.setPvp(true);
         partyDAO.setServersGroup("First");
         partyDAO.setServerName("Peace");
-        partyDAO.setStrongLanguage("no");
+        partyDAO.setStrongLanguage(false);
         partyDAO.setCreateDate(new Date(2016, 11, 11));
         partyDAO.setUpdateDate(new Date(2016, 11, 11));
         partyDAO.setId(1l);
@@ -40,7 +40,7 @@ public class PartyDTOTest {
         SlotDAO slotDAO1 = new SlotDAO();
         slotDAO1.setClassType("gunslinger");
         slotDAO1.setRole("DD");
-        slotDAO1.setExisting("no");
+        slotDAO1.setExisting(false);
         slotDAO1.setLinkCharacter("someLink");
         slotDAO1.setSex("male");
         slotDAO1.setId(1l);
@@ -49,7 +49,7 @@ public class PartyDTOTest {
         SlotDAO slotDAO2 = new SlotDAO();
         slotDAO2.setClassType("occultist");
         slotDAO2.setRole("healer");
-        slotDAO2.setExisting("no");
+        slotDAO2.setExisting(false);
         slotDAO2.setLinkCharacter("someLink");
         slotDAO2.setSex("male");
         slotDAO2.setId(2l);
@@ -58,7 +58,7 @@ public class PartyDTOTest {
         SlotDAO slotDAO3 = new SlotDAO();
         slotDAO3.setClassType("swordmage");
         slotDAO3.setRole("DD");
-        slotDAO3.setExisting("no");
+        slotDAO3.setExisting(false);
         slotDAO3.setLinkCharacter("someLink");
         slotDAO3.setSex("female");
         slotDAO3.setId(3l);

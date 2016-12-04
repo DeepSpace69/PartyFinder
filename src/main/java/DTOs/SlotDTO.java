@@ -11,7 +11,7 @@ public class SlotDTO extends PartyDetail{
     private String classType;
     private String sex;
     private String linkCharacter;
-    private String existing;
+    private Boolean existing;
 
     public SlotDTO(SlotDAO slot) {
         this.role = slot.getRole();
@@ -25,7 +25,7 @@ public class SlotDTO extends PartyDetail{
         return linkCharacter;
     }
 
-    public String isExisting() {
+    public Boolean isExisting() {
         return existing;
     }
 

@@ -29,7 +29,7 @@ public class PartyDAO {
     private Integer age;
 
     @Column
-    private String strongLanguage;
+    private Boolean strongLanguage;
 
     @Column
     private String language;
@@ -41,22 +41,22 @@ public class PartyDAO {
     private String serverName;
 
     @Column
-    private String voiceChat;
+    private Boolean voiceChat;
 
     @Column
-    private String chatListening;
+    private Boolean chatListening;
 
     @Column
-    private String chatSpeaking;
+    private Boolean chatSpeaking;
 
     @Column
     private String chatType;
 
     @Column
-    private String pvp;
+    private Boolean pvp;
 
     @Column
-    private String pve;
+    private Boolean pve;
 
     @Column(name = "create_date", insertable = false, updatable = false)
     private Date createDate;
@@ -91,116 +91,116 @@ public class PartyDAO {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getStrongLanguage() {
-        return strongLanguage;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public String getServersGroup() {
-        return serversGroup;
-    }
-
-    public String getServerName() {
-        return serverName;
-    }
-
-    public String getVoiceChat() {
-        return voiceChat;
-    }
-
-    public String getChatListening() {
-        return chatListening;
-    }
-
-    public String getChatSpeaking() {
-        return chatSpeaking;
-    }
-
-    public String getChatType() {
-        return chatType;
-    }
-
-    public String getPvp() {
-        return pvp;
-    }
-
-    public String getPve() {
-        return pve;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
     public void setAge(Integer age) {
         this.age = age;
     }
 
-    public void setStrongLanguage(String strongLanguage) {
+    public Boolean getStrongLanguage() {
+        return strongLanguage;
+    }
+
+    public void setStrongLanguage(Boolean strongLanguage) {
         this.strongLanguage = strongLanguage;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    public String getServersGroup() {
+        return serversGroup;
+    }
+
     public void setServersGroup(String serversGroup) {
         this.serversGroup = serversGroup;
+    }
+
+    public String getServerName() {
+        return serverName;
     }
 
     public void setServerName(String serverName) {
         this.serverName = serverName;
     }
 
-    public void setVoiceChat(String voiceChat) {
+    public Boolean getVoiceChat() {
+        return voiceChat;
+    }
+
+    public void setVoiceChat(Boolean voiceChat) {
         this.voiceChat = voiceChat;
     }
 
-    public void setChatListening(String chatListening) {
+    public Boolean getChatListening() {
+        return chatListening;
+    }
+
+    public void setChatListening(Boolean chatListening) {
         this.chatListening = chatListening;
     }
 
-    public void setChatSpeaking(String chatSpeaking) {
+    public Boolean getChatSpeaking() {
+        return chatSpeaking;
+    }
+
+    public void setChatSpeaking(Boolean chatSpeaking) {
         this.chatSpeaking = chatSpeaking;
+    }
+
+    public String getChatType() {
+        return chatType;
     }
 
     public void setChatType(String chatType) {
         this.chatType = chatType;
     }
 
-    public void setPvp(String pvp) {
+    public Boolean getPvp() {
+        return pvp;
+    }
+
+    public void setPvp(Boolean pvp) {
         this.pvp = pvp;
     }
 
-    public void setPve(String pve) {
+    public Boolean getPve() {
+        return pve;
+    }
+
+    public void setPve(Boolean pve) {
         this.pve = pve;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
     public void setUpdateDate(Date updateDate) {

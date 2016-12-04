@@ -25,7 +25,7 @@ public class SlotDAO {
     @Column
     private String linkCharacter;
     @Column
-    private String existing;
+    private Boolean existing;
 
 
     public SlotDAO() {
@@ -45,7 +45,7 @@ public class SlotDAO {
         return linkCharacter;
     }
 
-    public String isExisting() {
+    public Boolean isExisting() {
         return existing;
     }
 
@@ -93,7 +93,7 @@ public class SlotDAO {
         this.linkCharacter = linkCharacter;
     }
 
-    public void setExisting(String existing) {
+    public void setExisting(Boolean existing) {
         this.existing = existing;
     }
 }

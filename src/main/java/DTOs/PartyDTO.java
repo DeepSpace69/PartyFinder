@@ -5,6 +5,8 @@ import main.java.DAOs.PartyDAO;
 import main.java.DAOs.PrimeTimeDAO;
 import main.java.DAOs.SlotDAO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,22 +21,23 @@ public class PartyDTO {
     private Integer age;
     //private Integer timeZone;
     private String language;
-    private String strongLanguage;
+    private Boolean strongLanguage;
     private String serversGroup;
     private String serverName;
-    private String voiceChat;
-    private String chatListening;
-    private String chatSpeaking;
+    private Boolean voiceChat;
+    private Boolean chatListening;
+    private Boolean chatSpeaking;
     private String chatType;
-    private String pvp;
-    private String pve;
+    private Boolean pvp;
+    private Boolean pve;
     private ArrayList<SlotDTO> slots;
     private ArrayList<PrimeTimeDTO> primeTimes;
-    private Date createDate;
-    private Date updateDate;
+    private String createDate;
+    private String updateDate;
 
 
     public PartyDTO(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
+        // todo: DONE exchange type - Boolean, Date
         this.name = party.getName();
         this.age = party.getAge();
         this.pve = party.getPve();
@@ -47,8 +50,9 @@ public class PartyDTO {
         this.language = party.getLanguage();
         this.serversGroup = party.getServersGroup();
         this.serverName = party.getServerName();
-        this.createDate = new Date();
-        this.updateDate = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        this.createDate = df.format(party.getCreateDate());
+        this.updateDate = df.format(party.getUpdateDate());
         this.slots = new ArrayList<>();
         for (SlotDAO slot : slots) {
             if (Objects.equals(slot.getFkParty(), party.getId())) {
@@ -61,9 +65,8 @@ public class PartyDTO {
                 this.primeTimes.add(new PrimeTimeDTO(primeTime));
             }
         }
-       // todo: test
+        // todo: test
     }
-
 
     public String getName() {
         return name;
@@ -77,7 +80,7 @@ public class PartyDTO {
         return language;
     }
 
-    public String getStrongLanguage() {
+    public Boolean getStrongLanguage() {
         return strongLanguage;
     }
 
@@ -89,15 +92,15 @@ public class PartyDTO {
         return serverName;
     }
 
-    public String getVoiceChat() {
+    public Boolean getVoiceChat() {
         return voiceChat;
     }
 
-    public String getChatListening() {
+    public Boolean getChatListening() {
         return chatListening;
     }
 
-    public String getChatSpeaking() {
+    public Boolean getChatSpeaking() {
         return chatSpeaking;
     }
 
@@ -105,11 +108,11 @@ public class PartyDTO {
         return chatType;
     }
 
-    public String getPvp() {
+    public Boolean getPvp() {
         return pvp;
     }
 
-    public String getPve() {
+    public Boolean getPve() {
         return pve;
     }
 
@@ -121,11 +124,11 @@ public class PartyDTO {
         return primeTimes;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public Date getUpdateDate() {
+    public String getUpdateDate() {
         return updateDate;
     }
 }

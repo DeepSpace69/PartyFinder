@@ -9,7 +9,7 @@ import main.java.DAOs.SlotDAO;
 import main.java.DTOs.PartyDTO;
 import main.java.DTOs.PrimeTimeDTO;
 import main.java.DTOs.SlotDTO;
-import main.java.Core.VocabularyLoader;
+import main.java.Core.VocabularyManager;
 import main.java.Repositories.PartyRepository;
 import main.java.Repositories.PrimeTimeRepository;
 import main.java.Repositories.SlotRepository;
@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Tatka on 24.11.2016.
@@ -36,14 +33,14 @@ public class PartyCreationController {
     private SlotRepository slotRepository;
     private PrimeTimeRepository primeTimeRepository;
     private Gson gson;
-    private VocabularyLoader vocabularyLoader;
+    private VocabularyManager vocabularyManager;
 
     @Autowired
-    public PartyCreationController(PartyRepository repository, SlotRepository slotRepository, PrimeTimeRepository primeTimeRepository, VocabularyLoader loader) {
+    public PartyCreationController(PartyRepository repository, SlotRepository slotRepository, PrimeTimeRepository primeTimeRepository, VocabularyManager vocabularyManager) {
         this.repository = repository;
         this.slotRepository = slotRepository;
         this.primeTimeRepository = primeTimeRepository;
-        this.vocabularyLoader = loader;
+        this.vocabularyManager = vocabularyManager;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -91,11 +88,12 @@ public class PartyCreationController {
         checkValid(VocabularyTypes.serversGroup, party.getServersGroup(), setMessages);
         checkValid(VocabularyTypes.serverName, party.getServerName(), setMessages);
         checkValid(VocabularyTypes.chatType, party.getChatType(), setMessages);
-        if (party.getAge() <= 0 || party.getAge() > 100) {
-            setMessages.add("Invalid age");
+        Integer age = party.getAge();
+        if (age <= 0 ||  age > 100) {
+            setMessages.add(String.format("Invalid age: %1s",age));
         }
         if (alreadyExist(party.getName())) {
-            setMessages.add("Name already exists");
+            setMessages.add(String.format("Name already exists: %1s",party.getName()));
 
         }
         for (SlotDTO slot : party.getSlots()) {
@@ -114,23 +112,24 @@ public class PartyCreationController {
         ValidationResult result = new ValidationResult();
         if (!setMessages.isEmpty()) {
             String message = String.join(", ", setMessages);
-            result.setErrors(true, "Invalid " + message);
+            result.setErrors(true, message);
         }
         return result;
     }
 
     private void checkValid(String type, String candidate, Set<String> setMessages) {
-        // todo: make vocabl as hashset
+        // todo: DONE make vocabl as hashset
 
-        if (!this.vocabularyLoader.getVocabulary(type).contains(candidate)) {
-            setMessages.add(type);
-            // todo string.format correct error message
+        if (!this.vocabularyManager.getVocabulary(type).contains(candidate)) {
+            //Formatter formatter = new Formatter();
+            setMessages.add(String.format("Invalid value for vocabulary - %1s: %2s", type, candidate));
+            // todo DONE string.format correct error message
         }
 
     }
 
     private boolean alreadyExist(String name) {
-        // todo implement
+        // todo NOT DEMO implement
         return false;
     }
 
