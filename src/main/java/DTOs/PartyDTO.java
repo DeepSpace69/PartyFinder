@@ -35,9 +35,10 @@ public class PartyDTO {
     private String createDate;
     private String updateDate;
 
+    public PartyDTO() {
+    }
 
     public PartyDTO(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
-        // todo: DONE exchange type - Boolean, Date
         this.name = party.getName();
         this.age = party.getAge();
         this.pve = party.getPve();
@@ -130,5 +131,69 @@ public class PartyDTO {
 
     public String getUpdateDate() {
         return updateDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setStrongLanguage(Boolean strongLanguage) {
+        this.strongLanguage = strongLanguage;
+    }
+
+    public void setServersGroup(String serversGroup) {
+        this.serversGroup = serversGroup;
+    }
+
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
+    }
+
+    public void setVoiceChat(Boolean voiceChat) {
+        this.voiceChat = voiceChat;
+    }
+
+    public void setChatListening(Boolean chatListening) {
+        this.chatListening = chatListening;
+    }
+
+    public void setChatSpeaking(Boolean chatSpeaking) {
+        this.chatSpeaking = chatSpeaking;
+    }
+
+    public void setChatType(String chatType) {
+        this.chatType = chatType;
+    }
+
+    public void setPvp(Boolean pvp) {
+        this.pvp = pvp;
+    }
+
+    public void setPve(Boolean pve) {
+        this.pve = pve;
+    }
+
+    public void setSlots(ArrayList<SlotDTO> slots) {
+        this.slots = slots;
+    }
+
+    public void setPrimeTimes(ArrayList<PrimeTimeDTO> primeTimes) {
+        this.primeTimes = primeTimes;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
     }
 }

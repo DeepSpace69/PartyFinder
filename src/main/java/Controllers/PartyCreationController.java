@@ -9,7 +9,10 @@ import main.java.DAOs.SlotDAO;
 import main.java.DTOs.PartyDTO;
 import main.java.DTOs.PrimeTimeDTO;
 import main.java.DTOs.SlotDTO;
-import main.java.Core.VocabularyManager;
+import main.java.Managers.PartyDAOFactory;
+import main.java.Managers.PrimeTimeDAOFactory;
+import main.java.Managers.SlotDAOFactory;
+import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
 import main.java.Repositories.PrimeTimeRepository;
 import main.java.Repositories.SlotRepository;
@@ -34,13 +37,26 @@ public class PartyCreationController {
     private PrimeTimeRepository primeTimeRepository;
     private Gson gson;
     private VocabularyManager vocabularyManager;
+    private PartyDAOFactory partyDAOFactory;
+    private SlotDAOFactory slotDAOFactory;
+    private PrimeTimeDAOFactory primeTimeDAOFactory;
 
     @Autowired
-    public PartyCreationController(PartyRepository repository, SlotRepository slotRepository, PrimeTimeRepository primeTimeRepository, VocabularyManager vocabularyManager) {
+    public PartyCreationController(
+            PartyRepository repository,
+            SlotRepository slotRepository,
+            PrimeTimeRepository primeTimeRepository,
+            VocabularyManager vocabularyManager,
+            PartyDAOFactory partyDAOFactory,
+            SlotDAOFactory slotDAOFactory,
+            PrimeTimeDAOFactory primeTimeDAOFactory) {
         this.repository = repository;
         this.slotRepository = slotRepository;
         this.primeTimeRepository = primeTimeRepository;
         this.vocabularyManager = vocabularyManager;
+        this.partyDAOFactory = partyDAOFactory;
+        this.slotDAOFactory = slotDAOFactory;
+        this.primeTimeDAOFactory = primeTimeDAOFactory;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -56,7 +72,7 @@ public class PartyCreationController {
             return validationParty.getErrorMessage();
         }
 
-        PartyDAO partyDAO = new PartyDAO(partyDTO);
+        PartyDAO partyDAO = this.partyDAOFactory.create(partyDTO);
         PartyDAO savedParty = this.repository.save(partyDAO);
         this.saveSlots(partyDTO.getSlots(), savedParty.getId());
         this.savePrimeTimes(partyDTO.getPrimeTimes(), savedParty.getId());
@@ -67,7 +83,7 @@ public class PartyCreationController {
     private void savePrimeTimes(ArrayList<PrimeTimeDTO> primeTimes, Long id) {
         List<PrimeTimeDAO> primeTimeDAOs = new ArrayList<>();
         for (PrimeTimeDTO primeTime : primeTimes) {
-            primeTimeDAOs.add(new PrimeTimeDAO(primeTime, id));
+            primeTimeDAOs.add(this.primeTimeDAOFactory.create(primeTime, id));
         }
         this.primeTimeRepository.save(primeTimeDAOs);
     }
@@ -75,7 +91,7 @@ public class PartyCreationController {
     private void saveSlots(ArrayList<SlotDTO> slots, Long id) {
         List<SlotDAO> slotDAOs = new ArrayList<>();
         for (SlotDTO slot : slots) {
-            slotDAOs.add(new SlotDAO(slot, id));
+            slotDAOs.add(this.slotDAOFactory.create(slot, id));
         }
         this.slotRepository.save(slotDAOs);
     }
@@ -89,11 +105,11 @@ public class PartyCreationController {
         checkValid(VocabularyTypes.serverName, party.getServerName(), setMessages);
         checkValid(VocabularyTypes.chatType, party.getChatType(), setMessages);
         Integer age = party.getAge();
-        if (age <= 0 ||  age > 100) {
-            setMessages.add(String.format("Invalid age: %1s",age));
+        if (age <= 0 || age > 100) {
+            setMessages.add(String.format("Invalid age: %1s", age));
         }
         if (alreadyExist(party.getName())) {
-            setMessages.add(String.format("Name already exists: %1s",party.getName()));
+            setMessages.add(String.format("Name already exists: %1s", party.getName()));
 
         }
         for (SlotDTO slot : party.getSlots()) {
@@ -118,14 +134,9 @@ public class PartyCreationController {
     }
 
     private void checkValid(String type, String candidate, Set<String> setMessages) {
-        // todo: DONE make vocabl as hashset
-
         if (!this.vocabularyManager.getVocabulary(type).contains(candidate)) {
-            //Formatter formatter = new Formatter();
             setMessages.add(String.format("Invalid value for vocabulary - %1s: %2s", type, candidate));
-            // todo DONE string.format correct error message
         }
-
     }
 
     private boolean alreadyExist(String name) {

@@ -1,4 +1,4 @@
-package main.java.Core;
+package main.java.Managers;
 
 import main.java.DAOs.VocabularyDAO;
 import main.java.Repositories.VocabularyRepository;
@@ -11,8 +11,6 @@ import java.util.*;
  * Created by Tatka on 28.11.2016.
  */
 
-// todo DONE rename to VocabularyManager; implement getElementById(getValueById), getIdByElementAndType(getIdByTypeAndValue); getAllElementsByType(getSet); optimize storage algorithm
-// todo DONE add any to DB
 @Service
 public class VocabularyManager {
     private Map<String, Set<String>> vocabularies;
@@ -73,7 +71,7 @@ public class VocabularyManager {
         return this.values.get(id);
     }
 
-    public String getIdByValueAndType(String type, String value) {
+    public String getIdByTypeAndValue(String type, String value) {
         return this.ids.get(String.format(this.format, type, value));
     }
 

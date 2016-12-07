@@ -4,7 +4,7 @@ import main.java.DAOs.PartyDAO;
 import main.java.DAOs.PrimeTimeDAO;
 import main.java.DAOs.SlotDAO;
 import main.java.DTOs.PartyDTO;
-import main.java.DTOs.PrimeTimeDTO;
+import main.java.Managers.PartyDTOFactory;
 import main.java.Repositories.PartyRepository;
 import main.java.Repositories.PrimeTimeRepository;
 import main.java.Repositories.SlotRepository;
@@ -29,12 +29,14 @@ public class PartyController {
     private SlotRepository slotRepository;
     private PrimeTimeRepository primeTimeRepository;
     private Gson gson;
+    private PartyDTOFactory partyDTOFactory;
 
     @Autowired
-    public PartyController(PartyRepository repository, SlotRepository slotRepository, PrimeTimeRepository primeTimeRepository) {
+    public PartyController(PartyRepository repository, SlotRepository slotRepository, PrimeTimeRepository primeTimeRepository, PartyDTOFactory partyDTOFactory) {
         this.repository = repository;
         this.slotRepository = slotRepository;
         this.primeTimeRepository = primeTimeRepository;
+        this.partyDTOFactory = partyDTOFactory;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -53,7 +55,7 @@ public class PartyController {
 
         List<PartyDTO> outputParties = new ArrayList<>();
         for (PartyDAO party : records) {
-            outputParties.add(new PartyDTO(party, slots, primeTimes));
+            outputParties.add( this.partyDTOFactory.create(party, slots, primeTimes));
         }
         // todo: тест для конструктора патидто
 

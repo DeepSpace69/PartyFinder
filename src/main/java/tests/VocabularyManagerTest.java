@@ -1,7 +1,7 @@
 package main.java.tests;
 
 import main.java.Const.VocabularyTypes;
-import main.java.Core.VocabularyManager;
+import main.java.Managers.VocabularyManager;
 import main.java.DAOs.VocabularyDAO;
 import main.java.Repositories.VocabularyRepository;
 import org.junit.Assert;
@@ -57,7 +57,7 @@ public class VocabularyManagerTest {
     @Test
     public void test_getIdByValueAndType_SomeValueAndType_CorrectId() {
         // Act
-        String actual = this.target.getIdByValueAndType("sex", "female");
+        String actual = this.target.getIdByTypeAndValue("sex", "female");
         String expected = "sex_female";
 
         // Assert

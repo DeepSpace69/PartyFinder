@@ -26,6 +26,8 @@ public class SlotDAO {
     private String linkCharacter;
     @Column
     private Boolean existing;
+    @Column
+    private Boolean partyLeader;
 
 
     public SlotDAO() {
@@ -95,5 +97,17 @@ public class SlotDAO {
 
     public void setExisting(Boolean existing) {
         this.existing = existing;
+    }
+
+    public Boolean getExisting() {
+        return existing;
+    }
+
+    public Boolean getPartyLeader() {
+        return partyLeader;
+    }
+
+    public void setPartyLeader(Boolean partyLeader) {
+        this.partyLeader = partyLeader;
     }
 }
