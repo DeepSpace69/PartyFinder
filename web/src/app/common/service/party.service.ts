@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { PartyDTO } from './../dto';
+import { PartyDTO, FilterDTO } from './../dto';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -15,9 +15,10 @@ export class PartyService {
         return Promise.reject(error.message || error);
     }
 
-    getParties(): Promise<PartyDTO[]> {
+    getParties(filters: FilterDTO[]): Promise<PartyDTO[]> {
 
-        return this.http.get(this.findPartyUrl)
+        let body = JSON.stringify(filters);
+        return this.http.post(this.findPartyUrl, body)
             .toPromise()
             .then(response => response.json() as PartyDTO[])
             .catch(this.handleError);

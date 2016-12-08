@@ -8,11 +8,13 @@ import { FindPartiesComponent } from './find-parties/find.parties.component';
 import { CreatePartyComponent } from './create-party/create.party.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
+import { MaterialModule } from '@angular/material';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 @NgModule({
     imports: [
+        MaterialModule.forRoot(),
         NgbModule.forRoot(),
         BrowserModule,
         HttpModule,

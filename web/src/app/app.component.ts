@@ -15,7 +15,7 @@ export class AppComponent {
     createParty: boolean;
     constructor(private api: ApiService) {
         // Do something with api
-        this.onCreateParty();
+        this.onfindParties();
     }
 
     onfindParties(): void {

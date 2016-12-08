@@ -39,7 +39,7 @@ public class PartyController {
         this.partyDTOFactory = partyDTOFactory;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public String findParty() {
 

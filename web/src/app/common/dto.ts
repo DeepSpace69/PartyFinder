@@ -44,3 +44,7 @@ export class SlotDTO {
         this.classType = classTypeArg;
     }
 }
+
+export class FilterDTO {
+    constructor(public key: string, public value: Object) { }
+}
