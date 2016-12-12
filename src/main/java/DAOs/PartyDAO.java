@@ -69,24 +69,6 @@ public class PartyDAO {
 
     }
 
-    public PartyDAO(PartyDTO partyDTO) {
-        this.name = partyDTO.getName();
-        this.age = partyDTO.getAge();
-        this.pve = partyDTO.getPve();
-        this.pvp = partyDTO.getPvp();
-        this.chatType = partyDTO.getChatType();
-        this.voiceChat = partyDTO.getVoiceChat();
-        this.chatListening = partyDTO.getChatListening();
-        this.chatSpeaking = partyDTO.getChatSpeaking();
-        this.strongLanguage = partyDTO.getStrongLanguage();
-        this.language = partyDTO.getLanguage();
-        this.serversGroup = partyDTO.getServersGroup();
-        this.serverName = partyDTO.getServerName();
-        //this.timeZone = partyDTO.getTimeZone();
-        this.createDate = new Date();
-        this.updateDate = new Date();
-    }
-
     public Long getId() {
         return id;
     }

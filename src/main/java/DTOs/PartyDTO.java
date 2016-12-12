@@ -38,37 +38,6 @@ public class PartyDTO {
     public PartyDTO() {
     }
 
-    public PartyDTO(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
-        this.name = party.getName();
-        this.age = party.getAge();
-        this.pve = party.getPve();
-        this.pvp = party.getPvp();
-        this.chatType = party.getChatType();
-        this.voiceChat = party.getVoiceChat();
-        this.chatListening = party.getChatListening();
-        this.chatSpeaking = party.getChatSpeaking();
-        this.strongLanguage = party.getStrongLanguage();
-        this.language = party.getLanguage();
-        this.serversGroup = party.getServersGroup();
-        this.serverName = party.getServerName();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        this.createDate = df.format(party.getCreateDate());
-        this.updateDate = df.format(party.getUpdateDate());
-        this.slots = new ArrayList<>();
-        for (SlotDAO slot : slots) {
-            if (Objects.equals(slot.getFkParty(), party.getId())) {
-                this.slots.add(new SlotDTO(slot));
-            }
-        }
-        this.primeTimes = new ArrayList<>();
-        for (PrimeTimeDAO primeTime : primeTimes) {
-            if (Objects.equals(primeTime.getFkParty(), party.getId())) {
-                this.primeTimes.add(new PrimeTimeDTO(primeTime));
-            }
-        }
-        // todo: test
-    }
-
     public String getName() {
         return name;
     }

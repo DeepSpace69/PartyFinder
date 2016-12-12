@@ -32,19 +32,6 @@ public class PrimeTimeDAO {
     public PrimeTimeDAO() {
     }
 
-    public PrimeTimeDAO(PrimeTimeDTO primeTime, Long id) {
-        this.startHour = primeTime.getStart().getHour();
-        this.startMinute = primeTime.getStart().getMinute();
-        this.endHour = primeTime.getEnd().getHour();
-        this.endMinute = primeTime.getEnd().getMinute();
-        this.day = primeTime.getDay();
-        this.timeZone = primeTime.getTimeZone();
-        this.fkParty = id;
-
-    }
-
-
-
     public Long getId() {
         return id;
     }

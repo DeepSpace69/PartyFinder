@@ -26,7 +26,7 @@ public class SlotDAOFactory {
         result.setSex(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.sex, slot.getSex()));
         result.setLinkCharacter(slot.getLinkCharacter());
         result.setExisting(slot.isFree());
-        result.setPartyLeader(slot.getPartyLeader());
+        result.setPartyLeader(slot.getIsPartyLeader());
         result.setFkParty(partyId);
         return result;
     }

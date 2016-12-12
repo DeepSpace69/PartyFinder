@@ -57,7 +57,8 @@ public class PartyController {
         for (PartyDAO party : records) {
             outputParties.add( this.partyDTOFactory.create(party, slots, primeTimes));
         }
-        // todo: тест для конструктора патидто
+        // todo: DONE тест для конструктора патидто
+        // todo: MY delete constructors(which exchanged to factories)
 
 
         this.gson = new Gson();

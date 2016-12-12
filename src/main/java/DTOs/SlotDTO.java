@@ -1,7 +1,5 @@
 package main.java.DTOs;
 
-import main.java.DAOs.SlotDAO;
-
 /**
  * Created by Tatka on 23.11.2016.
  */
@@ -11,18 +9,10 @@ public class SlotDTO {
     private String classType;
     private String sex;
     private String linkCharacter;
-    private Boolean free;
-    private Boolean partyLeader;
+    private Boolean isFree;
+    private Boolean isPartyLeader;
 
     public SlotDTO() {
-    }
-
-    public SlotDTO(SlotDAO slot) {
-        this.role = slot.getRole();
-        this.classType = slot.getClassType();
-        this.sex = slot.getSex();
-        this.linkCharacter = slot.getLinkCharacter();
-        this.free = slot.isExisting();
     }
 
     public String getLinkCharacter() {
@@ -30,7 +20,7 @@ public class SlotDTO {
     }
 
     public Boolean isFree() {
-        return free;
+        return isFree;
     }
 
     public String getRole() {
@@ -45,12 +35,12 @@ public class SlotDTO {
         return sex;
     }
 
-    public Boolean getPartyLeader() {
-        return partyLeader;
+    public Boolean getIsPartyLeader() {
+        return isPartyLeader;
     }
 
-    public void setPartyLeader(Boolean partyLeader) {
-        this.partyLeader = partyLeader;
+    public void setIsPartyLeader(Boolean isPartyLeader) {
+        this.isPartyLeader = isPartyLeader;
     }
 
     public void setRole(String role) {
@@ -69,7 +59,7 @@ public class SlotDTO {
         this.linkCharacter = linkCharacter;
     }
 
-    public void setFree(Boolean isFree) {
-        this.free = isFree;
+    public void setIsFree(Boolean isFree) {
+        this.isFree = isFree;
     }
 }

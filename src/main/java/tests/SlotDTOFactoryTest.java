@@ -52,7 +52,7 @@ public class SlotDTOFactoryTest {
         Assert.assertEquals("Male", actual.getSex());
         Assert.assertEquals("someLink", actual.getLinkCharacter());
         Assert.assertEquals(false, actual.isFree());
-        Assert.assertEquals(true, actual.getPartyLeader());
+        Assert.assertEquals(true, actual.getIsPartyLeader());
     }
 
 

@@ -35,8 +35,8 @@ public class SlotDAOFactoryTest {
         slotDTO.setRole("DD");
         slotDTO.setSex("Female");
         slotDTO.setLinkCharacter("someLink");
-        slotDTO.setFree(false);
-        slotDTO.setPartyLeader(false);
+        slotDTO.setIsFree(false);
+        slotDTO.setIsPartyLeader(false);
         Long partyId = 1l;
 
         // Act

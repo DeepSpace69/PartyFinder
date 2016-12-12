@@ -34,15 +34,6 @@ public class SlotDAO {
 
     }
 
-    public SlotDAO(SlotDTO slot, Long id) {
-        this.role = slot.getRole();
-        this.classType = slot.getClassType();
-        this.sex = slot.getSex();
-        this.fkParty = id;
-
-
-    }
-
     public String getLinkCharacter() {
         return linkCharacter;
     }

@@ -24,8 +24,8 @@ public class SlotDTOFactory {
         result.setClassType(this.vocabulary.getValueById(slot.getClassType()));
         result.setSex(this.vocabulary.getValueById(slot.getSex()));
         result.setLinkCharacter(slot.getLinkCharacter());
-        result.setFree(slot.isExisting());
-        result.setPartyLeader(slot.getPartyLeader());
+        result.setIsFree(slot.isExisting());
+        result.setIsPartyLeader(slot.getPartyLeader());
         return result;
     }
 

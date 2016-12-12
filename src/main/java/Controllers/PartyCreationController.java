@@ -62,7 +62,7 @@ public class PartyCreationController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public String createParty(@RequestBody String input, HttpServletResponse response) {
-
+// todo: MY check Client
         String result = "";
         this.gson = new Gson();
         PartyDTO partyDTO = gson.fromJson(input, PartyDTO.class);
