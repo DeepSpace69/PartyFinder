@@ -13,11 +13,11 @@ import java.util.*;
 
 @Service
 public class VocabularyManager {
+    private final String format = "%1s_%2s";
     private Map<String, Set<String>> vocabularies;
     private Map<String, String> values;
     private Map<String, String> ids;
     private VocabularyRepository repository;
-    private final String format = "%1s_%2s";
 
     @Autowired
     public VocabularyManager(VocabularyRepository repository) {
@@ -75,4 +75,13 @@ public class VocabularyManager {
         return this.ids.get(String.format(this.format, type, value));
     }
 
+    public boolean isInVocabulary(String typeDTO) {
+        boolean result = false;
+        if (this.vocabularies.containsKey(typeDTO)) {
+            result = true;
+        }
+        return result;
+    }
+
 }
+

@@ -45,12 +45,13 @@ public class TestSpringQuery {
         Root<PartyDAO> p = c.from(PartyDAO.class);
         Predicate condition1 = qb.gt(p.get("age"), 18);
         Predicate condition2 = qb.lt(p.get("age"), 20);
-        //Predicate condition3 = qb.like(p.get("language"), "%lang_eng%");
+        String lang = "lang_eng";
+        Predicate condition3 = qb.like(p.get("language"),String.format("%%%1s%%",lang));
         List<Predicate> conditions = new ArrayList<>();
         conditions.add(condition1);
         conditions.add(condition2);
         Predicate orCondition = qb.and(conditions.toArray(new Predicate[conditions.size()]));
-        Predicate condition3 = qb.gt(p.get("age"), 22);
+        //Predicate condition3 = qb.gt(p.get("age"), 22);
         Predicate andCondition = qb.or(orCondition, condition3);
         c.where(andCondition);
         //(andPredicates.toArray(new Predicate[andPredicates.size()]));
