@@ -2,7 +2,7 @@
     name: string;
     age: number;
     timeZone: number; // not done
-    languages: string;
+    language: string;
     strongLanguage: boolean;
     groupServer: string;
     serverName: string;

@@ -2,7 +2,6 @@
 <div class="container-fluid mt-1">
   <div class="row">
     <div class="col-xs-3 filters">
-
       <div class="input-group pb-1">
         <input type="text" [(ngModel)]="partyName" class="form-control" placeholder="Search by name ...">
         <span class="input-group-btn">
@@ -10,7 +9,17 @@
         </span>
       </div>
 
-      <!--Class needed-->
+        <!--Min lvl-->
+        <div class="card">
+            <div class="card-header" id="myElement">
+                Character lvl
+            </div>
+            <div class="card-block">
+                <md-slider min="1" max="79" step="1" value="1.5" [(ngModel)]="slider"></md-slider>
+                <span>{{slider}} lvl.</span>
+            </div>
+        </div>
+        <!--Class needed-->
       <div class="card">
         <div class="card-header">
           Class needed

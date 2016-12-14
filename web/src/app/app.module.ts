@@ -12,6 +12,8 @@ import { MaterialModule } from '@angular/material';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
+import '@angular/material/core/theming/prebuilt/indigo-pink';
+
 @NgModule({
     imports: [
         MaterialModule.forRoot(),

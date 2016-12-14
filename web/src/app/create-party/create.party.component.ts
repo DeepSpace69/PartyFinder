@@ -4,7 +4,7 @@ import { PartyDTO, PrimeTimeDTO, SlotDTO} from './../common/dto';
 
 const CLASSTYPES: string[] = ['Select class', 'Gunslinger', 'Blade Master', 'Spiritshaper', 'Vanguard', 'Swordmage', 'Occultist', 'Any'];
 const ROLES: string[] = ['Select role', 'DD', 'Tank', 'Healer', 'Any'];
-const PRIMETIMESANYDAY: PrimeTimeDTO[] = [new PrimeTimeDTO('Any day')];
+const PRIMETIMESANYDAY: PrimeTimeDTO[] = [new PrimeTimeDTO('Any')];
 const PRIMETIMESWEEK: PrimeTimeDTO[] = [
     new PrimeTimeDTO('Monday'),
     new PrimeTimeDTO('Tuesday'),
@@ -49,7 +49,7 @@ export class CreatePartyComponent implements OnInit {
                 primeTime.totalHours = primeTime.totalHours + 24;
             }
 
-            if (primeTime.day === 'Any day') {
+            if (primeTime.day === 'Any') {
                 primeTime.totalHours = primeTime.totalHours * 7;
             }
 
