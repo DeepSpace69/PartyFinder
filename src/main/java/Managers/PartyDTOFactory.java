@@ -49,20 +49,28 @@ public class PartyDTOFactory {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
-        ArrayList<SlotDTO> resultSlots = new ArrayList<>();
-        for (SlotDAO slot : slots) {
-            if (Objects.equals(slot.getFkParty(), party.getId())) {
-                resultSlots.add(this.slotDTOFactory.create(slot));
+        if (slots == null) {
+            result.setSlots(null);
+        } else {
+            ArrayList<SlotDTO> resultSlots = new ArrayList<>();
+            for (SlotDAO slot : slots) {
+                if (Objects.equals(slot.getFkParty(), party.getId())) {
+                    resultSlots.add(this.slotDTOFactory.create(slot));
+                }
             }
+            result.setSlots(resultSlots);
         }
-        result.setSlots(resultSlots);
-        ArrayList<PrimeTimeDTO> resultPrimeTimes = new ArrayList<>();
-        for (PrimeTimeDAO primeTime : primeTimes) {
-            if (Objects.equals(primeTime.getFkParty(), party.getId())) {
-                resultPrimeTimes.add(this.primeTimeDTOFactory.create(primeTime));
+        if (primeTimes == null) {
+            result.setPrimeTimes(null);
+        } else {
+            ArrayList<PrimeTimeDTO> resultPrimeTimes = new ArrayList<>();
+            for (PrimeTimeDAO primeTime : primeTimes) {
+                if (Objects.equals(primeTime.getFkParty(), party.getId())) {
+                    resultPrimeTimes.add(this.primeTimeDTOFactory.create(primeTime));
+                }
             }
+            result.setPrimeTimes(resultPrimeTimes);
         }
-        result.setPrimeTimes(resultPrimeTimes);
         return result;
     }
 

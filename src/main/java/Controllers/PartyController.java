@@ -39,7 +39,7 @@ public class PartyController {
         this.partyDTOFactory = partyDTOFactory;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public String findParty() {
 
@@ -58,7 +58,7 @@ public class PartyController {
             outputParties.add( this.partyDTOFactory.create(party, slots, primeTimes));
         }
         // todo: DONE тест для конструктора патидто
-        // todo: MY delete constructors(which exchanged to factories)
+        // todo: DONE MY delete constructors(which exchanged to factories)
 
 
         this.gson = new Gson();

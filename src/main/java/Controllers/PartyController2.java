@@ -6,8 +6,10 @@ import main.java.DTOs.PartyDTO;
 import main.java.DTOs.FilterDTO;
 import main.java.DAOs.PartyDAO;
 import main.java.Intefaces.INameResolver;
+import main.java.Intefaces.ITypeResolver;
 import main.java.Managers.PartyDTOFactory;
-import main.java.Managers.SimpleNameResolver;
+import main.java.Managers.NameResolverDemo;
+import main.java.Managers.TypeResolverDemo;
 import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +26,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.mapping;
@@ -46,18 +50,23 @@ public class PartyController2 {
     private PartyDTOFactory factory;
     private INameResolver nameResolver;
     //private VocabularyManager vocabularyManager;
-    //private FilterFactory filterFactory;
+    private ITypeResolver typeResolver;
     private Gson gson;
 
     @Autowired
-    public PartyController2(PartyRepository repository, EntityManager entityManager, PartyDTOFactory factory, VocabularyManager vocabularyManager) {
+    public PartyController2(
+            PartyRepository repository,
+            EntityManager entityManager,
+            PartyDTOFactory factory,
+            VocabularyManager vocabularyManager) {
         this.repository = repository;
         this.entityManager = entityManager;
         this.factory = factory;
         this.criteriaBuilder = this.entityManager.getCriteriaBuilder();
         this.criteriaQuery = criteriaBuilder.createQuery(PartyDAO.class);
         this.partyRoot = criteriaQuery.from(PartyDAO.class);
-        this.nameResolver = new SimpleNameResolver(vocabularyManager);
+        this.nameResolver = new NameResolverDemo(vocabularyManager);
+        this.typeResolver = new TypeResolverDemo(vocabularyManager);
         //this.filterFactory = filterFactory;
     }
 
@@ -77,7 +86,8 @@ public class PartyController2 {
         // todo DONE make methods static
         Predicate clause = this.createClause(filters);
         List<PartyDTO> partyDTOs = this.getParties(clause);
-        return this.gson.toJson(partyDTOs);
+        String result = this.gson.toJson(partyDTOs);
+        return result;
     }
 
     private List<PartyDTO> getParties(Predicate clause) {
@@ -105,12 +115,12 @@ public class PartyController2 {
 
     private Predicate createOrClause(String type, List<String> values) {
         Predicate result;
-        if (values.size() == 1){
-            result = this.createLikeClause(type, values.get(0));
-        }else{
+        if (values.size() == 1) {
+            result = this.createSimpleClause(type, values.get(0));
+        } else {
             List<Predicate> likeClauses = new ArrayList<>();
             for (String value : values) {
-                Predicate likeClause = this.createLikeClause(type, value);
+                Predicate likeClause = this.createSimpleClause(type, value);
                 likeClauses.add(likeClause);
             }
             result = this.criteriaBuilder.or(likeClauses.toArray(new Predicate[likeClauses.size()]));
@@ -118,13 +128,31 @@ public class PartyController2 {
         return result;
     }
 
-    private Predicate createLikeClause(String type, String value) {
-        Predicate result;
-        String typeDAO = this.nameResolver.getDAOTypeName(type);
-        String valueDAO = this.nameResolver.getDAOValueName(typeDAO, value);
-        result = this.criteriaBuilder.like(this.partyRoot.get(type), String.format("%%%1s%%", valueDAO));
+    private Predicate createSimpleClause(String type, String value) {
+        Predicate result = null;
+        if (this.typeResolver.getType(type) == String.class) {
+            String valueDAO = this.nameResolver.getDAOValueName(type, value);
+            result = this.criteriaBuilder.like(this.partyRoot.get(type), String.format("%%%1s%%", valueDAO));
+        }
+        if (this.typeResolver.getType(type) == Boolean.class) {
+            result = this.criteriaBuilder.equal(this.partyRoot.get(type), Boolean.parseBoolean(value));
+        }
+        if (Objects.equals(type, "age")) {
+            result = this.criteriaBuilder.gt(this.partyRoot.get(type), Integer.parseInt(value));
+        }
+//        if(Objects.equals(type, "createDate")||Objects.equals(type, "updateDate")){
+//            result = this.criteriaBuilder.equal(this.partyRoot.get(type), Date.parse(value));
+//        }
         return result;
     }
+
+//    private Predicate createLikeClause(String type, String value) {
+//        Predicate result;
+//        //String typeDAO = this.nameResolver.getDAOTypeName(type);
+//        String valueDAO = this.nameResolver.getDAOValueName(type, value);
+//        result = this.criteriaBuilder.like(this.partyRoot.get(type), String.format("%%%1s%%", valueDAO));
+//        return result;
+//    }
 
 
 //    private String getClause(List<FilterDTO> filterDTOs) {
