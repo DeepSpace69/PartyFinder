@@ -12,6 +12,10 @@ import { MaterialModule } from '@angular/material';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
+import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import {MdGestureConfig} from '@angular/material/core';
+import '@angular/material/core/theming/prebuilt/deeppurple-amber';
+
 @NgModule({
     imports: [
         MaterialModule.forRoot(),
@@ -27,7 +31,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
         CreatePartyComponent
     ],
     providers: [
-        ApiService
+        ApiService,
+        { provide: HAMMER_GESTURE_CONFIG, useClass: MdGestureConfig }
     ],
     bootstrap: [AppComponent]
 })
