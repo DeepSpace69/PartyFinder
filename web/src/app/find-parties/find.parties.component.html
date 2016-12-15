@@ -11,12 +11,12 @@
 
         <!--Min lvl-->
         <div class="card">
-            <div class="card-header" id="myElement">
+            <div class="card-header" id="myElement" (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
                 Character lvl
             </div>
             <div class="card-block">
-                <md-slider min="1" max="79" step="1" value="1.5" [(ngModel)]="slider"></md-slider>
-                <span>{{slider}} lvl.</span>
+                <md-slider vertical thumb-label min="1" max="79" step="1"  [(ngModel)]="slider"></md-slider>
+                <font size="5">{{slider}} lvl.</font>
             </div>
         </div>
         <!--Class needed-->

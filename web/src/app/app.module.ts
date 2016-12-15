@@ -12,7 +12,9 @@ import { MaterialModule } from '@angular/material';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
-import '@angular/material/core/theming/prebuilt/indigo-pink';
+import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
+import {MdGestureConfig} from '@angular/material/core';
+import '@angular/material/core/theming/prebuilt/deeppurple-amber';
 
 @NgModule({
     imports: [
@@ -29,7 +31,8 @@ import '@angular/material/core/theming/prebuilt/indigo-pink';
         CreatePartyComponent
     ],
     providers: [
-        ApiService
+        ApiService,
+        { provide: HAMMER_GESTURE_CONFIG, useClass: MdGestureConfig }
     ],
     bootstrap: [AppComponent]
 })
