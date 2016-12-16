@@ -13,18 +13,32 @@ export class AppComponent {
     url = 'https://github.com/preboot/angular2-webpack';
     findParties: boolean;
     createParty: boolean;
+    createCharacter: boolean;
     constructor(private api: ApiService) {
         // Do something with api
-        this.onfindParties();
+        this.onCreateCharacter();
     }
 
     onfindParties(): void {
         this.findParties = true;
         this.createParty = false;
+        this.createCharacter = false;
     }
 
     onCreateParty(): void {
         this.findParties = false;
         this.createParty = true;
+        this.createCharacter = false;
     }
+
+onCreateCharacter(): void
+{
+        this.findParties = false;
+        this.createParty = false;
+        this.createCharacter = true;
+}
+
+
+
+
 }

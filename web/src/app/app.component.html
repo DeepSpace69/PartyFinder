@@ -4,7 +4,9 @@
     <button>Home</button>
     <button (click)="onfindParties()">Find parties</button>
     <button (click)="onCreateParty()">Create party</button>
+    <button (click)="onCreateCharacter()">Create character</button>
   </nav>
 </header>
 <my-find-parties *ngIf="findParties">Loading...</my-find-parties>
 <my-create-party *ngIf="createParty">Loading...</my-create-party>
+<my-create-character *ngIf="createCharacter">Loading...</my-create-character>

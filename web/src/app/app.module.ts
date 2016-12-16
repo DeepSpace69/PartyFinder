@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { FindPartiesComponent } from './find-parties/find.parties.component';
 import { CreatePartyComponent } from './create-party/create.party.component';
+import { CreateCharacterComponent } from './create-character/create.character.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
@@ -28,7 +29,8 @@ import '@angular/material/core/theming/prebuilt/deeppurple-amber';
     declarations: [
         AppComponent,
         FindPartiesComponent,
-        CreatePartyComponent
+        CreatePartyComponent,
+        CreateCharacterComponent
     ],
     providers: [
         ApiService,

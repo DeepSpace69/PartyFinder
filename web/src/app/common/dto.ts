@@ -48,3 +48,14 @@ export class SlotDTO {
 export class FilterDTO {
     constructor(public key: string, public value: Object) { }
 }
+
+export class CharacterDTO {
+    id: number;
+    name: string;
+level: number;
+    charClass: string;
+charRole: string;
+    server: string;
+    gearScore: number;
+    
+}
