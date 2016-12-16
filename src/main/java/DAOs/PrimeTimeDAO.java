@@ -28,6 +28,8 @@ public class PrimeTimeDAO {
     private Integer timeZone;
     @Column
     private Long fkParty;
+    @Column
+    private Long fkCharacter;
 
     public PrimeTimeDAO() {
     }
@@ -94,5 +96,13 @@ public class PrimeTimeDAO {
 
     public void setFkParty(Long fkParty) {
         this.fkParty = fkParty;
+    }
+
+    public Long getFkCharacter() {
+        return fkCharacter;
+    }
+
+    public void setFkCharacter(Long fkCharacter) {
+        this.fkCharacter = fkCharacter;
     }
 }

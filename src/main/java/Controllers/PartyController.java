@@ -23,7 +23,7 @@ import java.util.List;
  * Created by Tatka on 24.11.2016.
  */
 @Controller
-@RequestMapping("/findParties")
+@RequestMapping("/findParties77")
 public class PartyController {
     private PartyRepository repository;
     private SlotRepository slotRepository;
@@ -39,7 +39,7 @@ public class PartyController {
         this.partyDTOFactory = partyDTOFactory;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public String findParty() {
 

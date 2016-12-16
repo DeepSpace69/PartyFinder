@@ -62,7 +62,7 @@ public class PartyCreationController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public String createParty(@RequestBody String input, HttpServletResponse response) {
-// todo: MY check Client
+// todo: DONE MY check Client
         String result = "";
         this.gson = new Gson();
         PartyDTO partyDTO = gson.fromJson(input, PartyDTO.class);
@@ -80,18 +80,18 @@ public class PartyCreationController {
     }
 
 
-    private void savePrimeTimes(ArrayList<PrimeTimeDTO> primeTimes, Long id) {
+    private void savePrimeTimes(List<PrimeTimeDTO> primeTimes, Long partyId) {
         List<PrimeTimeDAO> primeTimeDAOs = new ArrayList<>();
         for (PrimeTimeDTO primeTime : primeTimes) {
-            primeTimeDAOs.add(this.primeTimeDAOFactory.create(primeTime, id));
+            primeTimeDAOs.add(this.primeTimeDAOFactory.createForPaty(primeTime, partyId));
         }
         this.primeTimeRepository.save(primeTimeDAOs);
     }
 
-    private void saveSlots(ArrayList<SlotDTO> slots, Long id) {
+    private void saveSlots(List<SlotDTO> slots, Long partyId) {
         List<SlotDAO> slotDAOs = new ArrayList<>();
         for (SlotDTO slot : slots) {
-            slotDAOs.add(this.slotDAOFactory.create(slot, id));
+            slotDAOs.add(this.slotDAOFactory.create(slot, partyId));
         }
         this.slotRepository.save(slotDAOs);
     }

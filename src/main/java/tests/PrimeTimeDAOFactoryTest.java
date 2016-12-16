@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +36,7 @@ public class PrimeTimeDAOFactoryTest {
         Long partyId = 1l;
 
         // Act
-        PrimeTimeDAO actual = this.target.create(primeTimeDTO, partyId);
+        PrimeTimeDAO actual = this.target.createForPaty(primeTimeDTO, partyId);
 
         // Assert
         Assert.assertEquals("day_Friday", actual.getDay());

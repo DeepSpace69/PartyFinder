@@ -1,1 +1,1 @@
-pg_dump.exe --clean -E UTF8 -Fc -h 192.168.0.7 -d postgres -U postgres --no-owner > db.dmp
+"c:\Program Files\PostgreSQL\9.6\bin\pg_dump.exe" --clean -E UTF8 -Fc -h 192.168.0.7 -d postgres -U postgres --no-owner > db.dmp

@@ -34,8 +34,17 @@ public class PartyDTO {
     private ArrayList<PrimeTimeDTO> primeTimes;
     private String createDate;
     private String updateDate;
+    private Long owner;
 
     public PartyDTO() {
+    }
+
+    public Long getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Long owner) {
+        this.owner = owner;
     }
 
     public String getName() {

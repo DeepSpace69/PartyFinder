@@ -9,10 +9,10 @@ import org.junit.Test;
 public class ForTest {
     @Test
     public void someTest(){
-        Long l = 1l;
+        Long l = 13456789l;
         String s = l.toString();
-        String s2 = "1";
+
         System.out.print(s);
-        Assert.assertEquals(s2, s);
+
     }
 }

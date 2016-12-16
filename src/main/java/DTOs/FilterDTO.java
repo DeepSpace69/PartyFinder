@@ -4,19 +4,19 @@ package main.java.DTOs;
  * Created by Tatka on 28.11.2016.
  */
 public class FilterDTO {
-    private String type;
+    private String key;
     private String value;
 
     public FilterDTO() {
     }
 
-    public FilterDTO(String type, String value) {
-        this.type = type;
+    public FilterDTO(String key, String value) {
+        this.key = key;
         this.value = value;
     }
 
-    public String getType() {
-        return type;
+    public String getKey() {
+        return key;
     }
 
     public String getValue() {

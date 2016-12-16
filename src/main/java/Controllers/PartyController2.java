@@ -26,7 +26,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +40,7 @@ import static java.util.stream.Collectors.toList;
  * Created by Tatka on 24.11.2016.
  */
 @Controller
-@RequestMapping("/findParties2")
+@RequestMapping("/findParties")
 public class PartyController2 {
     private final CriteriaBuilder criteriaBuilder;
     private final CriteriaQuery<PartyDAO> criteriaQuery;
@@ -58,14 +58,15 @@ public class PartyController2 {
             PartyRepository repository,
             EntityManager entityManager,
             PartyDTOFactory factory,
-            VocabularyManager vocabularyManager) {
+            VocabularyManager vocabularyManager,
+            INameResolver nameResolver) {
         this.repository = repository;
         this.entityManager = entityManager;
         this.factory = factory;
         this.criteriaBuilder = this.entityManager.getCriteriaBuilder();
         this.criteriaQuery = criteriaBuilder.createQuery(PartyDAO.class);
         this.partyRoot = criteriaQuery.from(PartyDAO.class);
-        this.nameResolver = new NameResolverDemo(vocabularyManager);
+        this.nameResolver = nameResolver;
         this.typeResolver = new TypeResolverDemo(vocabularyManager);
         //this.filterFactory = filterFactory;
     }
@@ -75,8 +76,10 @@ public class PartyController2 {
     public String findParty(@RequestBody String input, HttpServletResponse response) {
 
         this.gson = new Gson();
-        List<FilterDTO> filters = gson.fromJson(input, new TypeToken<List<FilterDTO>>() {
-        }.getType());
+        Type jsonType = new TypeToken<List<FilterDTO>>() {
+        }.getType();
+        List<FilterDTO> filters = gson.fromJson(input, jsonType);
+
         if (filters.isEmpty()) {
             List<PartyDAO> parties = repository.findAll();
             return this.gson.toJson(parties);
@@ -104,10 +107,13 @@ public class PartyController2 {
     private Predicate createClause(List<FilterDTO> filters) {
         Predicate result;
         Map<String, List<String>> groupedFilters =
-                filters.stream().collect(Collectors.groupingBy(p -> p.getType(), mapping(x -> x.getValue(), toList())));
+                filters.stream().collect(Collectors.groupingBy(p -> p.getKey(), mapping(x -> x.getValue(), toList())));
         List<Predicate> orClauses = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : groupedFilters.entrySet()) {
-            orClauses.add(this.createOrClause(entry.getKey(), entry.getValue()));
+            if (Objects.equals(entry.getKey(), "name")) {
+            } else {
+                orClauses.add(this.createOrClause(entry.getKey(), entry.getValue()));
+            }
         }
 
         return this.criteriaBuilder.and(orClauses.toArray(new Predicate[orClauses.size()]));
@@ -187,7 +193,7 @@ public class PartyController2 {
 //    private Map<String, List<String>> makeFilters(List<FilterDTO> filterDTOs) {
 //       // List<FilterDTO> filters = this.filterFactory.create(filterDTOs);
 //        Map<String, List<String>> filters = new HashMap<>();
-//        filters = filterDTOs.stream().collect(Collectors.groupingBy(p -> p.getType(), mapping(x->x.getValue(),toList())));
+//        filters = filterDTOs.stream().collect(Collectors.groupingBy(p -> p.getKey(), mapping(x->x.getValue(),toList())));
 //        return filters;
 //    }
 

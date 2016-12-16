@@ -65,8 +65,19 @@ public class PartyDAO {
     @Column(name = "update_date", insertable = false, updatable = false)
     private Date updateDate;
 
+    @Column
+    private Long owner;
+
     public PartyDAO() {
 
+    }
+
+    public Long getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Long owner) {
+        this.owner = owner;
     }
 
     public Long getId() {

@@ -1,1 +1,1 @@
-pg_restore.exe --host ec2-54-243-203-93.compute-1.amazonaws.com --port 5432 --username "pbhuvxavmfydpa" --dbname "dc075jj9m0tqk4" --no-password  --no-owner --no-privileges --disable-triggers --clean --verbose "db.dmp"
+"c:\Program Files\PostgreSQL\9.6\bin\pg_restore.exe" --host ec2-54-243-203-93.compute-1.amazonaws.com --port 5432 --username "pbhuvxavmfydpa" --dbname "dc075jj9m0tqk4"  --no-owner --no-privileges --disable-triggers --clean --verbose "db.dmp"

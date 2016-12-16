@@ -36,6 +36,7 @@ private  VocabularyManager vocabulary;
         result.setServerName(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.serverName, partyDTO.getServerName()));
         result.setCreateDate(new Date());
         result.setUpdateDate(new Date());
+        result.setOwner(partyDTO.getOwner());
         return result;
     }
 

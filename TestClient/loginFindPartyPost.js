@@ -78,16 +78,24 @@ function signIn() {
 	party.primeTimes = [primeTime,primeTime2];
 	
 	var filter1 = new Object();
-	filter1.type = "chat_type";
-	filter1.value = "chatType_Skype";
+	filter1.key = "strongLanguage";
+	filter1.value = true;
 	
 	var filter2 = new Object();
-	filter1.type = "chat_type";
-	filter1.value = "chatType_TeamSpeak";
+	filter2.key = "language";
+	filter2.value = "RU";
 	
 	var filter3 = new Object();
-	filter1.type = "age";
-	filter1.value = "18";
+	filter3.key = "chatSpeaking";
+	filter3.value = false;
+
+	var filter4 = new Object();
+	filter4.key = "age";
+	filter4.value = 18;
+
+	var filter5 = new Object();
+	filter5.key = "pve";
+	filter5.value = true;
 	
 	
 	var list = [filter1, filter2, filter3];
@@ -97,7 +105,8 @@ function signIn() {
     xhr.addEventListener('load', reqListener);
     //xhr.onload = reqListener;
 	var path1 = 'http://groupfinder.herokuapp.com/createParty';
-	var path2 = 'http://localhost:8080/findParties2';
+	var path2 = 'http://localhost:8080/findParties';
+	var path3 = 'http://groupfinder.herokuapp.com/findParties2';
     xhr.open('POST', path2, true);
 	
 

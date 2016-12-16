@@ -19,7 +19,19 @@ public class PrimeTimeDAOFactory {
     }
 
 
-    public PrimeTimeDAO create(PrimeTimeDTO primeTime, Long partyId) {
+    public PrimeTimeDAO createForPaty(PrimeTimeDTO primeTime, Long partyId) {
+        PrimeTimeDAO result =this.create(primeTime);
+        result.setFkParty(partyId);
+        return result;
+    }
+
+    public PrimeTimeDAO createForCharacter(PrimeTimeDTO primeTime, Long caharacterId) {
+        PrimeTimeDAO result =this.create(primeTime);
+        result.setFkCharacter(caharacterId);
+        return result;
+    }
+
+    private PrimeTimeDAO create(PrimeTimeDTO primeTime) {
         PrimeTimeDAO result = new PrimeTimeDAO();
         result.setStartHour(primeTime.getStart().getHour());
         result.setStartMinute(primeTime.getStart().getMinute());
@@ -27,7 +39,6 @@ public class PrimeTimeDAOFactory {
         result.setEndMinute(primeTime.getEnd().getMinute());
         result.setDay(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.day, primeTime.getDay()));
         result.setTimeZone(primeTime.getTimeZone());
-        result.setFkParty(partyId);
         return result;
     }
 
