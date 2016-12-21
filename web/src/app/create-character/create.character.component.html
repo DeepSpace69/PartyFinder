@@ -1,0 +1,76 @@
+﻿<div style="height:70px; width:100%;"></div>
+<div class="container-fluid">
+  <form class="form-group">
+    <div class="form-inline row">
+      <div class="form-group col-xs-6" style="background-color:red;">
+        <label for="inputCharName"><font size="5">Create character</font></label>
+        <input type="text" id="inputCharName" name="inputCharName" [(ngModel)]="newCharacter.name" class="form-control ml-1" placeholder="Character name" >
+      </div>
+    </div>
+
+
+
+    <br>
+
+
+    <div class="card col-xs-7" style="background-color:red;">
+      <div class="card-header">Info</div>
+      <div class="card-block form-inline">
+        <label for="id111"><font size="3">Class</font></label>
+        <select class="form-control" style="width:110px" id="id111">
+          <option>Druid</option>
+          <option>Templar</option>
+          <option>Mage</option>
+          <option>Shooter</option>
+          <option>Knight</option>
+        </select>
+
+        <label for="id222" class="ml-1"><font size="3">Role</font></label>
+        <select [(ngModel)]="newCharacter.charRole" class="form-control ml-1" name="abc">
+          <option *ngFor="let role of roles" [ngValue]='role'>{{role}}</option>
+        </select>
+
+
+        <label for="id333" class="ml-1"><font size="3">Server</font></label>
+        <select class="form-control" style="width:100px" id="id333">
+          <option>One</option>
+          <option>Two</option>
+        </select>
+      </div>
+
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item form-inline">
+          <label><font size="3">Gear</font></label>
+          <input type="text" name="inputScore" [(ngModel)]="newCharacter.gearScore" class="form-control" style="width:110px;">
+          <label class="ml-1"><font size="3">Level</font></label>
+
+          <md-slider horisontal thumb-label min="1" max="79" step="1" [(ngModel)]="newCharacter.level" name="abc"></md-slider>
+
+         
+          <input class="btn btn-primary text-xs-right" type="submit" value="Submit" (click)="submit()">
+
+        </li>
+      </ul>
+    </div>  
+  </form>
+</div>
+
+
+<div class="form-inline col-xs-6" style="background-color:red;">
+  <label><font size="3">Gear</font></label>
+</div>
+<div class="form-inline col-xs-2">
+
+</div>
+<div class="form-inline col-xs-2" style="background-color:blue;">
+  <label><font size="3">Gear</font></label>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-4 col-sm-push-8">.col-sm-4 .col-sm-push-8</div>
+  <div class="col-sm-8 col-sm-pull-4">.col-sm-8 .col-sm-pull-4</div>
+</div>
+
+
