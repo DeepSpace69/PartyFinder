@@ -97,8 +97,11 @@ function signIn() {
 	filter5.key = "pve";
 	filter5.value = true;
 	
-	
-	var list = [filter1, filter2, filter3];
+	var filter6 = new Object();
+	filter6.key = "pve";
+	filter6.value = null;
+
+	var list = [filter6];
 	
     //alert(userPassword+userLogin);
     var xhr = new XMLHttpRequest();

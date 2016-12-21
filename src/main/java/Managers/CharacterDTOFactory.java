@@ -28,7 +28,7 @@ public class CharacterDTOFactory {
     @Autowired
     public CharacterDTOFactory(VocabularyManager vocabularyManager, PrimeTimeDTOFactory primeTimeDTOFactory) {
         this.vocabulary = vocabularyManager;
-        this.primeTimeDTOFactory =primeTimeDTOFactory;
+        this.primeTimeDTOFactory = primeTimeDTOFactory;
     }
 
     public CharacterDTO create(CharacterDAO characterDAO, List<PrimeTimeDAO> primeTimeDAOs) {
@@ -40,7 +40,9 @@ public class CharacterDTOFactory {
         result.setServerName(characterDAO.getServerName());
         List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
         for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
-            primeTimeDTOs.add(this.primeTimeDTOFactory.create(primeTimeDAO));
+            if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {
+                primeTimeDTOs.add(this.primeTimeDTOFactory.create(primeTimeDAO));
+            }
         }
         result.setPrimeTimes(primeTimeDTOs);
         return result;
