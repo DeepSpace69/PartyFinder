@@ -2,7 +2,7 @@ package main.java.tests;
 
 import main.java.DAOs.SlotDAO;
 import main.java.DTOs.SlotDTO;
-import main.java.Managers.SlotDAOFactory;
+import main.java.Factories.SlotDAOFactory;
 import main.java.Managers.VocabularyManager;
 import org.junit.Assert;
 import org.junit.Before;

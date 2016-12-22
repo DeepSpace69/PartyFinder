@@ -9,9 +9,10 @@ import main.java.DAOs.SlotDAO;
 import main.java.DTOs.PartyDTO;
 import main.java.DTOs.PrimeTimeDTO;
 import main.java.DTOs.SlotDTO;
-import main.java.Managers.PartyDAOFactory;
-import main.java.Managers.PrimeTimeDAOFactory;
-import main.java.Managers.SlotDAOFactory;
+import main.java.Factories.PartyDAOFactory;
+import main.java.Factories.PrimeTimeDAOFactory;
+import main.java.Factories.SlotDAOFactory;
+import main.java.Managers.Validator;
 import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
 import main.java.Repositories.PrimeTimeRepository;
@@ -36,27 +37,27 @@ public class PartyCreationController {
     private SlotRepository slotRepository;
     private PrimeTimeRepository primeTimeRepository;
     private Gson gson;
-    private VocabularyManager vocabularyManager;
     private PartyDAOFactory partyDAOFactory;
     private SlotDAOFactory slotDAOFactory;
     private PrimeTimeDAOFactory primeTimeDAOFactory;
+    private Validator validator;
 
     @Autowired
     public PartyCreationController(
             PartyRepository repository,
             SlotRepository slotRepository,
             PrimeTimeRepository primeTimeRepository,
-            VocabularyManager vocabularyManager,
             PartyDAOFactory partyDAOFactory,
             SlotDAOFactory slotDAOFactory,
-            PrimeTimeDAOFactory primeTimeDAOFactory) {
+            PrimeTimeDAOFactory primeTimeDAOFactory,
+            Validator validator) {
         this.repository = repository;
         this.slotRepository = slotRepository;
         this.primeTimeRepository = primeTimeRepository;
-        this.vocabularyManager = vocabularyManager;
         this.partyDAOFactory = partyDAOFactory;
         this.slotDAOFactory = slotDAOFactory;
         this.primeTimeDAOFactory = primeTimeDAOFactory;
+        this.validator = validator;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -66,10 +67,10 @@ public class PartyCreationController {
         String result = "";
         this.gson = new Gson();
         PartyDTO partyDTO = gson.fromJson(input, PartyDTO.class);
-        ValidationResult validationParty = this.validate(partyDTO);
-        if (validationParty.hasErrors()) {
+        ValidationResult validationResult = this.validator.validate(partyDTO);
+        if (validationResult.hasErrors()) {
             response.setStatus(400);
-            return validationParty.getErrorMessage();
+            return validationResult.getErrorMessage();
         }
 
         PartyDAO partyDAO = this.partyDAOFactory.create(partyDTO);
@@ -95,54 +96,4 @@ public class PartyCreationController {
         }
         this.slotRepository.save(slotDAOs);
     }
-
-
-    private ValidationResult validate(PartyDTO party) {
-
-        Set<String> setMessages = new HashSet<>();
-        checkValid(VocabularyTypes.lang, party.getLanguage(), setMessages);
-        checkValid(VocabularyTypes.serversGroup, party.getServersGroup(), setMessages);
-        checkValid(VocabularyTypes.serverName, party.getServerName(), setMessages);
-        checkValid(VocabularyTypes.chatType, party.getChatType(), setMessages);
-        Integer age = party.getAge();
-        if (age <= 0 || age > 100) {
-            setMessages.add(String.format("Invalid age: %1s", age));
-        }
-        if (alreadyExist(party.getName())) {
-            setMessages.add(String.format("Name already exists: %1s", party.getName()));
-
-        }
-        for (SlotDTO slot : party.getSlots()) {
-            checkValid(VocabularyTypes.role, slot.getRole(), setMessages);
-            checkValid(VocabularyTypes.classType, slot.getClassType(), setMessages);
-            checkValid(VocabularyTypes.sex, slot.getSex(), setMessages);
-        }
-        for (PrimeTimeDTO primeTime : party.getPrimeTimes()) {
-            checkValid(VocabularyTypes.day, primeTime.getDay(), setMessages);
-        }
-
-        return createValidationResult(setMessages);
-    }
-
-    private ValidationResult createValidationResult(Set<String> setMessages) {
-        ValidationResult result = new ValidationResult();
-        if (!setMessages.isEmpty()) {
-            String message = String.join(", ", setMessages);
-            result.setErrors(true, message);
-        }
-        return result;
-    }
-
-    private void checkValid(String type, String candidate, Set<String> setMessages) {
-        if (!this.vocabularyManager.getVocabulary(type).contains(candidate)) {
-            setMessages.add(String.format("Invalid value for vocabulary - %1s: %2s", type, candidate));
-        }
-    }
-
-    private boolean alreadyExist(String name) {
-        // todo NOT DEMO implement
-        return false;
-    }
-
-
 }

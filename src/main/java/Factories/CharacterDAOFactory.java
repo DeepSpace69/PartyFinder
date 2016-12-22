@@ -1,7 +1,8 @@
-package main.java.Managers;
+package main.java.Factories;
 
 import main.java.DAOs.CharacterDAO;
 import main.java.DTOs.CharacterDTO;
+import main.java.Managers.VocabularyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

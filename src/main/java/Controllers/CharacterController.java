@@ -3,20 +3,16 @@ package main.java.Controllers;
 import com.google.gson.Gson;
 import main.java.DAOs.CharacterDAO;
 import main.java.DAOs.PrimeTimeDAO;
-import main.java.DAOs.UserDAO;
 import main.java.DTOs.CharacterDTO;
-import main.java.Managers.CharacterDTOFactory;
+import main.java.Factories.CharacterDTOFactory;
 import main.java.Repositories.CharacterRepository;
 import main.java.Repositories.PrimeTimeRepository;
-import main.java.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 

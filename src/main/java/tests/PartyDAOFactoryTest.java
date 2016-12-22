@@ -2,12 +2,12 @@ package main.java.tests;
 
 import main.java.DAOs.PartyDAO;
 import main.java.DTOs.PartyDTO;
+import main.java.Factories.PartyDAOFactory;
 import main.java.Managers.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

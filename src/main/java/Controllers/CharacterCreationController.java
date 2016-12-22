@@ -1,11 +1,14 @@
 package main.java.Controllers;
 
 import com.google.gson.Gson;
+import main.java.Const.VocabularyTypes;
 import main.java.Core.ValidationResult;
 import main.java.DAOs.CharacterDAO;
 import main.java.DAOs.PrimeTimeDAO;
 import main.java.DTOs.CharacterDTO;
 import main.java.DTOs.PrimeTimeDTO;
+import main.java.Factories.CharacterDAOFactory;
+import main.java.Factories.PrimeTimeDAOFactory;
 import main.java.Managers.*;
 import main.java.Repositories.CharacterRepository;
 import main.java.Repositories.PrimeTimeRepository;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,23 +34,23 @@ public class CharacterCreationController {
     private CharacterRepository repository;
     private PrimeTimeRepository primeTimeRepository;
     private Gson gson;
-    private VocabularyManager vocabularyManager;
     private CharacterDAOFactory characterDAOFactory;
     private PrimeTimeDAOFactory primeTimeDAOFactory;
+    private Validator validator;
 
     @Autowired
     public CharacterCreationController(
             CharacterRepository repository,
             PrimeTimeRepository primeTimeRepository,
-            VocabularyManager vocabularyManager,
             CharacterDAOFactory characterDAOFactory,
-            PrimeTimeDAOFactory primeTimeDAOFactory) {
+            PrimeTimeDAOFactory primeTimeDAOFactory,
+            Validator validator) {
         this.repository = repository;
         this.primeTimeRepository = primeTimeRepository;
         this.primeTimeRepository = primeTimeRepository;
-        this.vocabularyManager = vocabularyManager;
         this.characterDAOFactory = characterDAOFactory;
         this.primeTimeDAOFactory = primeTimeDAOFactory;
+        this.validator = validator;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -56,10 +60,10 @@ public class CharacterCreationController {
         String result = "";
         this.gson = new Gson();
         CharacterDTO characterDTO = gson.fromJson(input, CharacterDTO.class);
-        ValidationResult validationParty = this.validate(characterDTO);
-        if (validationParty.hasErrors()) {
+        ValidationResult validationResult = this.validator.validate(characterDTO);
+        if (validationResult.hasErrors()) {
             response.setStatus(400);
-            return validationParty.getErrorMessage();
+            return validationResult.getErrorMessage();
         }
 
         CharacterDAO characterDAO = this.characterDAOFactory.create(characterDTO);
@@ -76,56 +80,4 @@ public class CharacterCreationController {
         }
         this.primeTimeRepository.save(primeTimeDAOs);
     }
-
-    private ValidationResult validate(CharacterDTO party) {
-        ValidationResult result = new ValidationResult();
-        result.setErrors(false, "");
-        return result;
-
-//        Set<String> setMessages = new HashSet<>();
-//        checkValid(VocabularyTypes.lang, party.getLanguage(), setMessages);
-//        checkValid(VocabularyTypes.serversGroup, party.getServersGroup(), setMessages);
-//        checkValid(VocabularyTypes.serverName, party.getServerName(), setMessages);
-//        checkValid(VocabularyTypes.chatType, party.getChatType(), setMessages);
-//        Integer age = party.getAge();
-//        if (age <= 0 || age > 100) {
-//            setMessages.add(String.format("Invalid age: %1s", age));
-//        }
-//        if (alreadyExist(party.getName())) {
-//            setMessages.add(String.format("Name already exists: %1s", party.getName()));
-//
-//        }
-//        for (SlotDTO slot : party.getSlots()) {
-//            checkValid(VocabularyTypes.role, slot.getRole(), setMessages);
-//            checkValid(VocabularyTypes.classType, slot.getClassType(), setMessages);
-//            checkValid(VocabularyTypes.sex, slot.getSex(), setMessages);
-//        }
-//        for (PrimeTimeDTO primeTime : party.getPrimeTimes()) {
-//            checkValid(VocabularyTypes.day, primeTime.getDay(), setMessages);
-//        }
-//
-//        return this.createValidationResult(setMessages);
-    }
-
-    private ValidationResult createValidationResult(Set<String> setMessages) {
-        ValidationResult result = new ValidationResult();
-        if (!setMessages.isEmpty()) {
-            String message = String.join(", ", setMessages);
-            result.setErrors(true, message);
-        }
-        return result;
-    }
-
-    private void checkValid(String type, String candidate, Set<String> setMessages) {
-        if (!this.vocabularyManager.getVocabulary(type).contains(candidate)) {
-            setMessages.add(String.format("Invalid value for vocabulary - %1s: %2s", type, candidate));
-        }
-    }
-
-    private boolean alreadyExist(String name) {
-        // todo NOT DEMO implement
-        return false;
-    }
-
-
 }

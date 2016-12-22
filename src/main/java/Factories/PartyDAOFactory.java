@@ -1,8 +1,9 @@
-package main.java.Managers;
+package main.java.Factories;
 
 import main.java.Const.VocabularyTypes;
 import main.java.DAOs.PartyDAO;
 import main.java.DTOs.PartyDTO;
+import main.java.Managers.VocabularyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 @Service
 public class PartyDAOFactory {
-private  VocabularyManager vocabulary;
+private VocabularyManager vocabulary;
     @Autowired
     public PartyDAOFactory(VocabularyManager vocabulary) {
        this.vocabulary = vocabulary;
