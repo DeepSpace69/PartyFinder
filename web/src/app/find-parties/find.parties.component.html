@@ -1,223 +1,259 @@
 ﻿<h2 style="margin-top:80px;margin-left:15px;">Find parties</h2>
 <div class="container-fluid mt-1">
-  <div class="row">
-    <div class="col-xs-3 filters">
-      <div class="input-group pb-1">
-        <input type="text" [(ngModel)]="partyName" class="form-control" placeholder="Search by name ...">
-        <span class="input-group-btn">
-          <button (click)="onGoButtonClick()" class="btn btn-secondary" style="border-left-width:1px;margin-right: 0px;" type="button">Go!</button>
-        </span>
-      </div>
+    <div class="row">
+        <!--                 FILTERS                -->
+        <div class="col-xs-3 filters">
+            <div class="input-group pb-1">
+                <input type="text" [(ngModel)]="partyName" class="form-control" placeholder="Search by name ...">
+                <span class="input-group-btn">
+                    <button (click)="onGoButtonClick()" class="btn btn-secondary" style="border-left-width:1px;margin-right: 0px;" type="button">Go!</button>
+                </span>
+            </div>
 
-        <!--Min lvl-->
-        <div class="card">
-            <div class="card-header" id="myElement" (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
-                Character lvl
+            <!--Min lvl-->
+            <div class="card">
+                <div class="card-header" id="myElement" (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
+                    Character lvl
+                </div>
+                <div class="card-block">
+                    <md-slider vertical thumb-label min="1" max="79" step="1" [(ngModel)]="slider"></md-slider>
+                    <font size="5">{{slider}} lvl.</font>
+                </div>
             </div>
-            <div class="card-block">
-                <md-slider vertical thumb-label min="1" max="79" step="1"  [(ngModel)]="slider"></md-slider>
-                <font size="5">{{slider}} lvl.</font>
+            <!--Class needed-->
+            <div class="card">
+                <div class="card-header">
+                    Class needed
+                </div>
+                <div class="card-block">
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Gunslinger')">
+                        <img src="/img/gunslinger.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Gunslinger')"> Gunslinger
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Blade Master')">
+                        <img src="/img/blademaster.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Blade Master')"> Blade Master
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Spiritshaper')">
+                        <img src="/img/spiritshaper.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Spiritshaper')"> Spiritshaper
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Vanguard')">
+                        <img src="/img/vanguard.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Vanguard')"> Vanguard
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Swordmage')">
+                        <img src="/img/swordmage.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Swordmage')"> Swordmage
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('classType','Occultist')">
+                        <img src="/img/occultist.png" class="img-fluid">
+                        <input style="display:none" type="checkbox" (click)="setFilter('classType','Occultist')"> Occultist
+                    </label>
+                </div>
             </div>
-        </div>
-        <!--Class needed-->
-      <div class="card">
-        <div class="card-header">
-          Class needed
-        </div>
-        <div class="card-block">
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Gunslinger')">
-            <img src="/img/gunslinger.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Gunslinger')"> Gunslinger
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Blade Master')">
-            <img src="/img/blademaster.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Blade Master')"> Blade Master
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Spiritshaper')">
-            <img src="/img/spiritshaper.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Spiritshaper')"> Spiritshaper
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Vanguard')">
-            <img src="/img/vanguard.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Vanguard')"> Vanguard
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Swordmage')">
-            <img src="/img/swordmage.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Swordmage')"> Swordmage
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('classType','Occultist')">
-            <img src="/img/occultist.png" class="img-fluid">
-            <input style="display:none" type="checkbox" (click)="setFilter('classType','Occultist')"> Occultist
-          </label>
-        </div>
-      </div>
+            <!--Role needed-->
+            <div class="card">
+                <div class="card-header">
+                    Role needed
+                </div>
+                <div class="card-block">
+                    <label class="btn btn-secondary" [class.active]="getFilter('role','DD')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('role','DD')"> DD
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('role','Tank')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('role','Tank')"> Tank
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('role','Healer')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('role','Healer')"> Healer
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('role','Any')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('role','Any')"> Any
+                    </label>
+                </div>
+            </div>
+            <!--Voice chat-->
+            <div class="card">
+                <div class="card-header">
+                    Voice
+                </div>
+                <div class="card-block">
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','Skype')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','Skype')"> Skype
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','RaidCall')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','RaidCall')"> RaidCall
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','TeamSpeak')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','TeamSpeak')"> TeamSpeak
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','NA')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','NA')"> N\A
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <!--Microphone chat-->
+                    <div class="card">
+                        <div class="card-header">
+                            Microphone
+                        </div>
+                        <div class="card-block">
+                            <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',true)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',true)"> Yes
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',false)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',false)"> No
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',null)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',null)"> N/A
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <!--Strong lang. chat-->
+                    <div class="card">
+                        <div class="card-header">
+                            Strong lang.
+                        </div>
+                        <div class="card-block">
+                            <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',true)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',true)"> Yes
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',false)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',false)"> No
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',null)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',null)"> N/A
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Age-->
+            <div class="card">
+                <div class="card-header">
+                    Age
+                </div>
+                <div class="card-block">
+                    <label class="btn btn-secondary" [class.active]="getFilter('age',null)">
+                        <input style="display:none" type="checkbox" (click)="setFilter('age',null)"> Any
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('age',14)">
+                        <input style="display:none" type="checkbox" (click)="setFilter('age',14)"> 14+
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('age',18)">
+                        <input style="display:none" type="checkbox" (click)="setFilter('age',18)"> 18+
+                    </label>
+                    <label class="btn btn-secondary" [class.active]="getFilter('age',25)">
+                        <input style="display:none" type="checkbox" (click)="setFilter('age',25)"> 25+
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <!--Party type-->
+                    <div class="card">
+                        <div class="card-header">
+                            Type
+                        </div>
+                        <div class="card-block">
+                            <label class="btn btn-secondary" [class.active]="getFilter('pvp',true)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('pvp',true)"> PvP
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('pve',true)">
+                                <input style="display:none" type="checkbox" (click)="setFilter('pve',true)"> PvE
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <!--Language-->
+                    <div class="card">
+                        <div class="card-header">
+                            Language
+                        </div>
+                        <div class="card-block">
+                            <label class="btn btn-secondary" [class.active]="getFilter('language','ru')">
+                                <input style="display:none" type="checkbox" (click)="setFilter('language','ru')"> RU
+                            </label>
+                            <label class="btn btn-secondary" [class.active]="getFilter('language','eng')">
+                                <input style="display:none" type="checkbox" (click)="setFilter('language','eng')"> ENG
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <!--Role needed-->
-      <div class="card">
-        <div class="card-header">
-          Role needed
         </div>
-        <div class="card-block">
-          <label class="btn btn-secondary" [class.active]="getFilter('role','DD')">
-            <input style="display:none" type="checkbox" (click)="setFilter('role','DD')"> DD
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('role','Tank')">
-            <input style="display:none" type="checkbox" (click)="setFilter('role','Tank')"> Tank
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('role','Healer')">
-            <input style="display:none" type="checkbox" (click)="setFilter('role','Healer')"> Healer
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('role','Any')">
-            <input style="display:none" type="checkbox" (click)="setFilter('role','Any')"> Any
-          </label>
-        </div>
-      </div>
 
-      <!--Voice chat-->
-      <div class="card">
-        <div class="card-header">
-          Voice
-        </div>
-        <div class="card-block">
-          <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','Skype')">
-            <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','Skype')"> Skype
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','RaidCall')">
-            <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','RaidCall')"> RaidCall
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','TeamSpeak')">
-            <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','TeamSpeak')"> TeamSpeak
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','NA')">
-            <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','NA')"> N\A
-          </label>
-        </div>
-      </div>
+        <!--                 Parties                -->
+        <div class="col-xs-9">
+            <div class="list-group ml-1 mt-1 mr-1">
+                <div *ngFor="let party of parties" class="parties list-group-item row">
+                    <div class="col-xs-1 align-middle border">
+                        <img src="/img/noimageavailable.png" class="img-fluid">
+                    </div>
+                    <div class="col-xs-5 flex-xs-middle">
+                        <div class="row">{{party.name}}</div>
+                        <div class="row">
+                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                        </div>
+                        <div class="row">{{party.serverName}} | {{party.groupServer}}</div>
+                    </div>
+                    <div class="col-xs-3 flex-xs-middle day">
+                        <div class="list-group-item row">Monday</div>
+                        <div class="list-group-item row">Tuesday</div>
+                        <div class="list-group-item row">Wednesday</div>
+                        <div class="list-group-item row">Thirsday</div>
+                        <div class="list-group-item row">Friday</div>
+                        <div class="list-group-item row">Saturday</div>
+                        <div class="list-group-item row">Sunday</div>
+                    </div>
+                    <div class="col-xs-3 flex-xs-middle">
+                        <div class="row">
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">PvP</div>
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">PvE</div>
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">RU</div>
+                        </div>
+                        <div class="row">
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">Speak</div>
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">Listen</div>
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">Cens</div>
+                        </div>
+                        <div class="row">
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">GMT +2</div>
+                            <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">18+</div>
+                        </div>
+                    </div>
+                    <!--<div class="col-xs-1 flex-xs-middle">id:{{party.id}};</div>
+                    <div class="col-xs-11">
 
-      <div class="row">
-        <div class="col-xs-6">
-          <!--Microphone chat-->
-          <div class="card">
-            <div class="card-header">
-              Microphone
-            </div>
-            <div class="card-block">
-              <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',true)">
-                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',true)"> Yes
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',false)">
-                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',false)"> No
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('chatSpeaking',null)">
-                <input style="display:none" type="checkbox" (click)="setFilter('chatSpeaking',null)"> N/A
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <!--Strong lang. chat-->
-          <div class="card">
-            <div class="card-header">
-              Strong lang.
-            </div>
-            <div class="card-block">
-              <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',true)">
-                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',true)"> Yes
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',false)">
-                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',false)"> No
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('strongLanguage',null)">
-                <input style="display:none" type="checkbox" (click)="setFilter('strongLanguage',null)"> N/A
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+                      name:{{party.name}};
+                      age:{{party.age}};
+                      timeZone:{{party.timeZone}};
+                      languages:{{party.languages}};
+                      strongLanguage:{{party.strongLanguage}};
+                      groupServer:{{party.groupServer}};
+                      serverName:{{party.serverName}};
+                      voiceChat:{{party.voiceChat}};
+                      chatListening:{{party.chatListening}};
+                      chatSpeaking:{{party.chatSpeaking}};
 
-      <!--Age-->
-      <div class="card">
-        <div class="card-header">
-          Age
-        </div>
-        <div class="card-block">
-          <label class="btn btn-secondary" [class.active]="getFilter('age',null)">
-            <input style="display:none" type="checkbox" (click)="setFilter('age',null)"> Any
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('age',14)">
-            <input style="display:none" type="checkbox" (click)="setFilter('age',14)"> 14+
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('age',18)">
-            <input style="display:none" type="checkbox" (click)="setFilter('age',18)"> 18+
-          </label>
-          <label class="btn btn-secondary" [class.active]="getFilter('age',25)">
-            <input style="display:none" type="checkbox" (click)="setFilter('age',25)"> 25+
-          </label>
-        </div>
-      </div>
+                      chatType:{{party.chatType}};
+                      pvp:{{party.pvp}};
+                      chatSpeaking:{{party.chatSpeaking}};
 
-      <div class="row">
-        <div class="col-xs-6">
-          <!--Party type-->
-          <div class="card">
-            <div class="card-header">
-              Type
+                    </div>-->
+                </div>
             </div>
-            <div class="card-block">
-              <label class="btn btn-secondary" [class.active]="getFilter('pvp',true)">
-                <input style="display:none" type="checkbox" (click)="setFilter('pvp',true)"> PvP
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('pve',true)">
-                <input style="display:none" type="checkbox" (click)="setFilter('pve',true)"> PvE
-              </label>
-            </div>
-          </div>
         </div>
-        <div class="col-xs-6">
-          <!--Language-->
-          <div class="card">
-            <div class="card-header">
-              Language
-            </div>
-            <div class="card-block">
-              <label class="btn btn-secondary" [class.active]="getFilter('language','ru')">
-                <input style="display:none" type="checkbox" (click)="setFilter('language','ru')"> RU
-              </label>
-              <label class="btn btn-secondary" [class.active]="getFilter('language','eng')">
-                <input style="display:none" type="checkbox" (click)="setFilter('language','eng')"> ENG
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
+        <ngb-pagination [collectionSize]="allParties.length" [(page)]="currentPage" [pageSize]="partiesPerPage" (pageChange)="onChangePage()"></ngb-pagination>
     </div>
-    <div class="col-xs-9 parties">
-      <div class="list-group ml-1 mt-1 mr-1">
-        <div *ngFor="let party of parties" class="list-group-item row">
-          <div class="col-xs-1 flex-xs-middle">id:{{party.id}};</div>
-          <div class="col-xs-11">
-
-            name:{{party.name}};
-            age:{{party.age}};
-            timeZone:{{party.timeZone}};
-            languages:{{party.languages}};
-            strongLanguage:{{party.strongLanguage}};
-            groupServer:{{party.groupServer}};
-            serverName:{{party.serverName}};
-            voiceChat:{{party.voiceChat}};
-            chatListening:{{party.chatListening}};
-            chatSpeaking:{{party.chatSpeaking}};
-
-            chatType:{{party.chatType}};
-            pvp:{{party.pvp}};
-            chatSpeaking:{{party.chatSpeaking}};
-
-          </div>
-        </div>
-      </div>
-      <ngb-pagination [collectionSize]="allParties.length" [(page)]="currentPage" [pageSize]="partiesPerPage" (pageChange)="onChangePage()"></ngb-pagination>
-    </div>
-  </div>
 </div>

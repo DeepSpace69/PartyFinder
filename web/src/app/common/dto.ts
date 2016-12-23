@@ -6,7 +6,6 @@
     strongLanguage: boolean;
     groupServer: string;
     serverName: string;
-    voiceChat: boolean;
     chatListening: boolean;
     chatSpeaking: boolean;
     chatType: string; // not done
