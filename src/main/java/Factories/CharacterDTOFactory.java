@@ -34,13 +34,17 @@ public class CharacterDTOFactory {
         result.setLevel(characterDAO.getLevel());
         result.setServerName(characterDAO.getServerName());
         result.setUser(characterDAO.getUser());
-        List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
-        for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
-            if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {
-                primeTimeDTOs.add(this.primeTimeDTOFactory.create(primeTimeDAO));
+        if (primeTimeDAOs == null) {
+            result.setPrimeTimes(null);
+        } else {
+            List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
+            for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
+                if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {
+                    primeTimeDTOs.add(this.primeTimeDTOFactory.create(primeTimeDAO));
+                }
             }
+            result.setPrimeTimes(primeTimeDTOs);
         }
-        result.setPrimeTimes(primeTimeDTOs);
         return result;
     }
 

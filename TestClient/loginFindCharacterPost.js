@@ -110,7 +110,8 @@ function signIn() {
 	var path1 = 'http://groupfinder.herokuapp.com/createParty';
 	var path2 = 'http://localhost:8080/findParties';
 	var path3 = 'http://groupfinder.herokuapp.com/findParties2';
-    xhr.open('POST', path2, true);
+	var path4 = 'http://localhost:8080///findCharacters';
+    xhr.open('POST', path4, true);
 	
 
     var toSend = JSON.stringify(list);
