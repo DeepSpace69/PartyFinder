@@ -1,8 +1,9 @@
-package main.java.Managers;
+package main.java.Factories;
 
 import main.java.Const.VocabularyTypes;
 import main.java.DAOs.SlotDAO;
 import main.java.DTOs.SlotDTO;
+import main.java.Managers.VocabularyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

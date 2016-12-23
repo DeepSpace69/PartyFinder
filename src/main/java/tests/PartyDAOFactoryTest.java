@@ -2,12 +2,12 @@ package main.java.tests;
 
 import main.java.DAOs.PartyDAO;
 import main.java.DTOs.PartyDTO;
+import main.java.Factories.PartyDAOFactory;
 import main.java.Managers.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -37,7 +37,6 @@ public class PartyDAOFactoryTest {
         partyDTO.setLanguage("eng");
         partyDTO.setServerName(null);
         partyDTO.setServersGroup(null);
-        partyDTO.setVoiceChat(true);
         partyDTO.setChatListening(true);
         partyDTO.setChatSpeaking(false);
         partyDTO.setChatType("Skype");
@@ -53,7 +52,6 @@ public class PartyDAOFactoryTest {
         Assert.assertEquals("lang_eng", actual.getLanguage());
         Assert.assertEquals("serverName_null", actual.getServerName());
         Assert.assertEquals("serversGroup_null", actual.getServersGroup());
-        Assert.assertEquals(true, actual.getVoiceChat());
         Assert.assertEquals(true, actual.getChatListening());
         Assert.assertEquals(false, actual.getChatSpeaking());
         Assert.assertEquals("chatType_Skype", actual.getChatType());

@@ -7,7 +7,7 @@ function reqListener(sender) {
 
     var xhr = sender.srcElement;
     if (xhr.status === 200) {
-       showError('OK');
+       showError('OK ' +  xhr.responseText);
     }
     else {
         showError('Unexpected error: ' + xhr.responseText);
@@ -91,11 +91,11 @@ function signIn() {
 
 	var filter4 = new Object();
 	filter4.key = "age";
-	filter4.value = 18;
+	filter4.value = 23;
 
 	var filter5 = new Object();
 	filter5.key = "pve";
-	filter5.value = true;
+	filter5.value = false;
 	
 	var filter6 = new Object();
 	filter6.key = "pve";

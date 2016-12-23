@@ -3,6 +3,7 @@ package main.java.tests;
 import main.java.DAOs.PrimeTimeDAO;
 import main.java.DTOs.PrimeTimeDTO;
 import main.java.DTOs.TimeOfDayDTO;
+import main.java.Factories.PrimeTimeDAOFactory;
 import main.java.Managers.*;
 import org.junit.Assert;
 import org.junit.Before;

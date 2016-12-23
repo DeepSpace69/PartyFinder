@@ -7,8 +7,7 @@ import main.java.DTOs.FilterDTO;
 import main.java.DAOs.PartyDAO;
 import main.java.Intefaces.INameResolver;
 import main.java.Intefaces.ITypeResolver;
-import main.java.Managers.PartyDTOFactory;
-import main.java.Managers.NameResolverDemo;
+import main.java.Factories.PartyDTOFactory;
 import main.java.Managers.TypeResolverDemo;
 import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
@@ -114,7 +113,7 @@ public class PartyController {
                 filters.stream().collect(Collectors.groupingBy(p -> p.getKey(), mapping(x -> x.getValue(), toList())));
         List<Predicate> orClauses = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : groupedFilters.entrySet()) {
-            if (Objects.equals(entry.getValue(), null)||Objects.equals(entry.getValue(), "null")) {
+            if (entry.getValue().contains(null)) {
             } else {
                 orClauses.add(this.createOrClause(entry.getKey(), entry.getValue()));
             }

@@ -2,13 +2,12 @@ package main.java.tests;
 
 import main.java.DAOs.PrimeTimeDAO;
 import main.java.DTOs.PrimeTimeDTO;
-import main.java.Managers.PrimeTimeDTOFactory;
+import main.java.Factories.PrimeTimeDTOFactory;
 import main.java.Managers.VocabularyManager;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

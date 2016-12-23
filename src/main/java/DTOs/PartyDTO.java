@@ -1,30 +1,19 @@
 package main.java.DTOs;
 
 
-import main.java.DAOs.PartyDAO;
-import main.java.DAOs.PrimeTimeDAO;
-import main.java.DAOs.SlotDAO;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Tatka on 22.11.2016.
  */
 public class PartyDTO {
-
+    private Long id;
     private String name;
     private Integer age;
-    //private Integer timeZone;
     private String language;
     private Boolean strongLanguage;
     private String serversGroup;
     private String serverName;
-    private Boolean voiceChat;
     private Boolean chatListening;
     private Boolean chatSpeaking;
     private String chatType;
@@ -34,17 +23,17 @@ public class PartyDTO {
     private ArrayList<PrimeTimeDTO> primeTimes;
     private String createDate;
     private String updateDate;
-    private Long owner;
+    private Long user;
 
     public PartyDTO() {
     }
 
-    public Long getOwner() {
-        return owner;
+    public Long getUser() {
+        return user;
     }
 
-    public void setOwner(Long owner) {
-        this.owner = owner;
+    public void setUser(Long user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -69,10 +58,6 @@ public class PartyDTO {
 
     public String getServerName() {
         return serverName;
-    }
-
-    public Boolean getVoiceChat() {
-        return voiceChat;
     }
 
     public Boolean getChatListening() {
@@ -135,10 +120,6 @@ public class PartyDTO {
         this.serverName = serverName;
     }
 
-    public void setVoiceChat(Boolean voiceChat) {
-        this.voiceChat = voiceChat;
-    }
-
     public void setChatListening(Boolean chatListening) {
         this.chatListening = chatListening;
     }
@@ -173,5 +154,13 @@ public class PartyDTO {
 
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

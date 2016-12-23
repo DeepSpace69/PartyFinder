@@ -1,4 +1,4 @@
-package main.java.Managers;
+package main.java.Factories;
 
 import main.java.DAOs.PartyDAO;
 import main.java.DAOs.PrimeTimeDAO;
@@ -6,7 +6,7 @@ import main.java.DAOs.SlotDAO;
 import main.java.DTOs.PartyDTO;
 import main.java.DTOs.PrimeTimeDTO;
 import main.java.DTOs.SlotDTO;
-import main.java.DTOs.TimeOfDayDTO;
+import main.java.Managers.VocabularyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,12 +34,12 @@ public class PartyDTOFactory {
 
     public PartyDTO create(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
         PartyDTO result = new PartyDTO();
+        result.setId(party.getId());
         result.setName(party.getName());
         result.setAge(party.getAge());
         result.setPve(party.getPve());
         result.setPvp(party.getPvp());
         result.setChatType(this.vocabulary.getValueById(party.getChatType()));
-        result.setVoiceChat(party.getVoiceChat());
         result.setChatListening(party.getChatListening());
         result.setChatSpeaking(party.getChatSpeaking());
         result.setStrongLanguage(party.getStrongLanguage());
@@ -49,7 +49,7 @@ public class PartyDTOFactory {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
-        result.setOwner(party.getOwner());
+        result.setUser(party.getUser());
         if (slots == null) {
             result.setSlots(null);
         } else {

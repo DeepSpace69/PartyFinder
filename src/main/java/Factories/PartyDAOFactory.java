@@ -1,8 +1,9 @@
-package main.java.Managers;
+package main.java.Factories;
 
 import main.java.Const.VocabularyTypes;
 import main.java.DAOs.PartyDAO;
 import main.java.DTOs.PartyDTO;
+import main.java.Managers.VocabularyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 @Service
 public class PartyDAOFactory {
-private  VocabularyManager vocabulary;
+private VocabularyManager vocabulary;
     @Autowired
     public PartyDAOFactory(VocabularyManager vocabulary) {
        this.vocabulary = vocabulary;
@@ -27,7 +28,6 @@ private  VocabularyManager vocabulary;
         result.setPve(partyDTO.getPve());
         result.setPvp(partyDTO.getPvp());
         result.setChatType(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.chatType, partyDTO.getChatType()));
-        result.setVoiceChat(partyDTO.getVoiceChat());
         result.setChatListening(partyDTO.getChatListening());
         result.setChatSpeaking(partyDTO.getChatSpeaking());
         result.setStrongLanguage(partyDTO.getStrongLanguage());
@@ -36,7 +36,7 @@ private  VocabularyManager vocabulary;
         result.setServerName(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.serverName, partyDTO.getServerName()));
         result.setCreateDate(new Date());
         result.setUpdateDate(new Date());
-        result.setOwner(partyDTO.getOwner());
+        result.setUser(partyDTO.getUser());
         return result;
     }
 

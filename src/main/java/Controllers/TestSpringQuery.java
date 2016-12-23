@@ -2,13 +2,8 @@ package main.java.Controllers;
 
 import com.google.gson.Gson;
 import main.java.DAOs.PartyDAO;
-import main.java.DAOs.PrimeTimeDAO;
-import main.java.DAOs.SlotDAO;
-import main.java.DTOs.PartyDTO;
-import main.java.Managers.PartyDTOFactory;
+import main.java.Factories.PartyDTOFactory;
 import main.java.Repositories.PartyRepository;
-import main.java.Repositories.PrimeTimeRepository;
-import main.java.Repositories.SlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
