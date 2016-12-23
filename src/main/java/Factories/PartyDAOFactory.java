@@ -28,7 +28,6 @@ private VocabularyManager vocabulary;
         result.setPve(partyDTO.getPve());
         result.setPvp(partyDTO.getPvp());
         result.setChatType(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.chatType, partyDTO.getChatType()));
-        result.setVoiceChat(partyDTO.getVoiceChat());
         result.setChatListening(partyDTO.getChatListening());
         result.setChatSpeaking(partyDTO.getChatSpeaking());
         result.setStrongLanguage(partyDTO.getStrongLanguage());
@@ -37,7 +36,7 @@ private VocabularyManager vocabulary;
         result.setServerName(this.vocabulary.getIdByTypeAndValue(VocabularyTypes.serverName, partyDTO.getServerName()));
         result.setCreateDate(new Date());
         result.setUpdateDate(new Date());
-        result.setOwner(partyDTO.getOwner());
+        result.setUser(partyDTO.getUser());
         return result;
     }
 

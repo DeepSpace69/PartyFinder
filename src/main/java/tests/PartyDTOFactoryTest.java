@@ -52,7 +52,6 @@ public class PartyDTOFactoryTest {
         PartyDAO partyDAO = new PartyDAO();
         partyDAO.setName("Penguins");
         partyDAO.setAge(18);
-        partyDAO.setVoiceChat(true);
         partyDAO.setChatListening(true);
         partyDAO.setChatSpeaking(true);
         partyDAO.setChatType("chatType_Skype");
@@ -143,8 +142,6 @@ public class PartyDTOFactoryTest {
         expected.setStrongLanguage(false);
         expected.setServersGroup(null);
         expected.setServerName(null);
-        expected.setVoiceChat(true);
-
 
         // Act
         PartyDTO actual =target.create(partyDAO,slots,primeTimes);
@@ -156,7 +153,6 @@ public class PartyDTOFactoryTest {
         Assert.assertEquals(false, actual.getStrongLanguage());
         Assert.assertEquals(null, actual.getServersGroup());
         Assert.assertEquals(null, actual.getServerName());
-        Assert.assertEquals(true, actual.getVoiceChat());
         Assert.assertEquals(true, actual.getChatListening());
         Assert.assertEquals(true, actual.getChatSpeaking());
         Assert.assertEquals("Skype", actual.getChatType());

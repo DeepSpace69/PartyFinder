@@ -19,7 +19,7 @@ function reqListener(sender) {
 function signIn() {
     var party = new Object();
 	
-    party.name = "Strawbyrries";
+    party.name = "Babies2";
     party.age = 21;
 	//party.timeZone = 2;
 	party.language = "ru";

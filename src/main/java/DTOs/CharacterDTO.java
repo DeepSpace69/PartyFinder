@@ -5,11 +5,13 @@ import main.java.DAOs.CharacterDAO;
 import java.util.List;
 
 public class CharacterDTO {
+    private Long id;
     private String name;
     private String role;
     private String classType;
     private Integer level;
     private String serverName;
+    private Long user;
     private List<PrimeTimeDTO> primeTimes;
 
     public CharacterDTO(CharacterDAO characterDAO) {
@@ -17,6 +19,14 @@ public class CharacterDTO {
 
     public CharacterDTO() {
 
+    }
+
+    public Long getUser() {
+        return user;
+    }
+
+    public void setUser(Long user) {
+        this.user = user;
     }
 
     public String getName() {
@@ -67,4 +77,11 @@ public class CharacterDTO {
         this.primeTimes = primeTimes;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

@@ -27,11 +27,13 @@ public class CharacterDTOFactory {
 
     public CharacterDTO create(CharacterDAO characterDAO, List<PrimeTimeDAO> primeTimeDAOs) {
         CharacterDTO result = new CharacterDTO();
+        result.setId(characterDAO.getId());
         result.setName(characterDAO.getName());
         result.setRole(characterDAO.getRole());
         result.setClassType(characterDAO.getClassType());
         result.setLevel(characterDAO.getLevel());
         result.setServerName(characterDAO.getServerName());
+        result.setUser(characterDAO.getUser());
         List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
         for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
             if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {

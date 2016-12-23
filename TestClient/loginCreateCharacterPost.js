@@ -7,7 +7,7 @@ function reqListener(sender) {
 
     var xhr = sender.srcElement;
     if (xhr.status === 200) {
-       showError('OK');
+       showError('OK '+  xhr.responseText);
     }
     else {
         showError('Unexpected error: ' + xhr.responseText);
@@ -18,7 +18,7 @@ function reqListener(sender) {
 
 function signIn() {
     	var character = new Object();	
-    	character.name = "Cherry";
+    	character.name = "Candy";
 	character.serverName = "Dream";
 	character.role  ="DD";
 	character.classType  ="Gunslinger";

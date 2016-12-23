@@ -34,12 +34,12 @@ public class PartyDTOFactory {
 
     public PartyDTO create(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
         PartyDTO result = new PartyDTO();
+        result.setId(party.getId());
         result.setName(party.getName());
         result.setAge(party.getAge());
         result.setPve(party.getPve());
         result.setPvp(party.getPvp());
         result.setChatType(this.vocabulary.getValueById(party.getChatType()));
-        result.setVoiceChat(party.getVoiceChat());
         result.setChatListening(party.getChatListening());
         result.setChatSpeaking(party.getChatSpeaking());
         result.setStrongLanguage(party.getStrongLanguage());
@@ -49,7 +49,7 @@ public class PartyDTOFactory {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
-        result.setOwner(party.getOwner());
+        result.setUser(party.getUser());
         if (slots == null) {
             result.setSlots(null);
         } else {

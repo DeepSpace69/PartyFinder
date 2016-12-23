@@ -1,15 +1,7 @@
 package main.java.DAOs;
 
 
-import main.java.DTOs.PartyDTO;
-
-
 import javax.persistence.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -41,9 +33,6 @@ public class PartyDAO {
     private String serverName;
 
     @Column
-    private Boolean voiceChat;
-
-    @Column
     private Boolean chatListening;
 
     @Column
@@ -66,18 +55,18 @@ public class PartyDAO {
     private Date updateDate;
 
     @Column
-    private Long owner;
+    private Long user;
 
     public PartyDAO() {
 
     }
 
-    public Long getOwner() {
-        return owner;
+    public Long getUser() {
+        return user;
     }
 
-    public void setOwner(Long owner) {
-        this.owner = owner;
+    public void setUser(Long user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -134,14 +123,6 @@ public class PartyDAO {
 
     public void setServerName(String serverName) {
         this.serverName = serverName;
-    }
-
-    public Boolean getVoiceChat() {
-        return voiceChat;
-    }
-
-    public void setVoiceChat(Boolean voiceChat) {
-        this.voiceChat = voiceChat;
     }
 
     public Boolean getChatListening() {

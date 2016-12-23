@@ -2,7 +2,6 @@ package main.java.DAOs;
 
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by Tatka on 22.11.2016.
@@ -24,13 +23,13 @@ public class CharacterDAO {
     @Column
     private String serverName;
     @Column
-    private Long owner;
+    private Long user;
 
     public CharacterDAO() {
     }
 
-    public Long getOwner() {
-        return owner;
+    public Long getUser() {
+        return user;
     }
 
     public Long getId() {
@@ -81,7 +80,7 @@ public class CharacterDAO {
         this.serverName = serverName;
     }
 
-    public void setOwner(Long owner) {
-        this.owner = owner;
+    public void setUser(Long user) {
+        this.user = user;
     }
 }

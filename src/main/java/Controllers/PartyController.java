@@ -113,7 +113,7 @@ public class PartyController {
                 filters.stream().collect(Collectors.groupingBy(p -> p.getKey(), mapping(x -> x.getValue(), toList())));
         List<Predicate> orClauses = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : groupedFilters.entrySet()) {
-            if (Objects.equals(entry.getValue(), null)||Objects.equals(entry.getValue(), "null")) {
+            if (entry.getValue().contains(null)) {
             } else {
                 orClauses.add(this.createOrClause(entry.getKey(), entry.getValue()));
             }
