@@ -78,17 +78,17 @@
                     Voice
                 </div>
                 <div class="card-block">
-                    <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','Skype')">
-                        <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','Skype')"> Skype
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','Skype')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','Skype')"> Skype
                     </label>
-                    <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','RaidCall')">
-                        <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','RaidCall')"> RaidCall
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','RaidCall')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','RaidCall')"> RaidCall
                     </label>
-                    <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','TeamSpeak')">
-                        <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','TeamSpeak')"> TeamSpeak
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','TeamSpeak')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','TeamSpeak')"> TeamSpeak
                     </label>
-                    <label class="btn btn-secondary" [class.active]="getFilter('voiceChat','NA')">
-                        <input style="display:none" type="checkbox" (click)="setFilter('voiceChat','NA')"> N\A
+                    <label class="btn btn-secondary" [class.active]="getFilter('chatType','NA')">
+                        <input style="display:none" type="checkbox" (click)="setFilter('chatType','NA')"> N\A
                     </label>
                 </div>
             </div>
@@ -188,12 +188,13 @@
             </div>
 
         </div>
-        <div class="col-xs-9 parties">
-            <div class="list-group ml-1 mt-1 mr-1">
-                <div *ngFor="let party of parties" class="list-group-item row">
-                    <div class="col-xs-1 flex-xs-middle">
-                        <div style="height:80px;width:80px;background-color:aquamarine;border-color:black;border-width:1px;border-style:solid;"></div>
 
+        <!--                 Parties                -->
+        <div class="col-xs-9">
+            <div class="list-group ml-1 mt-1 mr-1">
+                <div *ngFor="let party of parties" class="parties list-group-item row">
+                    <div class="col-xs-1 align-middle border">
+                        <img src="/img/noimageavailable.png" class="img-fluid">
                     </div>
                     <div class="col-xs-5 flex-xs-middle">
                         <div class="row">{{party.name}}</div>
@@ -206,13 +207,13 @@
                         </div>
                         <div class="row">{{party.serverName}} | {{party.groupServer}}</div>
                     </div>
-                    <div class="col-xs-3 flex-xs-middle">
-                        <div class="list-group-item row">Sunday</div>
-                        <div class="list-group-item row">Sunday</div>
-                        <div class="list-group-item row">Sunday</div>
-                        <div class="list-group-item row">Sunday</div>
-                        <div class="list-group-item row">Sunday</div>
-                        <div class="list-group-item row">Sunday</div>
+                    <div class="col-xs-3 flex-xs-middle day">
+                        <div class="list-group-item row">Monday</div>
+                        <div class="list-group-item row">Tuesday</div>
+                        <div class="list-group-item row">Wednesday</div>
+                        <div class="list-group-item row">Thirsday</div>
+                        <div class="list-group-item row">Friday</div>
+                        <div class="list-group-item row">Saturday</div>
                         <div class="list-group-item row">Sunday</div>
                     </div>
                     <div class="col-xs-3 flex-xs-middle">
