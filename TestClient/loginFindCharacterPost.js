@@ -101,7 +101,11 @@ function signIn() {
 	filter6.key = "user";
 	filter6.value = 2;
 
-	var list = [filter6];
+	var filter7 = new Object();
+	filter7.key = "role";
+	filter7.value = "DD";
+
+	var list = [filter7];
 	
     //alert(userPassword+userLogin);
     var xhr = new XMLHttpRequest();
@@ -110,7 +114,7 @@ function signIn() {
 	var path1 = 'http://groupfinder.herokuapp.com/createParty';
 	var path2 = 'http://localhost:8080/findParties';
 	var path3 = 'http://groupfinder.herokuapp.com/findParties2';
-	var path4 = 'http://localhost:8080///findCharacters';
+	var path4 = 'http://localhost:8080/findCharacters';
     xhr.open('POST', path4, true);
 	
 

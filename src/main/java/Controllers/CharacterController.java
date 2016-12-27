@@ -30,14 +30,14 @@ public class CharacterController {
     private CharacterRepository repository;
     private PrimeTimeRepository primeTimeRepository;
     private CharacterDTOFactory characterDTOFactory;
-    private FinderByFilters<CharacterDAO> finderByFilters;
+    private FinderByFilters finderByFilters;
 
     @Autowired
     public CharacterController(
             CharacterRepository repository,
             CharacterDTOFactory characterDTOFactory,
             PrimeTimeRepository primeTimeRepository,
-            FinderByFilters<CharacterDAO> finderByFilters) {
+            FinderByFilters finderByFilters) {
         this.repository = repository;
         this.characterDTOFactory = characterDTOFactory;
         this.primeTimeRepository = primeTimeRepository;

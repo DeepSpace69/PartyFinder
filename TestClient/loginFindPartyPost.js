@@ -101,7 +101,7 @@ function signIn() {
 	filter6.key = "user";
 	filter6.value = 2;
 
-	var list = [filter6];
+	var list = [filter3,  filter2];
 	
     //alert(userPassword+userLogin);
     var xhr = new XMLHttpRequest();

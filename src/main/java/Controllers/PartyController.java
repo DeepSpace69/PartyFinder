@@ -28,13 +28,13 @@ public class PartyController {
     private PartyRepository repository;
     private PartyDTOFactory factory;
     private Gson gson;
-    private FinderByFilters<PartyDAO> finderByFilters;
+    private FinderByFilters finderByFilters;
 
     @Autowired
     public PartyController(
             PartyRepository repository,
             PartyDTOFactory factory,
-            FinderByFilters<PartyDAO> finderByFilters) {
+            FinderByFilters finderByFilters) {
         this.repository = repository;
         this.factory = factory;
         this.finderByFilters = finderByFilters;

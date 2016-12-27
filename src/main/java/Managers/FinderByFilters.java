@@ -17,14 +17,12 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
+
 @Service
-public class FinderByFilters<T> {
+public class FinderByFilters {
     private INameResolver nameResolver;
     private ITypeResolver typeResolver;
     private EntityManager entityManager;
-    private CriteriaBuilder criteriaBuilder;
-    private CriteriaQuery<T> criteriaQuery;
-    private Root<T> partyRoot;
 
     @Autowired
     public FinderByFilters(
@@ -32,67 +30,67 @@ public class FinderByFilters<T> {
             ITypeResolver typeResolver,
             INameResolver nameResolver) {
         this.entityManager = entityManager;
-        this.criteriaBuilder = this.entityManager.getCriteriaBuilder();
         this.typeResolver = typeResolver;
         this.nameResolver = nameResolver;
     }
 
-    public List<T> getByFilters(List<FilterDTO> filters, Class<T> type ){
-        this.criteriaQuery = this.criteriaBuilder.createQuery(type);
-        this.partyRoot =this.criteriaQuery.from(type);
-        Predicate clause = this.createClause(filters);
-        this.criteriaQuery.where(clause);
-        TypedQuery<T> query = entityManager.createQuery(this.criteriaQuery);
+    public <T> List<T> getByFilters(List<FilterDTO> filters, Class<T> type) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
+        Root<T> root = criteriaQuery.from(type);
+        Predicate clause = this.createClause(filters, criteriaBuilder, root);
+        criteriaQuery.where(clause);
+        TypedQuery<T> query = entityManager.createQuery(criteriaQuery);
         List<T> result = query.getResultList();
         return result;
     }
 
-    private Predicate createClause(List<FilterDTO> filters) {
+    private <T> Predicate createClause(List<FilterDTO> filters, CriteriaBuilder criteriaBuilder, Root<T> root) {
         Map<String, List<String>> groupedFilters =
                 filters.stream().collect(Collectors.groupingBy(p -> p.getKey(), mapping(x -> x.getValue(), toList())));
         List<Predicate> orClauses = new ArrayList<>();
         for (Map.Entry<String, List<String>> entry : groupedFilters.entrySet()) {
             if (entry.getValue().contains(null)) {
             } else {
-                orClauses.add(this.createOrClause(entry.getKey(), entry.getValue()));
+                orClauses.add(this.createOrClause(entry.getKey(), entry.getValue(), criteriaBuilder, root));
             }
         }
 
-        return this.criteriaBuilder.and(orClauses.toArray(new Predicate[orClauses.size()]));
+        return criteriaBuilder.and(orClauses.toArray(new Predicate[orClauses.size()]));
     }
 
-    private Predicate createOrClause(String type, List<String> values) {
+    private <T> Predicate createOrClause(String type, List<String> values, CriteriaBuilder criteriaBuilder, Root<T> root) {
         Predicate result;
         if (values.size() == 1) {
-            result = this.createSimpleClause(type, values.get(0));
+            result = this.createSimpleClause(type, values.get(0), criteriaBuilder, root);
         } else {
             List<Predicate> likeClauses = new ArrayList<>();
             for (String value : values) {
-                Predicate likeClause = this.createSimpleClause(type, value);
+                Predicate likeClause = this.createSimpleClause(type, value, criteriaBuilder, root);
                 likeClauses.add(likeClause);
             }
-            result = this.criteriaBuilder.or(likeClauses.toArray(new Predicate[likeClauses.size()]));
+            result = criteriaBuilder.or(likeClauses.toArray(new Predicate[likeClauses.size()]));
         }
         return result;
     }
 
-    private Predicate createSimpleClause(String type, String value) {
-        Predicate result = this.criteriaBuilder.conjunction();
+    private <T> Predicate createSimpleClause(String type, String value, CriteriaBuilder criteriaBuilder, Root<T> root) {
+        Predicate result = criteriaBuilder.conjunction();
         if (this.typeResolver.getType(type) == String.class) {
             String valueDAO = this.nameResolver.getDAOValueName(type, value);
-            result = this.criteriaBuilder.like(this.partyRoot.get(type), String.format("%%%1s%%", valueDAO));
+            result = criteriaBuilder.like(root.get(type), String.format("%%%1s%%", valueDAO));
         }
         if (this.typeResolver.getType(type) == Boolean.class) {
-            result = this.criteriaBuilder.equal(this.partyRoot.get(type), Boolean.parseBoolean(value));
+            result = criteriaBuilder.equal(root.get(type), Boolean.parseBoolean(value));
         }
         if (Objects.equals(type, "age")) {
-            result = this.criteriaBuilder.gt(this.partyRoot.get(type), Integer.parseInt(value));
+            result = criteriaBuilder.gt(root.get(type), Integer.parseInt(value));
         }
 //        if(Objects.equals(type, "createDate")||Objects.equals(type, "updateDate")){
-//            result = this.criteriaBuilder.equal(this.partyRoot.get(type), Date.parse(value));
+//            result = criteriaBuilder.equal(root.get(type), Date.parse(value));
 //        }
         if (Objects.equals(type, "user")) {
-            result = this.criteriaBuilder.equal(this.partyRoot.get(type), Integer.parseInt(value));
+            result = criteriaBuilder.equal(root.get(type), Integer.parseInt(value));
         }
         return result;
     }
