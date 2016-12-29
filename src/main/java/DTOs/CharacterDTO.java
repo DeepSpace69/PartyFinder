@@ -9,6 +9,7 @@ import java.util.List;
 public class CharacterDTO {
     private Long id;
     private String name;
+    private String sex;
     private String role;
     private String classType;
     private Integer level;
@@ -19,6 +20,7 @@ public class CharacterDTO {
     public CharacterDTO(CharacterDAO characterDAO) {
         this.id = characterDAO.getId();
         this.name = characterDAO.getName();
+        this.sex = characterDAO.getSex();
         this.role = characterDAO.getRole();
         this.classType = characterDAO.getClassType();
         this.level = characterDAO.getLevel();
@@ -97,5 +99,13 @@ public class CharacterDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

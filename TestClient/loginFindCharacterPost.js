@@ -105,7 +105,12 @@ function signIn() {
 	filter7.key = "role";
 	filter7.value = "DD";
 
-	var list = [];
+	var filter8 = new Object();
+	filter8.key = "sex";
+	filter8.value = "FEMALE";
+
+
+	var list = [filter8];
 	
     //alert(userPassword+userLogin);
     var xhr = new XMLHttpRequest();

@@ -17,6 +17,8 @@ public class CharacterDAO {
     @Column
     private String name;
     @Column
+    private String sex;
+    @Column
     private String role;
     @Column
     private String classType;
@@ -86,5 +88,13 @@ public class CharacterDAO {
 
     public List<PrimeTimeDAO> getPrimeTimeDAOs() {
         return primeTimeDAOs;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }
