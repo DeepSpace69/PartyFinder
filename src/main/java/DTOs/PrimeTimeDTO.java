@@ -37,6 +37,14 @@ public class PrimeTimeDTO {
         this.timeZone = GMT;
     }
 
+    public PrimeTimeDTO(PrimeTimeDAO primeTimeDAO) {
+        this.start = new TimeOfDayDTO(primeTimeDAO.getStartHour(), primeTimeDAO.getStartMinute());
+        this.end = new TimeOfDayDTO(primeTimeDAO.getEndHour(), primeTimeDAO.getEndMinute());
+        this.day = primeTimeDAO.getDay();
+        this.timeZone = primeTimeDAO.getTimeZone();
+    }
+
+
     public TimeOfDayDTO getStart() {
         return start;
     }

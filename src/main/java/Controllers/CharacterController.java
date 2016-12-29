@@ -80,7 +80,7 @@ public class CharacterController {
     private List<CharacterDTO> makeDTOs(List<CharacterDAO> characters) {
         List<CharacterDTO> result = new ArrayList<>();
         for (CharacterDAO characterDAO : characters) {
-            result.add(this.characterDTOFactory.create(characterDAO,null));
+            result.add(new CharacterDTO(characterDAO));
         }
         return result;
     }

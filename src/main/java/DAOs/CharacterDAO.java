@@ -2,11 +2,13 @@ package main.java.DAOs;
 
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Tatka on 22.11.2016.
  */
-@Entity
+@Entity()
 @Table(name = "characters")
 public class CharacterDAO {
     @Id
@@ -24,63 +26,65 @@ public class CharacterDAO {
     private String serverName;
     @Column
     private Long user;
+    @OneToMany(mappedBy="character")
+    private List<PrimeTimeDAO> primeTimeDAOs;
 
     public CharacterDAO() {
-    }
-
-    public Long getUser() {
-        return user;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public String getClassType() {
-        return classType;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public String getServerName() {
-        return serverName;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
 
+    public String getClassType() {
+        return classType;
+    }
+
     public void setClassType(String classType) {
         this.classType = classType;
+    }
+
+    public Integer getLevel() {
+        return level;
     }
 
     public void setLevel(Integer level) {
         this.level = level;
     }
 
+    public String getServerName() {
+        return serverName;
+    }
+
     public void setServerName(String serverName) {
         this.serverName = serverName;
     }
 
+    public Long getUser() {
+        return user;
+    }
+
     public void setUser(Long user) {
         this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<PrimeTimeDAO> getPrimeTimeDAOs() {
+        return primeTimeDAOs;
     }
 }

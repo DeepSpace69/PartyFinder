@@ -7,7 +7,7 @@ import javax.persistence.*;
 /**
  * Created by Tatka on 23.11.2016.
  */
-@Entity
+@Entity()
 @Table(name = "prime_times")
 public class PrimeTimeDAO {
 
@@ -26,13 +26,17 @@ public class PrimeTimeDAO {
     private String day;
     @Column
     private Integer timeZone;
+    @ManyToOne
+    @JoinColumn(name="fkCharacter")
+    private CharacterDAO character;
+    @Column(insertable = false, updatable = false)
+    private Long fkCharacter;
     @Column
     private Long fkParty;
-    @Column
-    private Long fkCharacter;
 
     public PrimeTimeDAO() {
     }
+
 
     public Long getId() {
         return id;
@@ -60,10 +64,6 @@ public class PrimeTimeDAO {
 
     public Integer getTimeZone() {
         return timeZone;
-    }
-
-    public Long getFkParty() {
-        return fkParty;
     }
 
     public void setId(Long id) {
@@ -94,8 +94,12 @@ public class PrimeTimeDAO {
         this.timeZone = timeZone;
     }
 
-    public void setFkParty(Long fkParty) {
-        this.fkParty = fkParty;
+    public CharacterDAO getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(CharacterDAO character) {
+        this.character = character;
     }
 
     public Long getFkCharacter() {
@@ -104,5 +108,13 @@ public class PrimeTimeDAO {
 
     public void setFkCharacter(Long fkCharacter) {
         this.fkCharacter = fkCharacter;
+    }
+
+    public Long getFkParty() {
+        return fkParty;
+    }
+
+    public void setFkParty(Long fkParty) {
+        this.fkParty = fkParty;
     }
 }

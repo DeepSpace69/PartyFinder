@@ -105,7 +105,7 @@ function signIn() {
 	filter7.key = "role";
 	filter7.value = "DD";
 
-	var list = [filter7];
+	var list = [];
 	
     //alert(userPassword+userLogin);
     var xhr = new XMLHttpRequest();
