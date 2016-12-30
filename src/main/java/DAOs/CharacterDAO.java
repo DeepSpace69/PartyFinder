@@ -23,13 +23,13 @@ public class CharacterDAO {
     @Column
     private String serverName;
     @Column
-    private Long user;
+    private Long fkUser;
 
     public CharacterDAO() {
     }
 
-    public Long getUser() {
-        return user;
+    public Long getFkUser() {
+        return fkUser;
     }
 
     public Long getId() {
@@ -80,7 +80,7 @@ public class CharacterDAO {
         this.serverName = serverName;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setFkUser(Long fkUser) {
+        this.fkUser = fkUser;
     }
 }

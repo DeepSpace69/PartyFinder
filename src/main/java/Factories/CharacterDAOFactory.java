@@ -22,7 +22,7 @@ public class CharacterDAOFactory {
         result.setClassType(characterDTO.getClassType());
         result.setLevel(characterDTO.getLevel());
         result.setServerName(characterDTO.getServerName());
-        //result.setOwner();
+        result.setFkUser(characterDTO.getUser());
         return result;
     }
 }

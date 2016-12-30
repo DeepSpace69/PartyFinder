@@ -33,7 +33,7 @@ public class CharacterDTOFactory {
         result.setClassType(characterDAO.getClassType());
         result.setLevel(characterDAO.getLevel());
         result.setServerName(characterDAO.getServerName());
-        result.setUser(characterDAO.getUser());
+        result.setUser(characterDAO.getFkUser());
         List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
         for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
             if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {
@@ -41,6 +41,7 @@ public class CharacterDTOFactory {
             }
         }
         result.setPrimeTimes(primeTimeDTOs);
+        result.setUser(characterDAO.getFkUser());
         return result;
     }
 
