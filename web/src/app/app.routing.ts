@@ -1,13 +1,17 @@
 ﻿import { RouterModule, Routes } from '@angular/router';
-
-// import { HomeComponent } from './home/home.component';
-// import { AboutComponent } from './about/about.component';
-// import { FindPartiesComponent } from './find-parties/find.parties.component';
+import { LoginComponent } from './login/login.component';
+import { FindPartiesComponent } from './find-parties/find.parties.component';
+import { CreatePartyComponent } from './create-party/create.party.component';
+import { CreateCharacterComponent } from './create-character/create.character.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
-  // { path: 'about', component: AboutComponent},
-  // { path: 'findParties', component: FindPartiesComponent}
+    { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'findParty', component: FindPartiesComponent },
+    { path: 'createParty', component: CreatePartyComponent },
+    { path: 'createCharacter', component: CreateCharacterComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 export const routing = RouterModule.forRoot(routes);

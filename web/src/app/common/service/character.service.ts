@@ -5,17 +5,16 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class CharacterService {
-private createCharacterUrl = '123';
+    // private createCharacterUrl = '123';
 
-constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-createCharacter(character: CharacterDTO): void
-{
-this.http.post(this.createCharacterUrl, JSON.stringify(character))
-            .toPromise()
-            .catch(this.handleError);
-}
+    createCharacter(character: CharacterDTO): void {
+        // this.http.post(this.createCharacterUrl, JSON.stringify(character))
+        //    .toPromise()
+        //    .catch(this.handleError);
+    }
 
-
-
+    handleError(): void {
+    }
 }

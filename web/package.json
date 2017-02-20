@@ -9,6 +9,8 @@
     "watch": "webpack --watch --progress --profile",
     "build": "rimraf dist && webpack --progress --profile --bail",
     "server": "webpack-dashboard -- webpack-dev-server --inline --port 8081",
+    "server:dev": "webpack-dashboard -- webpack-dev-server --inline --port 8081",
+    "server:prod": "webpack-dashboard -- webpack-dev-server --inline --port 8081",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",
     "lint": "tslint --force \"src/**/*.ts\"",
@@ -20,7 +22,8 @@
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
-    "start": "npm run server",
+    "start:dev": "npm run server:dev",
+    "start:prod": "npm run server:prod",
     "start:hmr": "npm run server -- --hot",
     "postinstall": "npm run webdriver-update"
   },

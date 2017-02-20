@@ -1,44 +1,16 @@
 ﻿import { Component } from '@angular/core';
-
-import { ApiService } from './shared';
-
 import '../style/app.scss';
+import { AuthService } from './common/service/auth.service';
 
 @Component({
-    selector: 'my-app', // <my-app></my-app>
+    selector: 'my-app',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    providers: [AuthService]
 })
 export class AppComponent {
-    url = 'https://github.com/preboot/angular2-webpack';
-    findParties: boolean;
-    createParty: boolean;
-    createCharacter: boolean;
-    constructor(private api: ApiService) {
-        // Do something with api
-        this.onCreateCharacter();
+    public isAuthorised: boolean;
+    constructor(private authService: AuthService) {
+
     }
-
-    onfindParties(): void {
-        this.findParties = true;
-        this.createParty = false;
-        this.createCharacter = false;
-    }
-
-    onCreateParty(): void {
-        this.findParties = false;
-        this.createParty = true;
-        this.createCharacter = false;
-    }
-
-onCreateCharacter(): void
-{
-        this.findParties = false;
-        this.createParty = false;
-        this.createCharacter = true;
-}
-
-
-
-
 }

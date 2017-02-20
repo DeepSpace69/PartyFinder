@@ -1,1 +1,2 @@
-mvn spring-boot:run
+set PATH=%PATH%;c:\work\Install\mvn\bin\
+mvn spring-boot:run -Dspring.profiles.active=dev

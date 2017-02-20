@@ -51,12 +51,18 @@ export class FilterDTO {
 export class CharacterDTO {
     id: number;
     name: string;
-    level: number;
     classType: string;
     serverName: string;
+    level: number;
+    charClass: string;
+    charRole: string;
+    server: string;
     gearScore: number;
     primeTimes: PrimeTimeDTO[];
-constructor(public role: string)
-{
+    constructor(public role: string) {
+    }
 }
+
+export class UserDTO {
+    constructor(public login: string, public password: string) { }
 }
