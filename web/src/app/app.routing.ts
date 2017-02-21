@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'findParty', component: FindPartiesComponent },
     { path: 'createParty', component: CreatePartyComponent },
     { path: 'createCharacter', component: CreateCharacterComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' }
+    { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 export const routing = RouterModule.forRoot(routes);

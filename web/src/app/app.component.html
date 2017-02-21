@@ -1,11 +1,11 @@
 ﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
 <header style="z-index:5">
     <nav>
-        <a routerLink="/login" *ngIf="!authService.isAuthorised">Login</a>
+        <a routerLink="/login" *ngIf="!isAuthorised">Login</a>
         <a routerLink="/home">Home</a>
         <a routerLink="/findParty">Find parties</a>
-        <a routerLink="/createParty">Create party</a>
-        <a routerLink="/createCharacter">Create character</a>
+        <a routerLink="/createParty" *ngIf="isAuthorised">Create party</a>
+        <a routerLink="/createCharacter" *ngIf="isAuthorised">Create character</a>
     </nav>
 </header>
 <router-outlet></router-outlet>
