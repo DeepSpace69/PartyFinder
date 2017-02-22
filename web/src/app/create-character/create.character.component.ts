@@ -16,9 +16,8 @@ export class CreateCharacterComponent implements OnInit {
     newCharacter: CharacterDTO;
     roles: string[];
     classTypes: string[];
-    characterService: CharacterService;
 
-    constructor(private characterServiceArg: CharacterService) {
+    constructor(private characterService: CharacterService) {
         // this.newCharacter = new CharacterDTO();
         this.roles = ROLES;
         this.classTypes = CLASSTYPES;

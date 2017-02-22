@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { PartyService } from './../common/service/party.service';
-import { PartyDTO, PrimeTimeDTO, SlotDTO} from './../common/dto';
+import { PartyDTO, PrimeTimeDTO, SlotDTO } from './../common/dto';
 
 const CLASSTYPES: string[] = ['Select class', 'Gunslinger', 'Blade Master', 'Spiritshaper', 'Vanguard', 'Swordmage', 'Occultist', 'Any'];
 const ROLES: string[] = ['Select role', 'DD', 'Tank', 'Healer', 'Any'];
@@ -25,10 +25,8 @@ export class CreatePartyComponent implements OnInit {
     roles: string[];
     classTypes: string[];
     detailedPrimeTimeSelected: Boolean;
-    partyService: PartyService;
 
-    constructor(private partyServiceArg: PartyService) {
-        this.partyService = partyServiceArg;
+    constructor(private partyService: PartyService) {
         this.party = new PartyDTO();
         this.detailedPrimeTimeSelected = false;
         this.roles = ROLES;
@@ -38,6 +36,7 @@ export class CreatePartyComponent implements OnInit {
         this.party.slots = [];
         for (let i = 1; i < 6; i++) {
             let slot = new SlotDTO(i, this.roles[0], this.classTypes[0]);
+
             this.party.slots.push(slot);
         }
     }

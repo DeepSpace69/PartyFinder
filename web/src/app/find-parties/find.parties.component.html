@@ -2,7 +2,7 @@
 <div class="container-fluid mt-1">
     <div class="row">
         <!--                 FILTERS                -->
-        <div class="col-xs-3 filters">
+        <div class="col-3 filters">
             <div class="input-group pb-1">
                 <input type="text" [(ngModel)]="partyName" class="form-control" placeholder="Search by name ...">
                 <span class="input-group-btn">
@@ -12,7 +12,7 @@
 
             <!--Min lvl-->
             <div class="card">
-                <div class="card-header" id="myElement" (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
+                <div class="card-header" id="myElement">
                     Character lvl
                 </div>
                 <div class="card-block">
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-6">
                     <!--Microphone chat-->
                     <div class="card">
                         <div class="card-header">
@@ -112,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-6">
                     <!--Strong lang. chat-->
                     <div class="card">
                         <div class="card-header">
@@ -153,7 +153,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-6">
                     <!--Party type-->
                     <div class="card">
                         <div class="card-header">
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-6">
                     <!--Language-->
                     <div class="card">
                         <div class="card-header">
@@ -190,24 +190,24 @@
         </div>
 
         <!--                 Parties                -->
-        <div class="col-xs-9">
+        <div class="col-9">
             <div class="list-group ml-1 mt-1 mr-1">
                 <div *ngFor="let party of parties" class="parties list-group-item row">
-                    <div class="col-xs-1 align-middle border">
+                    <div class="col-1 align-middle border">
                         <img src="/img/noimageavailable.png" class="img-fluid">
                     </div>
-                    <div class="col-xs-5 flex-xs-middle">
+                    <div class="col-5 flex-xs-middle">
                         <div class="row">{{party.name}}</div>
                         <div class="row">
-                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
-                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
-                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
-                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
-                            <div class="col-xs-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
+                            <div class="col-1 flex-xs-middle" style="height:40px;width:40px;background-color:pink;border-color:black;border-width:1px;border-style:solid;"></div>
                         </div>
                         <div class="row">{{party.serverName}} | {{party.groupServer}}</div>
                     </div>
-                    <div class="col-xs-3 flex-xs-middle day">
+                    <div class="col-3 flex-xs-middle day">
                         <div class="list-group-item row">Monday</div>
                         <div class="list-group-item row">Tuesday</div>
                         <div class="list-group-item row">Wednesday</div>
@@ -216,7 +216,7 @@
                         <div class="list-group-item row">Saturday</div>
                         <div class="list-group-item row">Sunday</div>
                     </div>
-                    <div class="col-xs-3 flex-xs-middle">
+                    <div class="col-3 flex-xs-middle">
                         <div class="row">
                             <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">PvP</div>
                             <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">PvE</div>
@@ -232,8 +232,8 @@
                             <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">18+</div>
                         </div>
                     </div>
-                    <!--<div class="col-xs-1 flex-xs-middle">id:{{party.id}};</div>
-                    <div class="col-xs-11">
+                    <!--<div class="col-1 flex-xs-middle">id:{{party.id}};</div>
+                    <div class="col-11">
 
                       name:{{party.name}};
                       age:{{party.age}};
@@ -254,6 +254,5 @@
                 </div>
             </div>
         </div>
-        <ngb-pagination [collectionSize]="allParties.length" [(page)]="currentPage" [pageSize]="partiesPerPage" (pageChange)="onChangePage()"></ngb-pagination>
     </div>
 </div>

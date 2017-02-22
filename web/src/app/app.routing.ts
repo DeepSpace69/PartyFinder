@@ -1,4 +1,4 @@
-﻿import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FindPartiesComponent } from './find-parties/find.parties.component';
 import { CreatePartyComponent } from './create-party/create.party.component';

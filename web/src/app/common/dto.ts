@@ -32,15 +32,9 @@ export class PrimeTimeDTO {
 export class SlotDTO {
     isFree: Boolean;
     isPartyLeader: Boolean;
-    index: number;
-    role: string;
-    classType: string;
-    constructor(private indexArg: number, private roleArg: string, private classTypeArg: string) {
+    constructor(public index: number, public role: string, public classType: string) {
         this.isFree = true;
         this.isPartyLeader = false;
-        this.index = indexArg;
-        this.role = roleArg;
-        this.classType = classTypeArg;
     }
 }
 

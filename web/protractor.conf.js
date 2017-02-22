@@ -1,5 +1,5 @@
 exports.config = {
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'http://localhost:8081/',
 
   specs: [
     'src/**/*.e2e-spec.js'
@@ -24,7 +24,7 @@ exports.config = {
   },
 
   onPrepare: function () {
-    var SpecReporter = require('jasmine-spec-reporter');
+    var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
     // add jasmine spec reporter
     jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
 

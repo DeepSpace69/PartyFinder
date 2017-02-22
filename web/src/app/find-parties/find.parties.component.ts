@@ -10,12 +10,13 @@ import * as _ from 'lodash';
     providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {
-    partiesPerPage: number = 13;
+    partiesPerPage: number;
     parties: PartyDTO[];
     allParties: PartyDTO[];
     filters: FilterDTO[];
     currentPage: number;
     partyName: string;
+    slider: number;
 
     constructor(private partyService: PartyService) {
         this.filters = [];

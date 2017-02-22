@@ -22,6 +22,7 @@ export class AuthService {
     authAnnounced$ = this.onAuthSource.asObservable();
 
     constructor(private http: Http) {
+        console.log('api:' + process.env.API_URL);
     }
 
     private handleError(error: any): Promise<any> {

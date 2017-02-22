@@ -2,7 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { FindPartiesComponent } from './find-parties/find.parties.component';
 import { CreatePartyComponent } from './create-party/create.party.component';
@@ -12,13 +11,12 @@ import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-import { HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
+import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import '@angular/material/core/theming/prebuilt/deeppurple-amber';
 
 @NgModule({
     imports: [
         MaterialModule.forRoot(),
-        NgbModule.forRoot(),
         BrowserModule,
         HttpModule,
         FormsModule,

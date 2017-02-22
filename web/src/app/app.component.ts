@@ -11,7 +11,7 @@ import { AuthService } from './common/service/auth.service';
 export class AppComponent {
     public isAuthorised: boolean;
     constructor(private authService: AuthService) {
-        authService.authAnnounced$.subscribe(p => this.onAuthorised(p));
+        this.authService.authAnnounced$.subscribe(p => this.onAuthorised(p));
         this.isAuthorised = false;
     }
 

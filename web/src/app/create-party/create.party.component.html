@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <form class="form-group">
         <div class="form-inline row">
-            <div class="form-group col-xs-7">
+            <div class="form-group col-7">
                 <label for="inputName"><font size="5">Create party</font></label>
                 <input type="text" id="inputName" name="inputName" [(ngModel)]="party.name" class="form-control ml-1" aria-describedby="nameHelpInline" placeholder="Name" style="width:56.7%;">
                 <small id="nameHelpInline" class="text-muted">
@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="form-inline col-xs-6">
+            <div class="form-inline col-6">
                 <div class="card" style="margin-bottom:-1px;">
                     <div class="card-header">Party slots</div>
                 </div>
@@ -45,14 +45,14 @@
                     <span class="custom-file-control"></span>
                 </label>
             </div>
-            <div class="form-group col-xs-6">
+            <div class="form-group col-6">
                 <div class="card">
                     <div class="card-header">Setup requirements</div>
                     <div class="card-block">
                         <!--Chat Type-->
                         <div class="form-group row">
-                            <label for="example-chatTypeRB-input" class="col-xs-2 col-form-label">Voice</label>
-                            <div class="col-xs-10" [(ngModel)]="party.chatType" ngbRadioGroup name="chatTypeRB">
+                            <label for="example-chatTypeRB-input" class="col-2 col-form-label">Voice</label>
+                            <div class="col-10" [(ngModel)]="party.chatType" ngbRadioGroup name="chatTypeRB">
                                 <label class="btn btn-secondary">
                                     <input type="radio" value="Skype" id="example-chatTypeRB-input"> Skype
                                 </label>
@@ -69,8 +69,8 @@
                         </div>
                         <!--has Microphone-->
                         <div class="form-group row">
-                            <label for="example-mic-input" class="col-xs-2 col-form-label">Microphone</label>
-                            <div class="col-xs-10" [(ngModel)]="party.chatSpeaking" ngbRadioGroup name="microphoneRB">
+                            <label for="example-mic-input" class="col-2 col-form-label">Microphone</label>
+                            <div class="col-10" [(ngModel)]="party.chatSpeaking" ngbRadioGroup name="microphoneRB">
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="true" id="example-mic-input"> Yes
                                 </label>
@@ -80,8 +80,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-censure-input" class="col-xs-2 col-form-label">Strong lang.</label>
-                            <div class="col-xs-10" [(ngModel)]="party.strongLanguage" ngbRadioGroup name="strongLanguageRB">
+                            <label for="example-censure-input" class="col-2 col-form-label">Strong lang.</label>
+                            <div class="col-10" [(ngModel)]="party.strongLanguage" ngbRadioGroup name="strongLanguageRB">
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="true" id="example-censure-input"> Yes
                                 </label>
@@ -91,8 +91,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-age-input" class="col-xs-2 col-form-label">Age</label>
-                            <div class="col-xs-10" [(ngModel)]="party.age" ngbRadioGroup name="voiceChatType4">
+                            <label for="example-age-input" class="col-2 col-form-label">Age</label>
+                            <div class="col-10" [(ngModel)]="party.age" ngbRadioGroup name="voiceChatType4">
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="-1" id="example-age-input"> Any
                                 </label>
@@ -108,8 +108,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-type-input" class="col-xs-2 col-form-label">Type</label>
-                            <div class="col-xs-10">
+                            <label for="example-type-input" class="col-2 col-form-label">Type</label>
+                            <div class="col-10">
                                 <label class="btn btn-secondary" [class.active]="party.pve">
                                     <input style="display:none" type="checkbox" [(ngModel)]="party.pve" name="pveCB" id="example-type-input"> PvE
                                 </label>
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-lang-input" class="col-xs-2 col-form-label">Language</label>
-                            <div class="col-xs-10" [(ngModel)]="party.language" ngbRadioGroup name="voiceChatType6">
+                            <label for="example-lang-input" class="col-2 col-form-label">Language</label>
+                            <div class="col-10" [(ngModel)]="party.language" ngbRadioGroup name="voiceChatType6">
                                 <label class="btn btn-secondary">
                                     <input type="radio" value="ru" id="example-lang-input"> RU
                                 </label>
@@ -140,10 +140,10 @@
                     <ul class="list-group">
                         <li class="list-group-item" *ngFor="let primeTime of party.primeTimes" style="padding-bottom:0px;padding-top:0px;">
                             <div class="row" style="display:flex;align-items:center">
-                                <label class="col-xs-2">{{primeTime.day}}</label>
-                                <ngb-timepicker [(ngModel)]="primeTime.start" (ngModelChange)="onPrimeTimeChanged(primeTime)" class="ml-1" name="timeStartPicker" style="display: inline-block; vertical-align:middle"></ngb-timepicker>
+                                <label class="col-2">{{primeTime.day}}</label>
+                                <!--<ngb-timepicker [(ngModel)]="primeTime.start" (ngModelChange)="onPrimeTimeChanged(primeTime)" class="ml-1" name="timeStartPicker" style="display: inline-block; vertical-align:middle"></ngb-timepicker>-->
                                 <label style="display: inline-block;"> - </label>
-                                <ngb-timepicker [(ngModel)]="primeTime.end" (ngModelChange)="onPrimeTimeChanged(primeTime)" name="timeEndPicker" style="display: inline-block"></ngb-timepicker>
+                                <!--<ngb-timepicker [(ngModel)]="primeTime.end" (ngModelChange)="onPrimeTimeChanged(primeTime)" name="timeEndPicker" style="display: inline-block"></ngb-timepicker>-->
                                 <div class="tag tag-primary ml-1" style="display: inline-block;font-size:150%;">{{primeTime.totalHours}} h.</div>
                             </div>
                         </li>
@@ -152,7 +152,7 @@
             </div>
         </div>
         <!--SUBMIT BUTTON-->
-        <div class="form-group col-xs-12 text-xs-right">
+        <div class="form-group col-12 text-xs-right">
             <input class="btn btn-primary" type="submit" value="Submit" (click)="submit()">
         </div>
     </form>

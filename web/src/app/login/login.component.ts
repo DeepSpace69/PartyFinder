@@ -1,4 +1,4 @@
-﻿import { Component, OnInit} from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../common/service/auth.service';
 
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
             })
             .catch(p => {
                 this.hasError = true;
+                console.log(p);
             });
     }
 }
