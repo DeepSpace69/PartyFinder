@@ -10,6 +10,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 
 /**
  * Env
@@ -165,6 +166,26 @@ module.exports = function makeWebpackConfig() {
      * List: http://webpack.github.io/docs/list-of-plugins.html
      */
     config.plugins = [
+
+new webpack.ProvidePlugin({
+    $: "jquery",
+    jQuery: "jquery",
+    "window.jQuery": "jquery",
+    Tether: "tether",
+    "window.Tether": "tether",
+    Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
+    Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+    Button: "exports-loader?Button!bootstrap/js/dist/button",
+    Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
+    Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
+    Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+    Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
+    Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+    Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
+    Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
+    Util: "exports-loader?Util!bootstrap/js/dist/util"
+}),
+
       // Define env variables to help with builds
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
       new webpack.DefinePlugin({
@@ -175,7 +196,7 @@ module.exports = function makeWebpackConfig() {
           }
       }),
 
-      // Workaround needed for angular 2 angular/angular#11580
+// Workaround needed for angular 2 angular/angular#11580
         new webpack.ContextReplacementPlugin(
           // The (\\|\/) piece accounts for path separators in *nix and Windows
           /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
