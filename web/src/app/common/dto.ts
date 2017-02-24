@@ -16,6 +16,7 @@
     comment: string;
     createDate: Date;
     updateDate: Date;
+    image: string;
 }
 
 export class PrimeTimeDTO {
@@ -32,6 +33,7 @@ export class PrimeTimeDTO {
 export class SlotDTO {
     isFree: Boolean;
     isPartyLeader: Boolean;
+    character: CharacterDTO;
     constructor(public index: number, public role: string, public classType: string) {
         this.isFree = true;
         this.isPartyLeader = false;
@@ -52,6 +54,7 @@ export class CharacterDTO {
     charRole: string;
     server: string;
     gearScore: number;
+    image: string;
     primeTimes: PrimeTimeDTO[];
     constructor(public role: string) {
     }

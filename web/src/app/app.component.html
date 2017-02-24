@@ -1,7 +1,7 @@
 ﻿<header style="z-index:5">
     <nav>
         <a routerLink="/login" *ngIf="!isAuthorised">Login</a>
-        <a routerLink="/home">Home</a>
+        <a routerLink="/home" *ngIf="isAuthorised">Home</a>
         <a routerLink="/findParty">Find parties</a>
         <a routerLink="/createParty" *ngIf="isAuthorised">Create party</a>
         <a routerLink="/createCharacter" *ngIf="isAuthorised">Create character</a>

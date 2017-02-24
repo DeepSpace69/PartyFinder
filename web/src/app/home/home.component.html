@@ -1,18 +1,23 @@
 ﻿<div style="height:70px; width:100%;"></div>
 <div class="container-fluid">
-    <div class="d-flex flex-wrap" >
-        <div class="card mr-2 mt-2" *ngFor="let character of characterList" style="cursor:pointer;" (click)="onClick()">
-            <img class="card-img-top" style="width:15rem;" src="/img/rei.png" alt="Card image cap">
-            <div class="card-block">
-                <h4 class="card-title">Ayanami Rei</h4>
-                <div class="card-text">
-                    <div class="row">
-                        <div class="col-6">Lvl: 34</div>
-                        <div class="col-6">Class: Priest</div>
-                    </div>
-                </div>
+    <div class="row">
+
+        <div class="col-6">
+            <h2>My Characters</h2>
+            <div class="d-flex flex-wrap">
+                <my-character *ngFor="let character of characterList" [character]="character"></my-character>
             </div>
+
+        </div>
+        <div class="col-6">
+            <h2>My Parties</h2>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let party of partyList">
+                    <my-party [party]="party"></my-party>
+                </li>
+            </ul>
         </div>
     </div>
+
 
 </div>

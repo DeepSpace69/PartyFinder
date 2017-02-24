@@ -8,6 +8,8 @@ import { CreatePartyComponent } from './create-party/create.party.component';
 import { CreateCharacterComponent } from './create-character/create.character.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { PartyComponent } from './common/control/party/party.component';
+import { CharacterComponent } from './common/control/character/character.component';
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -28,7 +30,9 @@ import '@angular/material/core/theming/prebuilt/deeppurple-amber';
         CreatePartyComponent,
         CreateCharacterComponent,
         LoginComponent,
-        HomeComponent
+        HomeComponent,
+        PartyComponent,
+        CharacterComponent
     ],
     providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig }
     ],
