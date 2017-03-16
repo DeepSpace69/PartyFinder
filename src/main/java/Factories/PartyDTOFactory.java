@@ -49,7 +49,7 @@ public class PartyDTOFactory {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
-        result.setUser(party.getUser());
+        result.setUser(party.getFkUser());
         if (slots == null) {
             result.setSlots(null);
         } else {
