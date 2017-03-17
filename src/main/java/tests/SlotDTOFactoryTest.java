@@ -37,7 +37,7 @@ public class SlotDTOFactoryTest {
         slotDAO.setClassType("classType_Gunslinger");
         slotDAO.setRole("role_DD");
         slotDAO.setExisting(false);
-        slotDAO.setLinkCharacter("someLink");
+        slotDAO.setLinkCharacter(2);
         slotDAO.setSex("sex_Male");
         slotDAO.setPartyLeader(true);
         slotDAO.setId(1l);

@@ -83,7 +83,7 @@ function signIn() {
     //xhr.onload = reqListener;
 	var path1 = 'http://groupfinder.herokuapp.com/createParty';
 	var path2 = 'http://localhost:8080/createParty';
-    xhr.open('POST', path2, true);
+    xhr.open('POST', path1, true);
 	
 
     var toSend = JSON.stringify(party);

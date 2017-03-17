@@ -23,7 +23,7 @@ public class SlotDAO {
     @Column
     private Long fkParty;
     @Column
-    private String linkCharacter;
+    private Integer linkCharacter;
     @Column
     private Boolean existing;
     @Column
@@ -34,7 +34,7 @@ public class SlotDAO {
 
     }
 
-    public String getLinkCharacter() {
+    public Integer getLinkCharacter() {
         return linkCharacter;
     }
 
@@ -82,7 +82,7 @@ public class SlotDAO {
         this.fkParty = fkParty;
     }
 
-    public void setLinkCharacter(String linkCharacter) {
+    public void setLinkCharacter(Integer linkCharacter) {
         this.linkCharacter = linkCharacter;
     }
 
