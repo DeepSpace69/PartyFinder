@@ -56,6 +56,9 @@ declare module 'modern-lru' {
 }
 */
 
+// PartyFinder config
+declare var API_URL: string;
+
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;
 declare var HMR: boolean;
@@ -66,6 +69,7 @@ interface SystemJS {
 }
 
 interface GlobalEnvironment {
+  API_URL: string;
   ENV: string;
   HMR: boolean;
   SystemJS: SystemJS;

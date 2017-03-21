@@ -5,8 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PartyService {
-    private findPartyUrl = 'http://groupfinder.herokuapp.com/findParties';  // URL to web api
-    private createPartyUrl = 'http://groupfinder.herokuapp.com/createParty';  // URL to web api
+    private findPartyUrl = process.env.API_URL + 'findParties';  // URL to web api
+    private createPartyUrl = process.env.API_URL + 'createParty';  // URL to web api
 
     constructor(private http: Http) { }
 

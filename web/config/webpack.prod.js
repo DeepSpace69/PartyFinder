@@ -1,4 +1,9 @@
 /**
+ * PartyFinder Constants
+ */
+const API_URL = 'http://groupfinder.herokuapp.com/';
+
+/**
  * @author: @AngularClass
  */
 

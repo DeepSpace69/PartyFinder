@@ -55,18 +55,18 @@ public class PartyDAO {
     private Date updateDate;
 
     @Column
-    private Long user;
+    private Long fkUser;
 
     public PartyDAO() {
 
     }
 
-    public Long getUser() {
-        return user;
+    public Long getFkUser() {
+        return fkUser;
     }
 
-    public void setUser(Long user) {
-        this.user = user;
+    public void setFkUser(Long fkUser) {
+        this.fkUser = fkUser;
     }
 
     public Long getId() {

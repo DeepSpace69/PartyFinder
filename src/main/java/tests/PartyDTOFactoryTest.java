@@ -71,7 +71,7 @@ public class PartyDTOFactoryTest {
         slotDAO1.setClassType("classType_Gunslinger");
         slotDAO1.setRole("role_DD");
         slotDAO1.setExisting(false);
-        slotDAO1.setLinkCharacter("someLink");
+        slotDAO1.setLinkCharacter(2);
         slotDAO1.setSex("sex_Male");
         slotDAO1.setId(1l);
         slotDAO1.setFkParty(1l);
@@ -80,7 +80,7 @@ public class PartyDTOFactoryTest {
         slotDAO2.setClassType("classType_Occultist");
         slotDAO2.setRole("role_Healer");
         slotDAO2.setExisting(false);
-        slotDAO2.setLinkCharacter("someLink");
+        slotDAO2.setLinkCharacter(3);
         slotDAO2.setSex("sex_Male");
         slotDAO2.setId(2l);
         slotDAO2.setFkParty(1l);
@@ -89,7 +89,7 @@ public class PartyDTOFactoryTest {
         slotDAO3.setClassType("classType_Swordmage");
         slotDAO3.setRole("role_DD");
         slotDAO3.setExisting(false);
-        slotDAO3.setLinkCharacter("someLink");
+        slotDAO3.setLinkCharacter(4);
         slotDAO3.setSex("sex_Male");
         slotDAO3.setId(3l);
         slotDAO3.setFkParty(2l);

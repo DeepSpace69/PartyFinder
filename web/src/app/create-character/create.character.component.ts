@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CharacterService } from './../common/service/character.service';
-import { CharacterDTO, PrimeTimeDTO} from './../common/dto';
+import { CharacterDTO } from './../common/dto';
 
 const CLASSTYPES: string[] = ['Gunslinger', 'Blade Master', 'Spiritshaper', 'Vanguard', 'Swordmage', 'Occultist', 'Any'];
 const ROLES: string[] = ['DD', 'Tank', 'Healer', 'Any'];
@@ -8,7 +8,7 @@ const ROLES: string[] = ['DD', 'Tank', 'Healer', 'Any'];
 @Component({
     selector: 'my-create-character',
     templateUrl: './create.character.component.html',
-   // styleUrls: ['./create.character.component.scss'],
+    // styleUrls: ['./create.character.component.scss'],
     providers: [CharacterService]
 })
 export class CreateCharacterComponent implements OnInit {
@@ -19,11 +19,11 @@ export class CreateCharacterComponent implements OnInit {
     characterService: CharacterService;
 
     constructor(private characterServiceArg: CharacterService) {
-        this.newCharacter = new CharacterDTO();
+        // this.newCharacter = new CharacterDTO();
         this.roles = ROLES;
         this.classTypes = CLASSTYPES;
-        //this.characterService = characterServiceArg;
-//this.newCharacter.charRole = this.roles[1];
+        // this.characterService = characterServiceArg;
+        // this.newCharacter.charRole = this.roles[1];
     }
 
     ngOnInit(): void {
@@ -42,6 +42,6 @@ export class CreateCharacterComponent implements OnInit {
 
     submit(): void {
         console.log(this.newCharacter.charRole);
-        //this.characterService.createCharacter(this.newCharacter);
+        // this.characterService.createCharacter(this.newCharacter);
     }
 }

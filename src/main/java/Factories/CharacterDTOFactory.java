@@ -33,7 +33,7 @@ public class CharacterDTOFactory {
         result.setClassType(characterDAO.getClassType());
         result.setLevel(characterDAO.getLevel());
         result.setServerName(characterDAO.getServerName());
-        result.setUser(characterDAO.getUser());
+        result.setUser(characterDAO.getFkUser());
         if (primeTimeDAOs == null) {
             result.setPrimeTimes(null);
         } else {
@@ -44,7 +44,7 @@ public class CharacterDTOFactory {
                 }
             }
             result.setPrimeTimes(primeTimeDTOs);
-        }
+        result.setUser(characterDAO.getFkUser());
         return result;
     }
 

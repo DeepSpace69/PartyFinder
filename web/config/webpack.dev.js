@@ -1,4 +1,9 @@
 /**
+ * PartyFinder Constants
+ */
+const API_URL = process.env.API_URL = 'http://localhost:8080/';
+
+/**
  * @author: @AngularClass
  */
 
@@ -103,6 +108,7 @@ module.exports = function (options) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
+          'API_URL': JSON.stringify(process.env.API_URL)
         }
       }),
 

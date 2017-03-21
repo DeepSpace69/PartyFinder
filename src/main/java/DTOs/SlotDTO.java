@@ -8,14 +8,14 @@ public class SlotDTO {
     private String role;
     private String classType;
     private String sex;
-    private String linkCharacter;
+    private Integer linkCharacter;
     private Boolean isFree;
     private Boolean isPartyLeader;
 
     public SlotDTO() {
     }
 
-    public String getLinkCharacter() {
+    public Integer getLinkCharacter() {
         return linkCharacter;
     }
 
@@ -55,7 +55,7 @@ public class SlotDTO {
         this.sex = sex;
     }
 
-    public void setLinkCharacter(String linkCharacter) {
+    public void setLinkCharacter(Integer linkCharacter) {
         this.linkCharacter = linkCharacter;
     }
 

@@ -34,7 +34,7 @@ public class SlotDAOFactoryTest {
         slotDTO.setClassType("Swordmage");
         slotDTO.setRole("DD");
         slotDTO.setSex("Female");
-        slotDTO.setLinkCharacter("someLink");
+        slotDTO.setLinkCharacter(3);
         slotDTO.setIsFree(false);
         slotDTO.setIsPartyLeader(false);
         Long partyId = 1l;

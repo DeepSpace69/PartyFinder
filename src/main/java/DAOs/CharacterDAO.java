@@ -27,13 +27,15 @@ public class CharacterDAO {
     @Column
     private String serverName;
     @Column
-    private Long user;
+    private Long fkUser;
     @OneToMany(mappedBy="character")
     private List<PrimeTimeDAO> primeTimeDAOs;
 
     public CharacterDAO() {
     }
 
+    public Long getFkUser() {
+        return fkUser;
     public String getName() {
         return name;
     }
@@ -94,6 +96,8 @@ public class CharacterDAO {
         return sex;
     }
 
+    public void setFkUser(Long fkUser) {
+        this.fkUser = fkUser;
     public void setSex(String sex) {
         this.sex = sex;
     }

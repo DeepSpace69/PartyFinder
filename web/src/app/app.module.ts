@@ -7,14 +7,12 @@ import { AppComponent } from './app.component';
 import { FindPartiesComponent } from './find-parties/find.parties.component';
 import { CreatePartyComponent } from './create-party/create.party.component';
 import { CreateCharacterComponent } from './create-character/create.character.component';
-import { ApiService } from './shared';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
-
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
-
-import {HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
-import {MdGestureConfig} from '@angular/material/core';
+import { HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angular/platform-browser';
 import '@angular/material/core/theming/prebuilt/deeppurple-amber';
 
 @NgModule({
@@ -30,11 +28,11 @@ import '@angular/material/core/theming/prebuilt/deeppurple-amber';
         AppComponent,
         FindPartiesComponent,
         CreatePartyComponent,
-        CreateCharacterComponent
+        CreateCharacterComponent,
+        LoginComponent,
+        HomeComponent
     ],
-    providers: [
-        ApiService,
-        { provide: HAMMER_GESTURE_CONFIG, useClass: MdGestureConfig }
+    providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig }
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,11 @@
+﻿<div class="LoginForm">
+    <input class="loginInput" type="text" placeholder="Login" [(ngModel)]="login" required>
+    <br>
+    <input class="passwordInput" type="text" placeholder="Password" [(ngModel)]="password" required>
+    <br>
+    <button class="submitButton" (click)="signIn()">Sign in</button>
+    <br>
+    <div class="errorMessage" *ngIf="hasError">
+        Error
+    </div>
+</div>

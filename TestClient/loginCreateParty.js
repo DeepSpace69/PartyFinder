@@ -19,23 +19,23 @@ function reqListener(sender) {
 function signIn() {
     var party = new Object();
 	
-    party.name = "Babies2";
+    party.name = "Sisters";
     party.age = 21;
 	//party.timeZone = 2;
-	party.language = "ru";
+	party.language = "RU";
 	party.strongLanguage = true;
 	party.serversGroup = null;
-	party.serverName = "Dream";
+	party.serverName = "DREAM";
 	party.voiceChat = true;
 	party.chatListening = true;
 	party.chatSpeaking = true;
-	party.pvp = "io";
+	party.pvp = true;
 	party.pve = true;
-	party.chatType = "Skype";
+	party.chatType = "SKYPE";
 	
 	var primeTime = new Object();
 	
-	primeTime.day = "Monday";
+	primeTime.day = "MONDAY";
 	primeTime.timeZone = 2;
 	primeTime.start = new Object();
 	primeTime.end = new Object();
@@ -46,7 +46,7 @@ function signIn() {
 	
 	var primeTime2 = new Object();
 	
-	primeTime2.day = "Sunday";
+	primeTime2.day = "SUNDAY";
 	primeTime2.timeZone = 2;
 	primeTime2.start = new Object();
 	primeTime2.end = new Object();
@@ -58,14 +58,14 @@ function signIn() {
 	var slot1 = new Object();	
 	slot1.name = "Slot 1";
 	slot1.role = "DD";
-	slot1.classType = "Vanguard";
-	slot1.sex = "Male";
+	slot1.classType = "VANGUARD";
+	slot1.sex = "MALE";
 	
 	var slot2 = new Object();
 	slot2.name = "Slot 2";
-	slot2.role = "Healer";
-	slot2.classType = "Vanguard";
-	slot2.sex = "Male";
+	slot2.role = "HEALER";
+	slot2.classType = "VANGUARD";
+	slot2.sex = "MALE";
 
 	var slot3 = new Object();
 	slot3.name = "Slot 3";
@@ -83,7 +83,7 @@ function signIn() {
     //xhr.onload = reqListener;
 	var path1 = 'http://groupfinder.herokuapp.com/createParty';
 	var path2 = 'http://localhost:8080/createParty';
-    xhr.open('POST', path2, true);
+    xhr.open('POST', path1, true);
 	
 
     var toSend = JSON.stringify(party);
