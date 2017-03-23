@@ -1,6 +1,5 @@
 package main.java.Repositories;
 import main.java.DAOs.CharacterDAO;
-import main.java.DAOs.UserDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

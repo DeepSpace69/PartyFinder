@@ -1,7 +1,5 @@
 package main.java.DAOs;
 
-import main.java.DTOs.PrimeTimeDTO;
-
 import javax.persistence.*;
 
 /**
@@ -27,11 +25,14 @@ public class PrimeTimeDAO {
     @Column
     private Integer timeZone;
     @ManyToOne
-    @JoinColumn(name="fkCharacter")
+    @JoinColumn(name = "fkCharacter")
     private CharacterDAO character;
     @Column(insertable = false, updatable = false)
     private Long fkCharacter;
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "fkParty")
+    private PartyDAO party;
+    @Column(insertable = false, updatable = false)
     private Long fkParty;
 
     public PrimeTimeDAO() {
@@ -42,52 +43,52 @@ public class PrimeTimeDAO {
         return id;
     }
 
-    public Integer getStartHour() {
-        return startHour;
-    }
-
-    public Integer getStartMinute() {
-        return startMinute;
-    }
-
-    public Integer getEndHour() {
-        return endHour;
-    }
-
-    public Integer getEndMinute() {
-        return endMinute;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public Integer getTimeZone() {
-        return timeZone;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getStartHour() {
+        return startHour;
     }
 
     public void setStartHour(Integer startHour) {
         this.startHour = startHour;
     }
 
+    public Integer getStartMinute() {
+        return startMinute;
+    }
+
     public void setStartMinute(Integer startMinute) {
         this.startMinute = startMinute;
+    }
+
+    public Integer getEndHour() {
+        return endHour;
     }
 
     public void setEndHour(Integer endHour) {
         this.endHour = endHour;
     }
 
+    public Integer getEndMinute() {
+        return endMinute;
+    }
+
     public void setEndMinute(Integer endMinute) {
         this.endMinute = endMinute;
     }
 
+    public String getDay() {
+        return day;
+    }
+
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public Integer getTimeZone() {
+        return timeZone;
     }
 
     public void setTimeZone(Integer timeZone) {

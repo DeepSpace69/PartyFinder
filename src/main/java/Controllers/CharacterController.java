@@ -8,14 +8,12 @@ import main.java.DTOs.FilterDTO;
 import main.java.Factories.CharacterDTOFactory;
 import main.java.Managers.FinderByFilters;
 import main.java.Repositories.CharacterRepository;
-import main.java.Repositories.PrimeTimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +26,17 @@ import java.util.List;
 public class CharacterController {
     private Gson gson;
     private CharacterRepository repository;
-    private PrimeTimeRepository primeTimeRepository;
     private CharacterDTOFactory characterDTOFactory;
     private FinderByFilters finderByFilters;
+
 
     @Autowired
     public CharacterController(
             CharacterRepository repository,
             CharacterDTOFactory characterDTOFactory,
-            PrimeTimeRepository primeTimeRepository,
             FinderByFilters finderByFilters) {
         this.repository = repository;
         this.characterDTOFactory = characterDTOFactory;
-        this.primeTimeRepository = primeTimeRepository;
         this.finderByFilters = finderByFilters;
     }
 
@@ -62,25 +58,13 @@ public class CharacterController {
         List<CharacterDTO> characterDTOs = this.makeDTOs(characterDAOs);
         String result = this.gson.toJson(characterDTOs);
         return result;
-//
-//        // find characters' ids
-//        List<Long> ids = new ArrayList<>();
-//        for (CharacterDAO characterDAO : characterDAOs) {
-//            ids.add(characterDAO.getId());
-//        }
-//        //find primeTimes for all characters
-//        List<PrimeTimeDAO> primeTimeDAOs = primeTimeRepository.getPrimeTimesByCharactersIds(ids);
-//        // create DTOs
-//        for (CharacterDAO characterDAO : characterDAOs) {
-//            result.add(this.characterDTOFactory.create(characterDAO, primeTimeDAOs));
-//        }
-//        return this.gson.toJson(result);
+
     }
 
     private List<CharacterDTO> makeDTOs(List<CharacterDAO> characters) {
         List<CharacterDTO> result = new ArrayList<>();
         for (CharacterDAO characterDAO : characters) {
-            result.add(new CharacterDTO(characterDAO));
+            result.add(this.characterDTOFactory.create(characterDAO));
         }
         return result;
     }

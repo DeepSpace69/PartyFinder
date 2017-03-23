@@ -1,6 +1,5 @@
 package main.java.Repositories;
 
-import main.java.DAOs.PartyDAO;
 import main.java.DAOs.PrimeTimeDAO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

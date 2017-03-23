@@ -20,18 +20,16 @@ import java.util.List;
  * Created by Tatka on 24.11.2016.
  */
 @Controller
-@RequestMapping("/getCharacters")
+@RequestMapping("/getCharacters2")
 public class CharacterControllerDemo {
     private Gson gson;
     private CharacterRepository repository;
-    private PrimeTimeRepository primeTimeRepository;
     private CharacterDTOFactory characterDTOFactory;
 
     @Autowired
-    public CharacterControllerDemo(CharacterRepository repository, CharacterDTOFactory characterDTOFactory, PrimeTimeRepository primeTimeRepository) {
+    public CharacterControllerDemo(CharacterRepository repository, CharacterDTOFactory characterDTOFactory) {
         this.repository = repository;
         this.characterDTOFactory = characterDTOFactory;
-        this.primeTimeRepository = primeTimeRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -41,16 +39,9 @@ public class CharacterControllerDemo {
         List<CharacterDTO> result = new ArrayList<>();
 
         List<CharacterDAO> characterDAOs = repository.findAll();
-        // find characters' ids
-        List<Long> ids = new ArrayList<>();
-        for (CharacterDAO characterDAO : characterDAOs) {
-            ids.add(characterDAO.getId());
-        }
-        //find primeTimes for all characters
-        List<PrimeTimeDAO> primeTimeDAOs = primeTimeRepository.getPrimeTimesByCharactersIds(ids);
         // create DTOs
         for (CharacterDAO characterDAO : characterDAOs) {
-            result.add(this.characterDTOFactory.create(characterDAO, primeTimeDAOs));
+            result.add(this.characterDTOFactory.create(characterDAO));
         }
         return this.gson.toJson(result);
     }

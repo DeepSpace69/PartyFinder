@@ -25,7 +25,7 @@ public class CharacterDTOFactory {
         this.primeTimeDTOFactory = primeTimeDTOFactory;
     }
 
-    public CharacterDTO create(CharacterDAO characterDAO, List<PrimeTimeDAO> primeTimeDAOs) {
+    public CharacterDTO create(CharacterDAO characterDAO) {
         CharacterDTO result = new CharacterDTO();
         result.setId(characterDAO.getId());
         result.setName(characterDAO.getName());
@@ -34,18 +34,19 @@ public class CharacterDTOFactory {
         result.setLevel(characterDAO.getLevel());
         result.setServerName(characterDAO.getServerName());
         result.setUser(characterDAO.getFkUser());
-        if (primeTimeDAOs == null) {
+        if (characterDAO.getPrimeTimeDAOs()== null) {
             result.setPrimeTimes(null);
         } else {
             List<PrimeTimeDTO> primeTimeDTOs = new ArrayList<>();
-            for (PrimeTimeDAO primeTimeDAO : primeTimeDAOs) {
+            for (PrimeTimeDAO primeTimeDAO : characterDAO.getPrimeTimeDAOs()) {
                 if (characterDAO.getId().equals(primeTimeDAO.getFkCharacter())) {
                     primeTimeDTOs.add(this.primeTimeDTOFactory.create(primeTimeDAO));
                 }
             }
             result.setPrimeTimes(primeTimeDTOs);
-        result.setUser(characterDAO.getFkUser());
+            result.setUser(characterDAO.getFkUser());
+
+        }
         return result;
     }
-
 }
