@@ -32,7 +32,7 @@ public class PartyDTOFactory {
         this.primeTimeDTOFactory = primeTimeDTOFactory;
     }
 
-    public PartyDTO create(PartyDAO party, List<SlotDAO> slots, List<PrimeTimeDAO> primeTimes) {
+    public PartyDTO create(PartyDAO party) {
         PartyDTO result = new PartyDTO();
         result.setId(party.getId());
         result.setName(party.getName());
@@ -50,22 +50,22 @@ public class PartyDTOFactory {
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
         result.setUser(party.getFkUser());
-        if (slots == null) {
+        if (party.getSlotDAOs() == null) {
             result.setSlots(null);
         } else {
             ArrayList<SlotDTO> resultSlots = new ArrayList<>();
-            for (SlotDAO slot : slots) {
+            for (SlotDAO slot : party.getSlotDAOs()) {
                 if (Objects.equals(slot.getFkParty(), party.getId())) {
                     resultSlots.add(this.slotDTOFactory.create(slot));
                 }
             }
             result.setSlots(resultSlots);
         }
-        if (primeTimes == null) {
+        if (party.getPrimeTimeDAOs() == null) {
             result.setPrimeTimes(null);
         } else {
             ArrayList<PrimeTimeDTO> resultPrimeTimes = new ArrayList<>();
-            for (PrimeTimeDAO primeTime : primeTimes) {
+            for (PrimeTimeDAO primeTime : party.getPrimeTimeDAOs()) {
                 if (Objects.equals(primeTime.getFkParty(), party.getId())) {
                     resultPrimeTimes.add(this.primeTimeDTOFactory.create(primeTime));
                 }

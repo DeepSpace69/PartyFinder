@@ -1,9 +1,6 @@
 package main.java.DAOs;
 
-import main.java.DTOs.SlotDTO;
-
 import javax.persistence.*;
-import java.sql.ResultSet;
 
 /**
  * Created by Tatka on 23.11.2016.
@@ -20,7 +17,12 @@ public class SlotDAO {
     private String classType;
     @Column
     private String sex;
-    @Column
+
+    @ManyToOne
+    @JoinColumn(name = "fkParty")
+    private PartyDAO party;
+
+    @Column(insertable = false, updatable = false)
     private Long fkParty;
     @Column
     private Integer linkCharacter;
@@ -38,6 +40,10 @@ public class SlotDAO {
         return linkCharacter;
     }
 
+    public void setLinkCharacter(Integer linkCharacter) {
+        this.linkCharacter = linkCharacter;
+    }
+
     public Boolean isExisting() {
         return existing;
     }
@@ -46,52 +52,48 @@ public class SlotDAO {
         return id;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public String getClassType() {
-        return classType;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public Long getFkParty() {
-        return fkParty;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
 
+    public String getClassType() {
+        return classType;
+    }
+
     public void setClassType(String classType) {
         this.classType = classType;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     public void setSex(String sex) {
         this.sex = sex;
     }
 
+    public Long getFkParty() {
+        return fkParty;
+    }
+
     public void setFkParty(Long fkParty) {
         this.fkParty = fkParty;
     }
 
-    public void setLinkCharacter(Integer linkCharacter) {
-        this.linkCharacter = linkCharacter;
+    public Boolean getExisting() {
+        return existing;
     }
 
     public void setExisting(Boolean existing) {
         this.existing = existing;
-    }
-
-    public Boolean getExisting() {
-        return existing;
     }
 
     public Boolean getPartyLeader() {

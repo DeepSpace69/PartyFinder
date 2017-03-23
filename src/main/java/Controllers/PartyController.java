@@ -62,7 +62,7 @@ public class PartyController {
     private List<PartyDTO> makeDTOs(List<PartyDAO> partyDAOs) {
         List<PartyDTO> result = new ArrayList<>();
         for (PartyDAO party : partyDAOs) {
-            result.add(this.factory.create(party, null, null));
+            result.add(this.factory.create(party));
         }
         return result;
     }

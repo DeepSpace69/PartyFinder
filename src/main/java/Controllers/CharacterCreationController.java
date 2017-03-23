@@ -1,7 +1,6 @@
 package main.java.Controllers;
 
 import com.google.gson.Gson;
-import main.java.Const.VocabularyTypes;
 import main.java.Core.ValidationResult;
 import main.java.DAOs.CharacterDAO;
 import main.java.DAOs.PrimeTimeDAO;
@@ -21,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Tatka on 24.11.2016.

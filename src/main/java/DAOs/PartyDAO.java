@@ -3,6 +3,7 @@ package main.java.DAOs;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Tatka on 22.11.2016.
@@ -56,6 +57,12 @@ public class PartyDAO {
 
     @Column
     private Long fkUser;
+
+    @OneToMany(mappedBy = "party")
+    private List<PrimeTimeDAO> primeTimeDAOs;
+
+    @OneToMany(mappedBy = "party")
+    private List<SlotDAO> slotDAOs;
 
     public PartyDAO() {
 
@@ -179,5 +186,21 @@ public class PartyDAO {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public List<PrimeTimeDAO> getPrimeTimeDAOs() {
+        return primeTimeDAOs;
+    }
+
+    public void setPrimeTimeDAOs(List<PrimeTimeDAO> primeTimeDAOs) {
+        this.primeTimeDAOs = primeTimeDAOs;
+    }
+
+    public List<SlotDAO> getSlotDAOs() {
+        return slotDAOs;
+    }
+
+    public void setSlotDAOs(List<SlotDAO> slotDAOs) {
+        this.slotDAOs = slotDAOs;
     }
 }

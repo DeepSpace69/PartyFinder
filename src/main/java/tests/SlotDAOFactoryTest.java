@@ -46,7 +46,7 @@ public class SlotDAOFactoryTest {
         Assert.assertEquals("role_DD", actual.getRole());
         Assert.assertEquals("classType_Swordmage", actual.getClassType());
         Assert.assertEquals("sex_Female", actual.getSex());
-        Assert.assertEquals("someLink", actual.getLinkCharacter());
+        Assert.assertEquals(Integer.valueOf(3), actual.getLinkCharacter());
         Assert.assertEquals(false, actual.isExisting());
         Assert.assertEquals((Long)1l, actual.getFkParty());
         Assert.assertEquals(false, actual.getPartyLeader());

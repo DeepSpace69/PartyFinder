@@ -1,7 +1,6 @@
 package main.java.Controllers;
 
 import com.google.gson.Gson;
-import main.java.Const.VocabularyTypes;
 import main.java.Core.ValidationResult;
 import main.java.DAOs.PartyDAO;
 import main.java.DAOs.PrimeTimeDAO;
@@ -13,7 +12,6 @@ import main.java.Factories.PartyDAOFactory;
 import main.java.Factories.PrimeTimeDAOFactory;
 import main.java.Factories.SlotDAOFactory;
 import main.java.Managers.Validator;
-import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
 import main.java.Repositories.PrimeTimeRepository;
 import main.java.Repositories.SlotRepository;

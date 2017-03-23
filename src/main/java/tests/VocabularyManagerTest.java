@@ -26,8 +26,8 @@ public class VocabularyManagerTest {
     public void setUp() throws Exception {
         VocabularyRepository repository = mock(VocabularyRepository.class);
         List<VocabularyDAO> vocs = new ArrayList<>();
-        vocs.add(new VocabularyDAO("lang_ru", "lang", "ru"));
-        vocs.add(new VocabularyDAO("lang_eng", "lang", "eng"));
+        vocs.add(new VocabularyDAO("lang_ru", "language", "ru"));
+        vocs.add(new VocabularyDAO("lang_eng", "language", "eng"));
         vocs.add(new VocabularyDAO("sex_female", "sex", "female"));
         vocs.add(new VocabularyDAO("sex_male", "sex", "male"));
         when(repository.findAll()).thenReturn(vocs);
