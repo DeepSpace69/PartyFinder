@@ -3,7 +3,7 @@
     <div class="row">
         <!--                 FILTERS                -->
         <div class="col-3 filters">
-            <div class="input-group pb-1">
+            <div class="input-group">
                 <input type="text" [(ngModel)]="partyName" class="form-control" placeholder="Search by name ...">
                 <span class="input-group-btn">
                     <button (click)="onGoButtonClick()" class="btn btn-secondary" style="border-left-width:1px;margin-right: 0px;" type="button">Go!</button>
@@ -191,29 +191,12 @@
 
         <!--                 Parties                -->
         <div class="col-9">
-            <div class="list-group ml-1 mt-1 mr-1">
-                <div *ngFor="let party of parties" class="parties list-group-item row">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let party of parties" style="width:100%; padding-right:0px; padding-left:0px;">
+                    <my-party [party]="party" style="width:100%"></my-party>
+                </li>
+            </ul>
 
-                    <div class="col-11">
-
-                      name:{{party.name}};
-                      age:{{party.age}};
-                      timeZone:{{party.timeZone}};
-                      languages:{{party.languages}};
-                      strongLanguage:{{party.strongLanguage}};
-                      groupServer:{{party.groupServer}};
-                      serverName:{{party.serverName}};
-                      voiceChat:{{party.voiceChat}};
-                      chatListening:{{party.chatListening}};
-                      chatSpeaking:{{party.chatSpeaking}};
-
-                      chatType:{{party.chatType}};
-                      pvp:{{party.pvp}};
-                      chatSpeaking:{{party.chatSpeaking}};
-
-                    </div>-->
-                </div>
-            </div>
         </div>
     </div>
 </div>

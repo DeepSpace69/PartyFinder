@@ -5,15 +5,15 @@
         <div class="col-6">
             <h2>My Characters</h2>
             <div class="d-flex flex-wrap">
-                <my-character *ngFor="let character of characterList" [character]="character"></my-character>
+                <my-character class="mt-1 mr-1" *ngFor="let character of characterList" [character]="character"></my-character>
             </div>
 
         </div>
         <div class="col-6">
             <h2>My Parties</h2>
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let party of partyList">
-                    <my-party [party]="party"></my-party>
+                <li class="list-group-item" *ngFor="let party of partyList" style="width:100%; padding-right:0px; padding-left:0px;">
+                    <my-party [party]="party" style="width:100%"></my-party>
                 </li>
             </ul>
         </div>

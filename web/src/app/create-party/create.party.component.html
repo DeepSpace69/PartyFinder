@@ -11,39 +11,33 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="form-inline col-6">
-                <div class="card" style="margin-bottom:-1px;">
+            <div class="col-6">
+                <div class="card">
                     <div class="card-header">Party slots</div>
+                    <div class="card-block form-inline">
+                        <ul class="list-group">
+                            <li class="list-group-item" *ngFor="let slot of party.slots">
+                                <label>{{slot.index}}</label>
+                                <label class="btn btn-secondary" [class.active]="slot.isPartyLeader" (click)="selectPartyLeader(slot)">
+                                    Lead
+                                </label>
+                                <select [(ngModel)]="slot.role" class="form-control ml-1" [name]="'role_selector'+slot.index">
+                                    <option *ngFor="let role of roles" [ngValue]='role'>{{role}}</option>
+                                </select>
+                                <select [(ngModel)]="slot.classType" class="form-control ml-1" [name]="'charClass_selector'+slot.index" style="width:25%;">
+                                    <option *ngFor="let classType of classTypes" [ngValue]='classType'>{{classType}}</option>
+                                </select>
+                                <div class="ml-1">
+                                    <md-slide-toggle></md-slide-toggle>
+                                </div>
+                                <button type="button" class="btn btn-link" *ngIf="!slot.isFree">Link Character</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let slot of party.slots">
-                        <label>{{slot.index}}</label>
-                        <label class="btn btn-secondary" [class.active]="slot.isPartyLeader" (click)="selectPartyLeader(slot)">
-                            Lead
-                        </label>
-                        <select [(ngModel)]="slot.role" class="form-control ml-1" [name]="'role_selector'+slot.index">
-                            <option *ngFor="let role of roles" [ngValue]='role'>{{role}}</option>
-                        </select>
-                        <select [(ngModel)]="slot.classType" class="form-control ml-1" [name]="'charClass_selector'+slot.index" style="width:25%;">
-                            <option *ngFor="let classType of classTypes" [ngValue]='classType'>{{classType}}</option>
-                        </select>
-                        <div [(ngModel)]="slot.isFree" ngbRadioGroup [name]="'s'+slot.index" class="ml-1">
-                            <label class="btn btn-secondary">
-                                <input type="radio" [value]="true"> Free
-                            </label>
-                            <label class="btn btn-secondary">
-                                <input type="radio" [value]="false"> Exist
-                            </label>
-                        </div>
-                        <button type="button" class="btn btn-link" *ngIf="!slot.isFree">Link Character</button>
-                    </li>
-                </ul>
+
                 <!--COMMENTS-->
-                <textarea class="mt-1" name="inputComment" [(ngModel)]="party.comment" style="width:100%;" type="text" placeholder="Comment...."></textarea>
-                <label class="custom-file">
-                    <input type="file" id="file" class="custom-file-input">
-                    <span class="custom-file-control"></span>
-                </label>
+                <textarea class="mt-1" name="inputComment" style="width:100%;" type="text" placeholder="Comment...."></textarea>
             </div>
             <div class="form-group col-6">
                 <div class="card">
@@ -52,7 +46,7 @@
                         <!--Chat Type-->
                         <div class="form-group row">
                             <label for="example-chatTypeRB-input" class="col-2 col-form-label">Voice</label>
-                            <div class="col-10" [(ngModel)]="party.chatType" ngbRadioGroup name="chatTypeRB">
+                            <div class="col-10">
                                 <label class="btn btn-secondary">
                                     <input type="radio" value="Skype" id="example-chatTypeRB-input"> Skype
                                 </label>
@@ -70,7 +64,7 @@
                         <!--has Microphone-->
                         <div class="form-group row">
                             <label for="example-mic-input" class="col-2 col-form-label">Microphone</label>
-                            <div class="col-10" [(ngModel)]="party.chatSpeaking" ngbRadioGroup name="microphoneRB">
+                            <div class="col-10">
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="true" id="example-mic-input"> Yes
                                 </label>
@@ -81,7 +75,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="example-censure-input" class="col-2 col-form-label">Strong lang.</label>
-                            <div class="col-10" [(ngModel)]="party.strongLanguage" ngbRadioGroup name="strongLanguageRB">
+                            <div class="col-10" >
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="true" id="example-censure-input"> Yes
                                 </label>
@@ -92,7 +86,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="example-age-input" class="col-2 col-form-label">Age</label>
-                            <div class="col-10" [(ngModel)]="party.age" ngbRadioGroup name="voiceChatType4">
+                            <div class="col-10">
                                 <label class="btn btn-secondary">
                                     <input type="radio" [value]="-1" id="example-age-input"> Any
                                 </label>
@@ -111,16 +105,16 @@
                             <label for="example-type-input" class="col-2 col-form-label">Type</label>
                             <div class="col-10">
                                 <label class="btn btn-secondary" [class.active]="party.pve">
-                                    <input style="display:none" type="checkbox" [(ngModel)]="party.pve" name="pveCB" id="example-type-input"> PvE
+                                    <input style="display:none" type="checkbox" id="example-type-input"> PvE
                                 </label>
                                 <label class="btn btn-secondary ml-1" [class.active]="party.pvp">
-                                    <input style="display:none" type="checkbox" [(ngModel)]="party.pvp" name="pvpCB"> PvP
+                                    <input style="display:none" type="checkbox"> PvP
                                 </label>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-lang-input" class="col-2 col-form-label">Language</label>
-                            <div class="col-10" [(ngModel)]="party.language" ngbRadioGroup name="voiceChatType6">
+                            <div class="col-10">
                                 <label class="btn btn-secondary">
                                     <input type="radio" value="ru" id="example-lang-input"> RU
                                 </label>
