@@ -14,7 +14,6 @@ import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
-import '@angular/material/core/theming/prebuilt/deeppurple-amber';
 
 @NgModule({
     imports: [
