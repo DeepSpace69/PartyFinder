@@ -5,12 +5,14 @@ import com.google.gson.reflect.TypeToken;
 import main.java.DTOs.PartyDTO;
 import main.java.DTOs.FilterDTO;
 import main.java.DAOs.PartyDAO;
+import main.java.DAOs.SlotDAO;
 import main.java.Intefaces.INameResolver;
 import main.java.Intefaces.ITypeResolver;
 import main.java.Factories.PartyDTOFactory;
 import main.java.Managers.TypeResolverDemo;
 import main.java.Managers.VocabularyManager;
 import main.java.Repositories.PartyRepository;
+import main.java.Repositories.SlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,6 +47,7 @@ public class PartyController {
     private final CriteriaQuery<PartyDAO> criteriaQuery;
     private final Root<PartyDAO> partyRoot;
     private PartyRepository repository;
+	private SlotRepository slotRepository;
     private EntityManager entityManager;
     private PartyDTOFactory factory;
     private INameResolver nameResolver;
@@ -55,11 +58,13 @@ public class PartyController {
     @Autowired
     public PartyController(
             PartyRepository repository,
+			SlotRepository slotRepository,
             EntityManager entityManager,
             PartyDTOFactory factory,
             VocabularyManager vocabularyManager,
             INameResolver nameResolver) {
         this.repository = repository;
+		this.slotRepository = slotRepository;
         this.entityManager = entityManager;
         this.factory = factory;
         this.criteriaBuilder = this.entityManager.getCriteriaBuilder();
@@ -82,9 +87,13 @@ public class PartyController {
         if (filters.isEmpty()) {
             List<PartyDAO> parties = repository.findAll();
             List<PartyDTO> result = new ArrayList<>();
+			List<Long> ids = parties.stream().map((s) -> s.getId()).collect(Collectors.toList());
+			List<SlotDAO> slots = this.slotRepository.getSlotsByPartyIds(ids);
+
             for (PartyDAO party : parties) {
-                result.add(this.factory.create(party, null, null));
+                result.add(this.factory.create(party, slots, null));
             }
+
             return this.gson.toJson(result);
         }
         // todo: integration test query

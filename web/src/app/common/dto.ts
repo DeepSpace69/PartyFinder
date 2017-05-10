@@ -1,4 +1,5 @@
 ﻿export class PartyDTO {
+    user: number;
     name: string;
     age: number;
     timeZone: number; // not done
@@ -20,14 +21,29 @@
 }
 
 export class PrimeTimeDTO {
-    start: any;
-    end: any;
+    start: TimeOfDayDTO;
+    end: TimeOfDayDTO;
     totalHours: number;
     day: string;
     constructor(day: string) {
         this.day = day;
         this.totalHours = 0;
+        this.start = new TimeOfDayDTO();
+        this.end = new TimeOfDayDTO();
     }
+}
+
+export class TimeOfDayDTO {
+    public hour: number;
+    public minute: number;
+
+    clone(): TimeOfDayDTO {
+        let result = new TimeOfDayDTO();
+        result.hour = this.hour;
+        result.minute = this.minute;
+        return result;
+    }
+
 }
 
 export class SlotDTO {

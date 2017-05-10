@@ -10,10 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PartyComponent } from './common/control/party/party.component';
 import { CharacterComponent } from './common/control/character/character.component';
+import { PrimeTimeComponent } from './common/control/prime-time/prime.time.component';
+import { TimeControlComponent } from './common/control/time-control/time.control.component';
+import { SlotComponent } from './common/control/slot/slot.component';
+
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
+
+import { FocusDirective } from './common/focus.directive';
 
 @NgModule({
     imports: [
@@ -31,10 +37,13 @@ import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-br
         LoginComponent,
         HomeComponent,
         PartyComponent,
-        CharacterComponent
+        CharacterComponent,
+        PrimeTimeComponent,
+        TimeControlComponent,
+        FocusDirective,
+        SlotComponent
     ],
-    providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig }
-    ],
+    providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

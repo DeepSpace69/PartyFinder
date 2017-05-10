@@ -54,7 +54,7 @@ public class PartyDAO {
     @Column(name = "update_date", insertable = false, updatable = false)
     private Date updateDate;
 
-    @Column
+    @Column(name = "user_id")
     private Long user;
 
     public PartyDAO() {

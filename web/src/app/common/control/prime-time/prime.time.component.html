@@ -1,0 +1,66 @@
+﻿<div class="container-fluid">
+    <form>
+        <div class="row mt-1">
+            <div class="card w-100">
+                <div class="card-header pb-0">
+                    <div class="d-flex flex-row align-self-center">
+                        <div style="margin-left:-10px;">
+                            <input type="checkbox" class="toggle-expander mr-2" [(ngModel)]="expandDays" name="expandDaysCheckBox" (ngModelChange)="collapseDays($event)" />
+                        </div>
+                        <label class="col-2">Prime time</label>
+                        <my-time-control [(ngModel)]="anyDay.start" (ngModelChange)="anyDayChanged($event)" name="anyDayStartInput"></my-time-control>
+                        <h4>-</h4>
+                        <my-time-control [(ngModel)]="anyDay.end" (ngModelChange)="anyDayChanged($event)" name="anyDayEndInput" class="has-danger"></my-time-control>
+                        <label class="ml-2">Total hours in a week:</label>
+                        <label class="badge badge-primary ml-2 align-middle" style="font-size:100%;">{{anyDay.totalHours | number:'1.0-2'}}</label>
+                    </div>
+                </div>
+                <!-- =========Weekday--------- -->
+                <div class="card-header pb-0" [hidden]="!expandDays">
+                    <div class="d-flex flex-row align-self-center">
+                        <div style="margin-left:-10px;">
+                            <input type="checkbox" class="toggle-expander mr-2" [(ngModel)]="expandWeekday" name="expandWeekdayCheckBox" />
+                        </div>
+                        <label class="col-2" style="margin-top:0.05rem;">Weekday</label>
+                        <my-time-control [(ngModel)]="weekDay.start" (ngModelChange)="weekDayChanged($event)" name="weekDayStartInput"></my-time-control>
+                        <h4>-</h4>
+                        <my-time-control [(ngModel)]="weekDay.end" (ngModelChange)="weekDayChanged($event)" name="weekDayEndInput"></my-time-control>
+                        <label class="ml-2">Total hours in weekdays:</label>
+                        <label class="badge badge-primary ml-2 align-middle" style="font-size:100%;">{{weekDay.totalHours | number:'1.0-2'}}</label>						
+                    </div>
+                </div>
+                <div class="card-block" [hidden]="!expandWeekday">
+                    <div class="d-flex flex-row align-self-center" *ngFor="let day of weekdays">
+                        <label class="col-2" style="margin-top:0.05rem;">{{day}}: </label>
+                        <my-time-control [(ngModel)]="getPrime(day).start" [name]="day+'EndInput'" (ngModelChange)="someWeekDayChanged($event)"></my-time-control>
+                        <h4>-</h4>
+                        <my-time-control [(ngModel)]="getPrime(day).end" [name]="day+'StartInput'" (ngModelChange)="someWeekDayChanged($event)"></my-time-control>
+                    </div>
+                </div>
+
+                <!-- =========Weekend--------- -->
+                <div class="card-header pb-0" [hidden]="!expandDays">
+                    <div class="d-flex flex-row align-self-center">
+                        <div style="margin-left:-10px;">
+                            <input type="checkbox" class="toggle-expander mr-2" [(ngModel)]="expandWeekend" name="expandWeekendCheckBox" />
+                        </div>
+                        <label class="col-2" style="margin-top:0.05rem;">Weekend</label>
+                        <my-time-control [(ngModel)]="weekendDay.start" (ngModelChange)="weekendChanged($event)" name="weekendStartInput"></my-time-control>
+                        <h4>-</h4>
+                        <my-time-control [(ngModel)]="weekendDay.end" (ngModelChange)="weekendChanged($event)" name="weekendEndInput"></my-time-control>
+                        <label class="ml-2">Total hours in weekends:</label>
+                        <label class="badge badge-primary ml-2 align-middle" style="font-size:100%;">{{weekendDay.totalHours | number:'1.0-2'}}</label>												
+                    </div>
+                </div>
+                <div class="card-block" [hidden]="!expandWeekend">
+                    <div class="d-flex flex-row align-self-center" *ngFor="let day of weekends">
+                        <label class="col-2" style="margin-top:0.05rem;">{{day}}: </label>
+                        <my-time-control [(ngModel)]="getPrime(day).start" [name]="day+'EndInput'" (ngModelChange)="someWeekendChanged($event)"></my-time-control>
+                        <h4>-</h4>
+                        <my-time-control [(ngModel)]="getPrime(day).end" [name]="day+'StartInput'" (ngModelChange)="someWeekendChanged($event)"></my-time-control>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

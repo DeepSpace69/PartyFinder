@@ -10,8 +10,6 @@ import * as _ from 'lodash';
     providers: [PartyService]
 })
 export class FindPartiesComponent implements OnInit {
-    partiesPerPage: number;
-    parties: PartyDTO[];
     allParties: PartyDTO[];
     filters: FilterDTO[];
     currentPage: number;
@@ -21,18 +19,15 @@ export class FindPartiesComponent implements OnInit {
     constructor(private partyService: PartyService) {
         this.filters = [];
         this.allParties = [];
-        this.currentPage = 1;
     }
 
     getParties(): void {
         this.partyService.getParties(this.filters)
             .then(p => {
-                console.log(p);
                 this.allParties = p;
-                this.parties = _.take(this.allParties, this.partiesPerPage);
             });
-
     }
+
     ngOnInit(): void {
         this.getParties();
     }
@@ -51,13 +46,6 @@ export class FindPartiesComponent implements OnInit {
 
     getFilter(keyArg: string, valueArg: Object): FilterDTO {
         return _.find(this.filters, new FilterDTO(keyArg, valueArg));
-
-    }
-
-    onChangePage(): void {
-        if (this.currentPage > -1) {
-            this.parties = _.slice(this.allParties, (this.currentPage - 1) * this.partiesPerPage, this.currentPage * this.partiesPerPage);
-        }
     }
 
     onGoButtonClick(): void {
@@ -68,8 +56,6 @@ export class FindPartiesComponent implements OnInit {
         } else {
             nameFilter.value = this.partyName;
         }
-
-        console.log(this.filters);
     }
 
 }

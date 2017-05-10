@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{9a0f5681-618b-48e7-bd85-8348f17f868e}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile>webpack.config.js</StartupFile>
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <TypeScriptSourceMap>true</TypeScriptSourceMap>
+        <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+        <EnableTypeScript>true</EnableTypeScript>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="package.json" />
+        <Content Include="tsconfig.json" />
+        <Content Include="tslint.json" />
+        <Content Include="typedoc.json" />
+        <Content Include="CHANGELOG.md" />
+        <Content Include="README.md" />
+        <Compile Include="karma-shim.js" />
+        <Compile Include="karma.conf.js" />
+        <Compile Include="protractor.conf.js" />
+        <Compile Include="webpack.config.js" />
+        <TypeScriptCompile Include="src\main.ts" />
+        <TypeScriptCompile Include="src\polyfills.ts" />
+        <TypeScriptCompile Include="src\vendor.ts" />
+        <Content Include="src\app\app.component.html" />
+        <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+        <TypeScriptCompile Include="src\app\app.component.ts" />
+        <TypeScriptCompile Include="src\app\app.module.ts" />
+        <TypeScriptCompile Include="src\app\app.routing.ts" />
+        <Content Include="src\app\app.component.scss" />
+        <Compile Include="src\app\app.component.e2e-spec.js" />
+        <Content Include="src\public\index.html" />
+        <Compile Include="src\public\service-worker.js" />
+        <Content Include="src\style\app.scss" />
+        <TypeScriptCompile Include="src\app\common\dto.ts" />
+        <TypeScriptCompile Include="src\app\common\focus.directive.ts" />
+        <Content Include="src\app\create-character\create.character.component.html" />
+        <TypeScriptCompile Include="src\app\create-character\create.character.component.ts" />
+        <Content Include="src\app\create-party\create.party.component.html" />
+        <TypeScriptCompile Include="src\app\create-party\create.party.component.ts" />
+        <Content Include="src\app\create-party\create.party.component.scss" />
+        <Content Include="src\app\find-parties\find.parties.component.html" />
+        <TypeScriptCompile Include="src\app\find-parties\find.parties.component.ts" />
+        <Content Include="src\app\find-parties\find.parties.component.scss" />
+        <Content Include="src\app\home\home.component.html" />
+        <TypeScriptCompile Include="src\app\home\home.component.ts" />
+        <Content Include="src\app\home\home.component.scss" />
+        <Content Include="src\app\login\login.component.html" />
+        <TypeScriptCompile Include="src\app\login\login.component.ts" />
+        <Content Include="src\app\login\login.component.scss" />
+        <TypeScriptCompile Include="src\app\common\service\auth.service.ts" />
+        <TypeScriptCompile Include="src\app\common\service\character.service.ts" />
+        <TypeScriptCompile Include="src\app\common\service\party.service.ts" />
+        <Content Include="src\app\common\control\character\character.component.html" />
+        <TypeScriptCompile Include="src\app\common\control\character\character.component.ts" />
+        <Content Include="src\app\common\control\character\character.component.scss" />
+        <Content Include="src\app\common\control\party\party.component.html" />
+        <TypeScriptCompile Include="src\app\common\control\party\party.component.ts" />
+        <Content Include="src\app\common\control\party\party.component.scss" />
+        <Content Include="src\app\common\control\prime-time\prime.time.component.html" />
+        <TypeScriptCompile Include="src\app\common\control\prime-time\prime.time.component.ts" />
+        <Content Include="src\app\common\control\prime-time\prime.time.component.scss" />
+        <Content Include="src\app\common\control\slot\slot.component.html" />
+        <TypeScriptCompile Include="src\app\common\control\slot\slot.component.ts" />
+        <Content Include="src\app\common\control\slot\slot.component.scss" />
+        <Content Include="src\app\common\control\time-control\time.control.component.html" />
+        <TypeScriptCompile Include="src\app\common\control\time-control\time.control.component.ts" />
+        <Content Include="src\app\common\control\time-control\time.control.component.scss" />
+        <Content Include="src\public\img\angular.png" />
+        <Content Include="src\public\img\blademaster.png" />
+        <Content Include="src\public\img\gunslinger.png" />
+        <Content Include="src\public\img\noimageavailable.png" />
+        <Content Include="src\public\img\occultist.png" />
+        <Content Include="src\public\img\spiritshaper.png" />
+        <Content Include="src\public\img\swordmage.png" />
+        <Content Include="src\public\img\vanguard.png" />
+        <Content Include="src\public\img\noimageavailable.jpg" />
+        <Content Include="src\public\img\favicon.ico" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="PartyFinderProject" />
+        <Folder Include="src" />
+        <Folder Include="src\app" />
+        <Folder Include="src\app\common" />
+        <Folder Include="src\app\common\control" />
+        <Folder Include="src\app\common\control\character" />
+        <Folder Include="src\app\common\control\party" />
+        <Folder Include="src\app\common\control\prime-time" />
+        <Folder Include="src\app\common\control\slot" />
+        <Folder Include="src\app\common\control\time-control" />
+        <Folder Include="src\app\common\service" />
+        <Folder Include="src\app\create-character" />
+        <Folder Include="src\app\create-party" />
+        <Folder Include="src\app\find-parties" />
+        <Folder Include="src\app\home" />
+        <Folder Include="src\app\login" />
+        <Folder Include="src\public" />
+        <Folder Include="src\public\img" />
+        <Folder Include="src\style" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>

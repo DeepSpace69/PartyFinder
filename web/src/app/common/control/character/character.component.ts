@@ -9,11 +9,8 @@ import { CharacterDTO } from './../../dto';
 export class CharacterComponent implements OnInit {
     @Input() character: CharacterDTO;
     constructor() {
-
     }
 
     ngOnInit(): void {
     }
-
-
 }

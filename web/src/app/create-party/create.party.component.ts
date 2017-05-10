@@ -4,7 +4,6 @@ import { PartyDTO, PrimeTimeDTO, SlotDTO } from './../common/dto';
 
 const CLASSTYPES: string[] = ['Select class', 'Gunslinger', 'Blade Master', 'Spiritshaper', 'Vanguard', 'Swordmage', 'Occultist', 'Any'];
 const ROLES: string[] = ['Select role', 'DD', 'Tank', 'Healer', 'Any'];
-const PRIMETIMESANYDAY: PrimeTimeDTO[] = [new PrimeTimeDTO('Any')];
 const PRIMETIMESWEEK: PrimeTimeDTO[] = [
     new PrimeTimeDTO('Monday'),
     new PrimeTimeDTO('Tuesday'),
@@ -28,15 +27,21 @@ export class CreatePartyComponent implements OnInit {
 
     constructor(private partyService: PartyService) {
         this.party = new PartyDTO();
+        this.party.user = 2;
         this.detailedPrimeTimeSelected = false;
         this.roles = ROLES;
         this.classTypes = CLASSTYPES;
-        this.party.primeTimes = PRIMETIMESANYDAY;
+        this.party.primeTimes = PRIMETIMESWEEK;
+
+        this.party.primeTimes[0].start.hour = 1;
+        this.party.primeTimes[0].start.minute = 30;
+
+        this.party.primeTimes[0].end.hour = 2;
+        this.party.primeTimes[0].end.minute = 30;
 
         this.party.slots = [];
         for (let i = 1; i < 6; i++) {
             let slot = new SlotDTO(i, this.roles[0], this.classTypes[0]);
-
             this.party.slots.push(slot);
         }
     }
@@ -71,11 +76,5 @@ export class CreatePartyComponent implements OnInit {
     }
 
     detailedPrimeTimeSelectedChanged(): void {
-        this.detailedPrimeTimeSelected = !this.detailedPrimeTimeSelected;
-        if (this.detailedPrimeTimeSelected) {
-            this.party.primeTimes = PRIMETIMESWEEK;
-        } else {
-            this.party.primeTimes = PRIMETIMESANYDAY;
-        }
     }
 }

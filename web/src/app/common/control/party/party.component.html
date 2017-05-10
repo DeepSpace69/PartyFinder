@@ -1,24 +1,18 @@
-﻿<div class="container-fluid">
-    <div class="row">
-        <div class="col-3 col-md-2">
-            <div class="d-flex flex-column justify-content-center">
-                <img src="{{party.image}}" alt="Card image cap" style="width:10rem;height:auto;">
-                <div class="d-flex flex-md-wrap">
-                    <span *ngFor="let prop of properties" [ngClass]="'badge badge-'+prop.activeClass">{{prop.label}}</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-9 col-md-10">
-            <div class="card">
-                <div class="card-block">
-                    <h4 class="card-title">{{party.name}}</h4>
-                    <div class="card-text">
-                        <div class="d-flex align-content-stretch">
-                            <my-character style="zoom: 0.5; -moz-transform: scale(0.5);margin-right:5px;" *ngFor="let slot of party.slots" [character]="slot.character"></my-character>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+﻿<div class="d-flex flex-row">
+  <div style="width:160px;">
+    <div class="d-flex flex-column justify-content-center">
+      <img src="{{party.image}}" alt="Card image cap" style="width:10rem;height:auto;">
+      <div class="d-flex flex-md-wrap">
+        <span *ngFor="let prop of properties" [ngClass]="'badge badge-'+prop.activeClass">{{prop.label}}</span>
+      </div>
     </div>
+  </div>
+  <div class="w-100">
+    <div style="font-size:180%" class="card-title">{{party.name}}</div>
+    <div class="d-flex flex-wrap h-100">
+      <div *ngFor="let slot of party.slots">
+        <my-slot [slot]="slot"></my-slot>
+      </div>
+    </div>
+  </div>
 </div>

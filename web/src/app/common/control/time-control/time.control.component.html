@@ -1,0 +1,5 @@
+﻿<div class="d-flex justify-content-center time-input align-middle">
+    <input class="hours" type="text" placeholder="hh" maxlength="2" [ngModel]="time?.hour" (ngModelChange)="onHoursChange($event)" (focusout)="focusOutFunction($event)" (keydown)="onKeyDownHour($event)">
+    <div>:</div>
+    <input class="minutes" type="text" placeholder="mm" maxlength="2" [ngModel]="time?.minute" (ngModelChange)="onMinutesChange($event)" (focusout)="focusOutFunction($event)" myFocusEvent [focusEvent]="myFocusTriggeringEventEmitter">
+</div>
