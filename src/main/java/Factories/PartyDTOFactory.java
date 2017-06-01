@@ -50,6 +50,7 @@ public class PartyDTOFactory {
         result.setCreateDate(df.format(party.getCreateDate()));
         result.setUpdateDate(df.format(party.getUpdateDate()));
         result.setUser(party.getUser());
+		result.setImage(party.getImage());
         if (slots == null) {
             result.setSlots(null);
         } else {

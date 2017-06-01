@@ -57,9 +57,16 @@ public class PartyDAO {
     @Column(name = "user_id")
     private Long user;
 
+    @Column
+    private String image;
+
     public PartyDAO() {
 
     }
+	
+    public String getImage() {
+        return this.image;
+    }	
 
     public Long getUser() {
         return user;
@@ -180,4 +187,8 @@ public class PartyDAO {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }	
 }

@@ -67,11 +67,11 @@ public class PartyCreationController {
         String result = "";
         this.gson = new Gson();
         PartyDTO partyDTO = gson.fromJson(input, PartyDTO.class);
-        ValidationResult validationResult = this.validator.validate(partyDTO);
-        if (validationResult.hasErrors()) {
-            response.setStatus(400);
-            return validationResult.getErrorMessage();
-        }
+        //ValidationResult validationResult = this.validator.validate(partyDTO);
+        //if (validationResult.hasErrors()) {
+        //    response.setStatus(400);
+        //    return validationResult.getErrorMessage();
+        //}
 
         PartyDAO partyDAO = this.partyDAOFactory.create(partyDTO);
         PartyDAO savedParty = this.repository.save(partyDAO);

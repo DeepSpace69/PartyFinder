@@ -37,6 +37,7 @@ private VocabularyManager vocabulary;
         result.setCreateDate(new Date());
         result.setUpdateDate(new Date());
         result.setUser(partyDTO.getUser());
+		result.setImage(partyDTO.getImage());
         return result;
     }
 

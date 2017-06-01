@@ -24,6 +24,7 @@ public class PartyDTO {
     private String createDate;
     private String updateDate;
     private Long user;
+	private String image;
 
     public PartyDTO() {
     }
@@ -96,6 +97,10 @@ public class PartyDTO {
         return updateDate;
     }
 
+    public String getImage() {
+        return this.image;
+    }
+	
     public void setName(String name) {
         this.name = name;
     }
@@ -163,4 +168,9 @@ public class PartyDTO {
     public void setId(Long id) {
         this.id = id;
     }
+	
+    public void setImage(String image) {
+        this.image = image;
+    }	
+
 }

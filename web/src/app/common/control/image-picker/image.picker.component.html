@@ -1,0 +1,5 @@
+﻿<div id="dropZone" class="mt-1" (dragover)="ondragover($event)" (dragleave)="ondragleave($event)" (drop)="ondrop($event)">
+  <div style="position:fixed;top:5px;right:50px;height:50px;width:10px;background-color:red;">X</div>
+  <p *ngIf="emptyImage" style="margin:50px auto;pointer-events: none;">Drop logo here</p>
+  <img style="height:250px;margin:10px auto;" [src]="img" *ngIf="!emptyImage" />
+</div>

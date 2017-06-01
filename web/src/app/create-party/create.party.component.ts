@@ -20,6 +20,7 @@ const PRIMETIMESWEEK: PrimeTimeDTO[] = [
     providers: [PartyService]
 })
 export class CreatePartyComponent implements OnInit {
+    maxFileSize = 1000000;
     party: PartyDTO;
     roles: string[];
     classTypes: string[];
@@ -27,6 +28,7 @@ export class CreatePartyComponent implements OnInit {
 
     constructor(private partyService: PartyService) {
         this.party = new PartyDTO();
+        this.party.image = null;
         this.party.user = 2;
         this.detailedPrimeTimeSelected = false;
         this.roles = ROLES;

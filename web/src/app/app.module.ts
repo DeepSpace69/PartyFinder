@@ -13,6 +13,7 @@ import { CharacterComponent } from './common/control/character/character.compone
 import { PrimeTimeComponent } from './common/control/prime-time/prime.time.component';
 import { TimeControlComponent } from './common/control/time-control/time.control.component';
 import { SlotComponent } from './common/control/slot/slot.component';
+import { ImagePickerComponent } from './common/control/image-picker/image.picker.component';
 
 import { routing } from './app.routing';
 import { MaterialModule } from '@angular/material';
@@ -41,7 +42,8 @@ import { FocusDirective } from './common/focus.directive';
         PrimeTimeComponent,
         TimeControlComponent,
         FocusDirective,
-        SlotComponent
+        SlotComponent,
+        ImagePickerComponent
     ],
     providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig }],
     bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+﻿#dropZone {
+  color: #555;
+  font-size: 18px;
+  text-align: center;
+  background: #eee;
+  border: 1px dashed #ccc;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#dropZone.hover {
+  background: #ddd;
+  border-color: #aaa;
+}
+
+#dropZone.error {
+  background: #faa;
+  border-color: #f00;
+}
